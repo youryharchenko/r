@@ -1,4 +1,4 @@
 
 args <- commandArgs(TRUE)
 print(args)
-q(status=0)
+q(status = 0)
