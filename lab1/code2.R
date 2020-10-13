@@ -51,44 +51,44 @@ plot(x,y,xlab="Random Uniform",ylab="Random Normal",pch="*",col="blue") # гра
 points(x[1:2], y[1:2], col = "red") # дві перші точки в червоний колір
 
 #Pair-plots
-par(mfrow=c(2,1))
-plot(x,y)
-hist(y)
-par(mfrow=c(1,1))
+par(mfrow=c(2,1)) # встановлюємо розмішення графіків (2 по вертикалі, 2 по горизонталі) )
+plot(x,y) # виводимо графік для x та y
+hist(y)   # виводимо гістограму для y
+par(mfrow=c(1,1)) # встановлюємо розмішення графіків (1 по вертикалі, 1 по горизонталі) )
 
 ### Reading in data
-Auto <- read.csv("Auto.csv", sep = "\t")
+Auto <- read.csv("Auto.csv") # завантажує csv-файл в data.frame Auto
 
 #Names of the object
-names(Auto)
+names(Auto) # друкує список імен стовпчиків
 
 #Dimension of data.frame 
-dim(Auto)
+dim(Auto) # друкує розмірність data.frame Auto
 
 #Class of the data.frame
-class(Auto)
+class(Auto) # друкує class data.frame Auto
 
 #Summary of object
-summary(Auto)
+summary(Auto) # друкує статистики для числових стовпчиків data.frame Auto
 
 #Plot relation
-plot(Auto$cylinders,Auto$mpg)
+plot(Auto$cylinders,Auto$mpg) # виводить графік, де x - стовпчик cylinders, а y - стовпчик mpg
 
-attach(Auto)
+attach(Auto) # приєднує data.frame Auto до списку пошуку імен зміних
 
 #Active library
-search()
+search() # друкує список пошуку імен
 
 #Plot bar plot
-plot(cylinders,mpg)
-cylinders=as.factor(cylinders)
-plot(cylinders,mpg,xlab="Cylinders",ylab="Mpg",col="red")
+plot(cylinders,mpg) # імена стовпчиків можна використовувати без кфаліфікації об'єктом
+cylinders=as.factor(cylinders) # перетворює вектор cylinders на фактор
+plot(cylinders,mpg,xlab="cylinders",ylab="mpg",col="red") # виводить графік з cylinders як факторм
 
 #Plot to .png file
-png(file="mpg.png")
-plot(cylinders,mpg,xlab="Cylinders",ylab="Mpg",col="red")
-dev.off()
+png(file="mpg.png") # відкриває файл для графіку в форматі png
+plot(cylinders,mpg,xlab="cylinders",ylab="mpg",col="red") # виводить графік 
+dev.off() # записує та закриває файл
 
 #Pair plot
-pairs(Auto,col="brown")
-pairs(mpg~cylinders+acceleration+weight,Auto)
+# pairs(Auto,col="brown") видає помилку Error in pairs.default(Auto, col = "brown") : non-numeric argument to 'pairs'
+pairs(mpg~cylinders+acceleration+weight,Auto) # виводить попарні матриці розсіяння
