@@ -1,0 +1,151 @@
+---
+title: "Самостійна робота 3"
+author: "Юрій Харченко"
+date: "11/25/2020"
+output: 
+  pdf_document: 
+    keep_tex: yes
+    latex_engine: xelatex
+mainfont: Liberation Serif
+sansfont: Liberation Sans
+monofont: Liberation Mono
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# Продовження роботи, розпочатої в Самостійна робота 2
+
+## Підключимо потрібні пакети
+
+```{r echo=TRUE}
+
+library(dplyr)
+library(psych)
+library(doBy)
+library(pander)
+
+```
+
+## Завантажимо створений в попередній роботі фрейм
+
+```{r, echo=TRUE}
+
+all <- read.csv(file = "all3.csv")
+
+all %>%
+  select(
+    "N"=X,
+    "Країна"=country,
+    "Населення" = SP.POP.TOTL, 
+    "Сільске населення відс" = SP.RUR.TOTL.ZS, 
+    "ВВП на душу долл" = NY.GDP.PCAP.PP.CD, 
+    "Площа кв.км" = AG.LND.TOTL.K2, 
+    "Площа сг кв.км" = AG.LND.AGRI.K2
+  )  %>%
+  pander(style = "grid", use.hyphening = TRUE, split.cells = 3)
+
+all %>%
+  select(
+    "N"=X,
+    "Регіон"=region,
+    "Рівень доходу" = income, 
+    "Група позик" = lending 
+    )  %>%
+  pander(style = "grid", use.hyphening = TRUE, split.cells = 3)
+
+```
+
+### Коментар до завантажених даних
+
+Дані отримані за допомогою пакету WDI, який дозваляє робити он-лайн запити до баз даних Світового банку
+
+all3 - містить дані 35 країн з найбільшим населенням з такими кількісними показниками:
+
+* SP.POP.TOTL -  загальна кількість населення
+* SP.RUR.TOTL.ZS - сільске населення у % до загального"
+* NY.GDP.PCAP.PP.CD -  ВВП на душу населення, $
+* AG.LND.TOTL.K2 - площа, кв.км
+* AG.LND.AGRI.K2 - площа сільсько-господарська, кв.км
+
+та факторними змінними:
+
+* region - регіон
+* income - рівень доходу
+* lending - група позик
+
+Форматування таблиць виконано за допомогою пакету pander
+
+## Описові статистики за допомогою пакету psych
+
+### describe - описові статистики
+
+```{r, echo=TRUE}
+
+# describe
+
+all %>%
+  select("Населення" = SP.POP.TOTL, 
+         "Сільске населення відс" = SP.RUR.TOTL.ZS, 
+         "ВВП" = NY.GDP.PCAP.PP.CD, 
+         "Площа кв.км" = AG.LND.TOTL.K2, 
+         "Площа сг кв.км" = AG.LND.AGRI.K2) %>%
+    describe(na.rm = TRUE)  %>%
+      as.data.frame()   %>%
+      pander(style = "grid", use.hyphening = TRUE, split.cells = 3)
+
+```
+
+## Описові статистики за допомогою пакету doBy
+
+### summary_by - вібіркове середнє по регіонах
+
+```{r, echo=TRUE}
+
+# summaryBy
+fun1 <- function(x){
+  c(
+    mean=mean(x) 
+    )}
+all %>%
+  select("Регіон" = region,
+         "Населення" = SP.POP.TOTL
+         ) %>%
+    summary_by(formula = list("Населення", "Регіон"),
+               FUN = fun1
+              )  %>%
+      pander(style = "grid", use.hyphening = TRUE, split.cells = 3)
+
+```
+
+### summary_by - скільки країн з вибірки по регіонах
+
+```{r, echo=TRUE}
+
+# summaryBy
+fun2 <- function(x){
+  c(
+    n=length(x) 
+    )}
+all %>%
+  select("Регіон" = region,
+         "N" = SP.POP.TOTL
+         ) %>%
+    summary_by(formula = list("N", "Регіон"),
+               FUN = fun2,
+               keep.names = TRUE
+              )  %>%
+      pander(style = "grid", use.hyphening = TRUE, split.cells = 3)
+
+```
+
+Найбільша кількість (8) країн з великим числом населення в таких регіонах, як
+
+* East Asia & Pacific
+* Europe & Central Asia
+* Sub-Saharan Africa
+
+

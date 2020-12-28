@@ -1,0 +1,146 @@
+---
+title: "Білет No 20"
+author: "Юрій Харченко"
+date: "12/21/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Узагальнені моделі регресії
+
+Узагальнені лінійні моделі (Generalized Linear Models) - універсальний метод побудови регресійних моделей, який дозволяє враховувати взаємодію між факторами, вид розподілу залежної змінної і припущення щодо характеру регресійної залежності.
+
+Метод може бути використаний у всіх областях застосування прикладної статистики - медицина, екологія, демографія, сільське господарство, геологія, археологія, психологія, соціологія тощо. Однак найбільше застосування узагальнені лінійні моделі отримали в страхуванні.
+
+GLM є добре розробленим і простим для розуміння способом побудови моделей. Завдяки комп'ютерним технологіям, побудова GLM не вимагає від дослідника глибинних знань в математичній статистиці. Тому все більша кількість користувачів застосовують цей метод для побудови адекватних моделей.
+
+## Додати Seatbelts в робоче середовище R та провести його аналіз
+
+```{r, echo=TRUE}
+library(tidyverse)
+library(DT)
+library(psych)
+library(car)
+```
+
+### Завантажуємо та дивимось
+
+```{r, echo=TRUE}
+data(Seatbelts)
+datatable(Seatbelts)
+summary(Seatbelts)
+describe(Seatbelts)
+```
+
+### Перевіримо незалежні змінні на мультиколінеарність
+
+```{r, echo=TRUE}
+datatable(cor(Seatbelts, use = 'complete.obs'))
+```
+
+### Значна кореляція (0.8084) між drivers та front, перевіримо за VIF
+
+```{r, echo=TRUE}
+m <- lm(DriversKilled ~ drivers + front + rear + kms + PetrolPrice + VanKilled + law, data = Seatbelts)
+v <- vif(m)
+v
+barplot(v, main = "VIF", horiz = TRUE, col = "steelblue")
+abline(v = 5, lwd = 3, lty = 2)
+```
+
+### Вилучаємо з моделі front та rear та превіряємо
+
+```{r, echo=TRUE}
+m <- lm(DriversKilled ~ drivers + kms + PetrolPrice + VanKilled + law, data = Seatbelts)
+v <- vif(m)
+v
+barplot(v, main = "VIF", horiz = TRUE, col = "steelblue")
+abline(v = 5, lwd = 3, lty = 2)
+```
+
+### Тепер нормально
+
+## Оцінити модель лінійної, нелінійної, логістичної регресії
+
+### Множинна лінійна
+
+```{r, echo=TRUE}
+m1 <- lm(DriversKilled ~ drivers + kms + PetrolPrice + VanKilled + law, data = Seatbelts)
+summary(m1)
+```
+
+### Лінійна DriversKilled ~ drivers
+
+```{r, echo=TRUE}
+m2 <- lm(DriversKilled ~ drivers, data = Seatbelts)
+summary(m2)
+plot(DriversKilled ~ drivers, xlab = 'drivers', ylab = 'DriversKilled', data = Seatbelts)
+abline(m2, col = 'red')
+```
+
+#### Лінійна для DriversKilled ~ drivers,  F-statistic: 714.8 on 1 and 190 DF,  p-value: < 2.2e-16
+
+### Лінійна drivers ~ front
+
+```{r, echo=TRUE}
+m3 <- lm(drivers ~ front, data = Seatbelts)
+summary(m3)
+plot(drivers ~ front, xlab = 'front', ylab = 'drivers', data = Seatbelts)
+abline(m3, col = 'red')
+```
+
+#### Лінійна для drivers ~ front,  F-statistic: 358.4 on 1 and 190 DF,  p-value: < 2.2e-16
+
+### Лінійна DriversKilled ~ front
+
+```{r, echo=TRUE}
+m4 <- lm(DriversKilled ~ front, data = Seatbelts)
+summary(m4)
+plot(DriversKilled ~ front, xlab = 'front', ylab = 'DriversKilled', data = Seatbelts)
+abline(m4, col = 'red')
+```
+
+#### Лінійна для DriversKilled ~ front,  F-statistic: 189.6 on 1 and 190 DF,  p-value: < 2.2e-16
+
+### Лінійна та нелінійна VanKilled ~ kms
+
+```{r, echo=TRUE}
+m5 <- lm(VanKilled ~ kms, data = Seatbelts)
+summary(m5)
+
+m5_1 <- glm(VanKilled ~ kms, family = poisson, data = Seatbelts)
+summary(m5_1)
+
+p5 <- data.frame(kms = seq(from = 6000, to = 22000, by = 200))
+pred5 <- predict(m5_1, newdata = p5, type = "response")
+
+plot(VanKilled ~ kms, xlab = 'kms', ylab = 'VanKilled', data = Seatbelts)
+abline(m5, col = 'red')
+lines(p5$kms, pred5, col = 'blue')
+```
+
+#### Лінійна для VanKilled ~ kms,  F-statistic: 62.67 on 1 and 190 DF,  p-value: 1.98e-13
+#### Нелінійна для VanKilled ~ kms, AIC: 988, не висока якість моделі
+
+### Лінійна та логістична law ~ front
+
+```{r, echo=TRUE}
+
+m6 <- lm(law ~ front, data = Seatbelts)
+summary(m6)
+
+m6_1 <- glm(law ~ front, family = binomial(link = "logit"), data = Seatbelts)
+summary(m6_1)
+
+p6 <- data.frame(front = seq(from = 400, to = 1600, by = 20))
+pred6 <- predict(m6_1, newdata = p6, type = "response")
+
+plot(law ~ front, xlab = 'front', ylab = 'law', data = Seatbelts)
+abline(m6, col = 'red')
+lines(p6$front, pred6, col = 'blue')
+```
+
+#### Лінійна для law ~ front,  F-statistic: 87.92 on 1 and 190 DF,  p-value: < 2.2e-16
+#### Логістична для law ~ front, AIC: 55.215, досить висока якість

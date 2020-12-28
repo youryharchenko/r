@@ -1,0 +1,550 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[]{Liberation Serif}
+  \setsansfont[]{Liberation Sans}
+  \setmonofont[]{Liberation Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Лабораторна робота 3},
+  pdfauthor={Юрій Харченко},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Лабораторна робота 3}
+\author{Юрій Харченко}
+\date{11/24/2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{ux43fux456ux434ux43aux43bux44eux447ux438ux43cux43e-ux43fux43eux442ux440ux456ux431ux43dux456-ux43fux430ux43aux435ux442ux438}{%
+\subsection{Підключимо потрібні
+пакети}\label{ux43fux456ux434ux43aux43bux44eux447ux438ux43cux43e-ux43fux43eux442ux440ux456ux431ux43dux456-ux43fux430ux43aux435ux442ux438}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(psych)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux437ux430ux432ux430ux43dux442ux430ux436ux438ux43cux43e-ux441ux442ux432ux43eux440ux435ux43dux438ux439-ux432-ux43fux43eux43fux435ux440ux435ux434ux43dux456ux439-ux440ux43eux431ux43eux442ux456-ux444ux440ux435ux439ux43c}{%
+\subsection{Завантажимо створений в попередній роботі
+фрейм}\label{ux437ux430ux432ux430ux43dux442ux430ux436ux438ux43cux43e-ux441ux442ux432ux43eux440ux435ux43dux438ux439-ux432-ux43fux43eux43fux435ux440ux435ux434ux43dux456ux439-ux440ux43eux431ux43eux442ux456-ux444ux440ux435ux439ux43c}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\DataTypeTok{file =} \StringTok{"all3.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(all)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   X.1 X iso2c          country SP.POP.TOTL year iso3c                    region
+## 1   1 1    AR        Argentina    44938712 2019   ARG Latin America & Caribbean
+## 2   2 2    BD       Bangladesh   163046161 2019   BGD                South Asia
+## 3   3 3    BR           Brazil   211049527 2019   BRA Latin America & Caribbean
+## 4   4 4    CD Congo, Dem. Rep.    86790567 2019   COD        Sub-Saharan Africa
+## 5   5 5    CN            China  1397715000 2019   CHN       East Asia & Pacific
+## 6   6 6    CO         Colombia    50339443 2019   COL Latin America & Caribbean
+##        capital longitude  latitude              income lending
+## 1 Buenos Aires  -58.4173 -34.61180 Upper middle income    IBRD
+## 2        Dhaka   90.4113  23.70550 Lower middle income     IDA
+## 3     Brasilia  -47.9292 -15.78010 Upper middle income    IBRD
+## 4     Kinshasa   15.3222  -4.32500          Low income     IDA
+## 5      Beijing  116.2860  40.04950 Upper middle income    IBRD
+## 6       Bogota  -74.0820   4.60987 Upper middle income    IBRD
+##   NY.GDP.PCAP.PP.CD AG.LND.TOTL.K2 AG.LND.AGRI.K2 SP.RUR.TOTL.ZS
+## 1         22947.140        2736690      1487000.0          8.009
+## 2          4950.744         130170        91942.1         62.595
+## 3         15258.851        8358140      2835460.0         13.176
+## 4          1143.453        2267050       262000.0         54.954
+## 5         16784.659        9388210      5277330.0         39.692
+## 6         15643.731        1109500       446656.0         18.896
+\end{verbatim}
+
+\hypertarget{ux444ux443ux43dux43aux446ux456ux457-ux43eux43fux438ux441ux43eux432ux43eux457-ux441ux442ux430ux442ux438ux441ux442ux438ux43aux438}{%
+\subsection{Функції описової
+статистики}\label{ux444ux443ux43dux43aux446ux456ux457-ux43eux43fux438ux441ux43eux432ux43eux457-ux441ux442ux430ux442ux438ux441ux442ux438ux43aux438}}
+
+\hypertarget{ux441ux435ux440ux435ux434ux43dux454-mean}{%
+\subsubsection{середнє
+(mean)}\label{ux441ux435ux440ux435ux434ux43dux454-mean}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# mean}
+\KeywordTok{data.frame}\NormalTok{(}
+  \StringTok{"Населення"}\NormalTok{ =}\StringTok{ }\KeywordTok{mean}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.POP.TOTL),}
+  \StringTok{"Сільске населення відс"}\NormalTok{ =}\StringTok{ }\KeywordTok{mean}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.RUR.TOTL.ZS, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"ВВП на душу долл"}\NormalTok{ =}\StringTok{ }\KeywordTok{mean}\NormalTok{(all}\OperatorTok{$}\NormalTok{NY.GDP.PCAP.PP.CD, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{mean}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.TOTL.K2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа сг кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{mean}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.AGRI.K2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Населення Сільске.населення.відс ВВП.на.душу.долл Площа.кв.км Площа.сг.кв.км
+## 1 176049552               40.11503         20129.08     2126901       781560.8
+\end{verbatim}
+
+\hypertarget{ux43cux435ux434ux456ux430ux43dux430-median}{%
+\subsubsection{медіана
+(median)}\label{ux43cux435ux434ux456ux430ux43dux430-median}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# median}
+\KeywordTok{data.frame}\NormalTok{(}
+  \StringTok{"Населення"}\NormalTok{ =}\StringTok{ }\KeywordTok{median}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.POP.TOTL),}
+  \StringTok{"Сільске населення відс"}\NormalTok{ =}\StringTok{ }\KeywordTok{median}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.RUR.TOTL.ZS, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"ВВП на душу долл"}\NormalTok{ =}\StringTok{ }\KeywordTok{median}\NormalTok{(all}\OperatorTok{$}\NormalTok{NY.GDP.PCAP.PP.CD, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{median}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.TOTL.K2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа сг кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{median}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.AGRI.K2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Населення Сільске.населення.відс ВВП.на.душу.долл Площа.кв.км Площа.сг.кв.км
+## 1  83132799                 33.144         13170.17      828340         368440
+\end{verbatim}
+
+\hypertarget{cux442ux430ux43dux434ux430ux440ux442ux43dux435-ux432ux456ux434ux445ux438ux43bux435ux43dux43dux44f-sd}{%
+\subsubsection{cтандартне відхилення
+(sd)}\label{cux442ux430ux43dux434ux430ux440ux442ux43dux435-ux432ux456ux434ux445ux438ux43bux435ux43dux43dux44f-sd}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# sd}
+\KeywordTok{data.frame}\NormalTok{(}
+  \StringTok{"Населення"}\NormalTok{ =}\StringTok{ }\KeywordTok{sd}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.POP.TOTL),}
+  \StringTok{"Сільске населення відс"}\NormalTok{ =}\StringTok{ }\KeywordTok{sd}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.RUR.TOTL.ZS, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"ВВП на душу долл"}\NormalTok{ =}\StringTok{ }\KeywordTok{sd}\NormalTok{(all}\OperatorTok{$}\NormalTok{NY.GDP.PCAP.PP.CD, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{sd}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.TOTL.K2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа сг кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{sd}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.AGRI.K2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Населення Сільске.населення.відс ВВП.на.душу.долл Площа.кв.км Площа.сг.кв.км
+## 1 309044393               22.01243         18036.86     3494435        1167531
+\end{verbatim}
+
+\hypertarget{ux434ux438ux441ux43fux435ux440ux441ux456ux44f-var}{%
+\subsubsection{дисперсія
+(var)}\label{ux434ux438ux441ux43fux435ux440ux441ux456ux44f-var}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# var}
+\KeywordTok{data.frame}\NormalTok{(}
+  \StringTok{"Населення"}\NormalTok{ =}\StringTok{ }\KeywordTok{var}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.POP.TOTL),}
+  \StringTok{"Сільске населення відс"}\NormalTok{ =}\StringTok{ }\KeywordTok{var}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.RUR.TOTL.ZS, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"ВВП на душу долл"}\NormalTok{ =}\StringTok{ }\KeywordTok{var}\NormalTok{(all}\OperatorTok{$}\NormalTok{NY.GDP.PCAP.PP.CD, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{var}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.TOTL.K2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа сг кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{var}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.AGRI.K2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Населення Сільске.населення.відс ВВП.на.душу.долл  Площа.кв.км
+## 1 9.550844e+16                484.547        325328369 1.221108e+13
+##   Площа.сг.кв.км
+## 1   1.363129e+12
+\end{verbatim}
+
+\hypertarget{ux430ux431ux441ux43eux43bux44eux442ux43dux435-ux432ux456ux434ux445ux438ux43bux435ux43dux43dux44f-ux43cux435ux434ux456ux430ux43dux438-mad}{%
+\subsubsection{абсолютне відхилення медіани
+(mad)}\label{ux430ux431ux441ux43eux43bux44eux442ux43dux435-ux432ux456ux434ux445ux438ux43bux435ux43dux43dux44f-ux43cux435ux434ux456ux430ux43dux438-mad}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# mad}
+\KeywordTok{data.frame}\NormalTok{(}
+  \StringTok{"Населення"}\NormalTok{ =}\StringTok{ }\KeywordTok{mad}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.POP.TOTL),}
+  \StringTok{"Сільске населення відс"}\NormalTok{ =}\StringTok{ }\KeywordTok{mad}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.RUR.TOTL.ZS, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"ВВП на душу долл"}\NormalTok{ =}\StringTok{ }\KeywordTok{mad}\NormalTok{(all}\OperatorTok{$}\NormalTok{NY.GDP.PCAP.PP.CD, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{mad}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.TOTL.K2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа сг кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{mad}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.AGRI.K2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Населення Сільске.населення.відс ВВП.на.душу.долл Площа.кв.км Площа.сг.кв.км
+## 1  48619430               23.96475         12562.16    777208.6       357069.4
+\end{verbatim}
+
+\hypertarget{ux43aux432ux430ux440ux442ux438ux43bux456-quantile}{%
+\subsubsection{квартилі
+(quantile)}\label{ux43aux432ux430ux440ux442ux438ux43bux456-quantile}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qu <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{0.75}\NormalTok{)}
+
+\CommentTok{# quantile}
+\KeywordTok{data.frame}\NormalTok{(}
+  
+  \StringTok{"Населення"}\NormalTok{ =}\StringTok{ }\KeywordTok{quantile}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.POP.TOTL, }\DataTypeTok{probs=}\NormalTok{qu),}
+  \StringTok{"Сільске населення відс"}\NormalTok{ =}\StringTok{ }\KeywordTok{quantile}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.RUR.TOTL.ZS, }\DataTypeTok{probs=}\NormalTok{qu, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"ВВП на душу долл"}\NormalTok{ =}\StringTok{ }\KeywordTok{quantile}\NormalTok{(all}\OperatorTok{$}\NormalTok{NY.GDP.PCAP.PP.CD, }\DataTypeTok{probs=}\NormalTok{qu, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{quantile}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.TOTL.K2, }\DataTypeTok{probs=}\NormalTok{qu, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа сг кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{quantile}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.AGRI.K2, }\DataTypeTok{probs=}\NormalTok{qu, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Населення Сільске.населення.відс ВВП.на.душу.долл Площа.кв.км
+## 25%  53309696                19.4955         5350.072      398311
+## 50%  83132799                33.1440        13170.165      828340
+## 75% 135974532                62.8440        28854.821     1910855
+##     Площа.сг.кв.км
+## 25%       155360.0
+## 50%       368440.0
+## 75%       694930.8
+\end{verbatim}
+
+\hypertarget{ux440ux43eux437ux43cux430ux445-ux432ux430ux440ux456ux430ux446ux456ux457-ux43fux43eux43aux430ux437ux43dux438ux43aux456ux432-range}{%
+\subsubsection{розмах варіації показників
+(range)}\label{ux440ux43eux437ux43cux430ux445-ux432ux430ux440ux456ux430ux446ux456ux457-ux43fux43eux43aux430ux437ux43dux438ux43aux456ux432-range}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# range}
+\KeywordTok{data.frame}\NormalTok{(}
+  \StringTok{"Населення"}\NormalTok{ =}\StringTok{ }\KeywordTok{range}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.POP.TOTL),}
+  \StringTok{"Сільске населення відс"}\NormalTok{ =}\StringTok{ }\KeywordTok{range}\NormalTok{(all}\OperatorTok{$}\NormalTok{SP.RUR.TOTL.ZS, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"ВВП на душу долл"}\NormalTok{ =}\StringTok{ }\KeywordTok{range}\NormalTok{(all}\OperatorTok{$}\NormalTok{NY.GDP.PCAP.PP.CD, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{range}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.TOTL.K2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"Площа сг кв.км"}\NormalTok{ =}\StringTok{ }\KeywordTok{range}\NormalTok{(all}\OperatorTok{$}\NormalTok{AG.LND.AGRI.K2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Населення Сільске.населення.відс ВВП.на.душу.долл Площа.кв.км Площа.сг.кв.км
+## 1   42813238                  8.009         1143.453       97489          17008
+## 2 1397715000                 78.775        65118.358    16376870        5277330
+\end{verbatim}
+
+\hypertarget{ux444ux443ux43dux43aux446ux456ux457-psych}{%
+\subsection{Функції
+psych}\label{ux444ux443ux43dux43aux446ux456ux457-psych}}
+
+\hypertarget{describe---ux43eux43fux438ux441ux43eux432ux456-ux441ux442ux430ux442ux438ux441ux442ux438ux43aux438}{%
+\subsubsection{describe - описові
+статистики}\label{describe---ux43eux43fux438ux441ux43eux432ux456-ux441ux442ux430ux442ux438ux441ux442ux438ux43aux438}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# describe}
+
+\NormalTok{all }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\StringTok{"Населення"}\NormalTok{ =}\StringTok{ }\NormalTok{SP.POP.TOTL, }
+         \StringTok{"Сільске населення відс"}\NormalTok{ =}\StringTok{ }\NormalTok{SP.RUR.TOTL.ZS, }
+         \StringTok{"ВВП на душу долл"}\NormalTok{ =}\StringTok{ }\NormalTok{NY.GDP.PCAP.PP.CD, }
+         \StringTok{"Площа кв.км"}\NormalTok{ =}\StringTok{ }\NormalTok{AG.LND.TOTL.K2, }
+         \StringTok{"Площа сг кв.км"}\NormalTok{ =}\StringTok{ }\NormalTok{AG.LND.AGRI.K2) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{describe}\NormalTok{(}\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                        vars  n         mean           sd      median
+## Населення                 1 35 176049552.20 309044392.58 83132799.00
+## Сільске населення відс    2 35        40.12        22.01       33.14
+## ВВП на душу долл          3 34     20129.08     18036.86    13170.17
+## Площа кв.км               4 34   2126901.18   3494435.06   828340.00
+## Площа сг кв.км            5 35    781560.79   1167531.24   368440.00
+##                             trimmed         mad         min          max
+## Населення              101352626.34 48619429.61 42813238.00 1.397715e+09
+## Сільске населення відс        39.57       23.96        8.01 7.878000e+01
+## ВВП на душу долл           18144.85    12562.16     1143.45 6.511836e+04
+## Площа кв.км              1320498.61   777208.57    97489.00 1.637687e+07
+## Площа сг кв.км            520143.34   357069.38    17008.00 5.277330e+06
+##                               range skew kurtosis          se
+## Населення              1.354902e+09 3.37    10.28 52238036.66
+## Сільске населення відс 7.077000e+01 0.22    -1.50        3.72
+## ВВП на душу долл       6.397491e+04 0.92    -0.46     3093.30
+## Площа кв.км            1.627938e+07 2.60     6.49   599290.67
+## Площа сг кв.км         5.260322e+06 2.41     5.45   197348.80
+\end{verbatim}
+
+\hypertarget{describeby---ux43eux43fux438ux441ux43eux432ux456-ux441ux442ux430ux442ux438ux441ux442ux438ux43aux438-ux43fux43e-ux440ux435ux433ux456ux43eux43dux430ux445}{%
+\subsubsection{describeBy - описові статистики по
+регіонах}\label{describeby---ux43eux43fux438ux441ux43eux432ux456-ux441ux442ux430ux442ux438ux441ux442ux438ux43aux438-ux43fux43e-ux440ux435ux433ux456ux43eux43dux430ux445}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# describeBy}
+
+\NormalTok{all }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\StringTok{"Населення"}\NormalTok{ =}\StringTok{ }\NormalTok{SP.POP.TOTL, }
+         \StringTok{"Сільске населення відс"}\NormalTok{ =}\StringTok{ }\NormalTok{SP.RUR.TOTL.ZS, }
+         \StringTok{"ВВП на душу долл"}\NormalTok{ =}\StringTok{ }\NormalTok{NY.GDP.PCAP.PP.CD, }
+         \StringTok{"Площа кв.км"}\NormalTok{ =}\StringTok{ }\NormalTok{AG.LND.TOTL.K2, }
+         \StringTok{"Площа сг кв.км"}\NormalTok{ =}\StringTok{ }\NormalTok{AG.LND.AGRI.K2) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{describeBy}\NormalTok{(all}\OperatorTok{$}\NormalTok{region, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Descriptive statistics by group 
+## group: East Asia & Pacific
+##                        vars n         mean           sd       median
+## Населення                 1 8 271820540.00 460300151.24 102289360.50
+## Сільске населення відс    2 8        43.16        20.87        46.66
+## ВВП на душу долл          3 8     19698.30     15138.85     14543.21
+## Площа кв.км               4 8   1679254.88   3159477.27    437725.00
+## Площа сг кв.км            5 8    812991.00   1812072.13    126000.00
+##                             trimmed         mad         min          max
+## Населення              271820540.00 59976892.09 51709098.00 1.397715e+09
+## Сільске населення відс        43.16       17.55        8.30 6.915000e+01
+## ВВП на душу долл           19698.30     8476.46     5355.27 4.323572e+04
+## Площа кв.км              1679254.88   263094.78    97489.00 9.388210e+06
+## Площа сг кв.км            812991.00   130757.91    17008.00 5.277330e+06
+##                               range  skew kurtosis           se
+## Населення              1.346006e+09  1.78     1.50 162740679.16
+## Сільске населення відс 6.085000e+01 -0.42    -1.37         7.38
+## ВВП на душу долл       3.788045e+04  0.71    -1.39      5352.39
+## Площа кв.км            9.290721e+06  1.76     1.45   1117043.90
+## Площа сг кв.км         5.260322e+06  1.82     1.62    640664.25
+## ------------------------------------------------------------ 
+## group: Europe & Central Asia
+##                        vars n        mean          sd      median     trimmed
+## Населення                 1 8 74573696.62 31648286.13 66947146.00 74573696.62
+## Сільске населення відс    2 8       23.41        4.97       23.50       23.41
+## ВВП на душу долл          3 8    38875.74    14191.09    43205.41    38875.74
+## Площа кв.км               4 8  2457292.62  5626975.41   523560.49  2457292.62
+## Площа сг кв.км            5 8   499089.39   685803.34   274918.59   499089.39
+##                                mad         min          max       range  skew
+## Населення              24216878.84 44385155.00 144373535.00 99988380.00  1.14
+## Сільске населення відс        6.13       16.35        30.53       14.18  0.09
+## ВВП на душу долл          14141.62    13341.21     56052.42    42711.21 -0.50
+## Площа кв.км              299204.23   241930.00  16376870.00 16134940.00  1.85
+## Площа сг кв.км           160639.71   127170.00   2177218.12  2050048.12  1.77
+##                        kurtosis          se
+## Населення                  0.14 11189358.87
+## Сільске населення відс    -1.61        1.76
+## ВВП на душу долл          -1.28     5017.31
+## Площа кв.км                1.69  1989436.23
+## Площа сг кв.км             1.51   242468.10
+## ------------------------------------------------------------ 
+## group: Latin America & Caribbean
+##                        vars n         mean          sd      median      trimmed
+## Населення                 1 4 108475802.75 78108827.23 88957486.00 108475802.75
+## Сільске населення відс    2 4        14.91        5.42       16.04        14.91
+## ВВП на душу долл          3 4     18565.11     3744.96    18027.22     18565.11
+## Площа кв.км               4 4   3537070.00  3281993.88  2340320.00   3537070.00
+## Площа сг кв.км            5 4   1457869.00  1012848.24  1274680.00   1457869.00
+##                                mad         min          max        range  skew
+## Населення              61258672.44 44938712.00 211049527.00 166110815.00  0.33
+## Сільске населення відс        4.73        8.01        19.56        11.55 -0.27
+## ВВП на душу долл           3819.07    15258.85     22947.14      7688.29  0.14
+## Площа кв.км             1206235.95  1109500.00   8358140.00   7248640.00  0.66
+## Площа сг кв.км           771207.00   446656.02   2835460.00   2388803.98  0.37
+##                        kurtosis          se
+## Населення                 -2.07 39054413.62
+## Сільске населення відс    -2.13        2.71
+## ВВП на душу долл          -2.27     1872.48
+## Площа кв.км               -1.75  1640996.94
+## Площа сг кв.км            -1.89   506424.12
+## ------------------------------------------------------------ 
+## group: Middle East & North Africa
+##                        vars n        mean          sd      median     trimmed
+## Населення                 1 3 75451677.67 29386897.42 82913906.00 75451677.67
+## Сільске населення відс    2 3       36.23       18.25       26.81       36.23
+## ВВП на душу долл          3 2    12035.43      304.55    12035.43    12035.43
+## Площа кв.км               4 3  1668650.00   694005.33  1628760.00  1668650.00
+## Площа сг кв.км            5 3   303493.23   231639.05   413601.99   303493.23
+##                                mad         min          max       range  skew
+## Населення              25907199.99 43053054.00 100388073.00 57335019.00 -0.24
+## Сільске населення відс        3.26       24.61        57.27       32.66  0.38
+## ВВП на душу долл            319.27    11820.09     12250.78      430.69  0.00
+## Площа кв.км              938945.41   995450.00   2381740.00  1386290.00  0.06
+## Площа сг кв.км            68107.69    37337.70    459540.00   422202.30 -0.37
+##                        kurtosis          se
+## Населення                 -2.33 16966533.13
+## Сільске населення відс    -2.33       10.54
+## ВВП на душу долл          -2.75      215.35
+## Площа кв.км               -2.33   400684.16
+## Площа сг кв.км            -2.33   133736.87
+## ------------------------------------------------------------ 
+## group: North America
+##                        vars n         mean sd       median      trimmed mad
+## Населення                 1 1 328239523.00 NA 328239523.00 328239523.00   0
+## Сільске населення відс    2 1        17.54 NA        17.54        17.54   0
+## ВВП на душу долл          3 1     65118.36 NA     65118.36     65118.36   0
+## Площа кв.км               4 1   9147420.00 NA   9147420.00   9147420.00   0
+## Площа сг кв.км            5 1   4058625.00 NA   4058625.00   4058625.00   0
+##                                 min          max range skew kurtosis se
+## Населення              328239523.00 328239523.00     0   NA       NA NA
+## Сільске населення відс        17.54        17.54     0   NA       NA NA
+## ВВП на душу долл           65118.36     65118.36     0   NA       NA NA
+## Площа кв.км              9147420.00   9147420.00     0   NA       NA NA
+## Площа сг кв.км           4058625.00   4058625.00     0   NA       NA NA
+## ------------------------------------------------------------ 
+## group: South Asia
+##                        vars n         mean           sd       median
+## Населення                 1 3 582009744.33 679844113.94 216565318.00
+## Сільске населення відс    2 3        63.74         1.57        63.09
+## ВВП на душу долл          3 3      5623.28      1222.35      4950.74
+## Площа кв.км               4 3   1291413.33   1491276.93    770880.00
+## Площа сг кв.км            5 3    752530.70    915220.69    368440.00
+##                             trimmed         mad          min          max
+## Населення              582009744.33 79347502.17 163046161.00 1.366418e+09
+## Сільске населення відс        63.74        0.74        62.59 6.553000e+01
+## ВВП на душу долл            5623.28       97.65      4884.88 7.034220e+03
+## Площа кв.км              1291413.33   949916.65    130170.00 2.973190e+06
+## Площа сг кв.км            752530.70   409935.79     91942.10 1.797210e+06
+##                               range skew kurtosis           se
+## Населення              1.203372e+09 0.38    -2.33 392508182.19
+## Сільске населення відс 2.930000e+00 0.34    -2.33         0.91
+## ВВП на душу долл       2.149340e+03 0.38    -2.33       705.72
+## Площа кв.км            2.843020e+06 0.31    -2.33    860989.14
+## Площа сг кв.км         1.705268e+06 0.35    -2.33    528402.91
+## ------------------------------------------------------------ 
+## group: Sub-Saharan Africa
+##                        vars n       mean          sd      median    trimmed
+## Населення                 1 8 82006679.2 53492785.21 58281866.50 82006679.2
+## Сільске населення відс    2 8       61.8       15.37       65.28       61.8
+## ВВП на душу долл          3 8     4434.6     3723.94     3446.60     4434.6
+## Площа кв.км               4 7  1006624.3   645023.01   910770.00  1006624.3
+## Площа сг кв.км            5 8   474976.5   281233.20   379545.00   474976.5
+##                                mad         min          max        range  skew
+## Населення              21854191.91 42813238.00 200963599.00 158150361.00  1.26
+## Сільске населення відс       15.33       33.14        78.78        45.63 -0.59
+## ВВП на душу долл           1712.29     1143.45     12999.12     11855.67  1.38
+## Площа кв.км              448219.63   200520.00   2267050.00   2066530.00  0.75
+## Площа сг кв.км           261634.42   144150.00    968410.00    824260.00  0.48
+##                        kurtosis          se
+## Населення                  0.16 18912555.58
+## Сільске населення відс    -1.12        5.44
+## ВВП на душу долл           0.61     1316.61
+## Площа кв.км               -0.54   243795.78
+## Площа сг кв.км            -1.40    99430.95
+\end{verbatim}
+
+\end{document}

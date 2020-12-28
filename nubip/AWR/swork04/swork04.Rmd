@@ -1,0 +1,53 @@
+---
+title: "Самостійна робота 4"
+author: "Юрій Харченко"
+date: "11/28/2020"
+output: 
+  pdf_document: 
+    keep_tex: yes
+    latex_engine: xelatex
+mainfont: Liberation Serif
+sansfont: Liberation Sans
+monofont: Liberation Mono
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# Імітаційне моделювання роботи АТС 
+
+## Підключимо потрібні пакети
+
+```{r echo=TRUE}
+
+library(queueing)
+library(pander)
+
+```
+
+## 
+
+```{r, echo=TRUE}
+
+# Вхідний потік M/M/с/K
+lambda <- 3
+input_mmck <- NewInput.MMCK(lambda = 3, mu = 4, c = 5, k = 5)
+
+CheckInput(input_mmck)
+
+# Create queue class object
+output_mmck <- QueueingModel(input_mmck)
+
+# Get queue model report
+pander(Report(output_mmck))
+
+# Get queue model summary
+summary(output_mmck)
+
+output_mmck
+
+```
+

@@ -1,0 +1,178 @@
+---
+title: "Лабораторна робота 3"
+author: "Юрій Харченко"
+date: "11/24/2020"
+output:
+  pdf_document: 
+    latex_engine: xelatex
+    keep_tex: yes
+mainfont: Liberation Serif
+sansfont: Liberation Sans
+monofont: Liberation Mono
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Підключимо потрібні пакети
+
+```{r echo=TRUE}
+
+library(dplyr)
+library(psych)
+
+```
+
+## Завантажимо створений в попередній роботі фрейм
+
+```{r, echo=TRUE}
+
+all <- read.csv(file = "all3.csv")
+head(all)
+
+```
+
+## Функції описової статистики
+
+### середнє (mean)
+
+```{r, echo=TRUE}
+
+# mean
+data.frame(
+  "Населення" = mean(all$SP.POP.TOTL),
+  "Сільске населення відс" = mean(all$SP.RUR.TOTL.ZS, na.rm = TRUE),
+  "ВВП на душу долл" = mean(all$NY.GDP.PCAP.PP.CD, na.rm = TRUE),
+  "Площа кв.км" = mean(all$AG.LND.TOTL.K2, na.rm = TRUE),
+  "Площа сг кв.км" = mean(all$AG.LND.AGRI.K2, na.rm = TRUE)
+)
+
+```
+
+### медіана (median)
+
+```{r, echo=TRUE}
+
+# median
+data.frame(
+  "Населення" = median(all$SP.POP.TOTL),
+  "Сільске населення відс" = median(all$SP.RUR.TOTL.ZS, na.rm = TRUE),
+  "ВВП на душу долл" = median(all$NY.GDP.PCAP.PP.CD, na.rm = TRUE),
+  "Площа кв.км" = median(all$AG.LND.TOTL.K2, na.rm = TRUE),
+  "Площа сг кв.км" = median(all$AG.LND.AGRI.K2, na.rm = TRUE)
+)
+
+```
+
+### cтандартне відхилення (sd)
+
+```{r, echo=TRUE}
+
+# sd
+data.frame(
+  "Населення" = sd(all$SP.POP.TOTL),
+  "Сільске населення відс" = sd(all$SP.RUR.TOTL.ZS, na.rm = TRUE),
+  "ВВП на душу долл" = sd(all$NY.GDP.PCAP.PP.CD, na.rm = TRUE),
+  "Площа кв.км" = sd(all$AG.LND.TOTL.K2, na.rm = TRUE),
+  "Площа сг кв.км" = sd(all$AG.LND.AGRI.K2, na.rm = TRUE)
+)
+
+```
+
+### дисперсія (var)
+
+```{r, echo=TRUE}
+
+# var
+data.frame(
+  "Населення" = var(all$SP.POP.TOTL),
+  "Сільске населення відс" = var(all$SP.RUR.TOTL.ZS, na.rm = TRUE),
+  "ВВП на душу долл" = var(all$NY.GDP.PCAP.PP.CD, na.rm = TRUE),
+  "Площа кв.км" = var(all$AG.LND.TOTL.K2, na.rm = TRUE),
+  "Площа сг кв.км" = var(all$AG.LND.AGRI.K2, na.rm = TRUE)
+)
+
+```
+
+### абсолютне відхилення медіани (mad)
+
+```{r, echo=TRUE}
+
+# mad
+data.frame(
+  "Населення" = mad(all$SP.POP.TOTL),
+  "Сільске населення відс" = mad(all$SP.RUR.TOTL.ZS, na.rm = TRUE),
+  "ВВП на душу долл" = mad(all$NY.GDP.PCAP.PP.CD, na.rm = TRUE),
+  "Площа кв.км" = mad(all$AG.LND.TOTL.K2, na.rm = TRUE),
+  "Площа сг кв.км" = mad(all$AG.LND.AGRI.K2, na.rm = TRUE)
+)
+
+```
+
+### квартилі (quantile)
+
+```{r, echo=TRUE}
+
+qu <- c(0.25, 0.5, 0.75)
+
+# quantile
+data.frame(
+  
+  "Населення" = quantile(all$SP.POP.TOTL, probs=qu),
+  "Сільске населення відс" = quantile(all$SP.RUR.TOTL.ZS, probs=qu, na.rm = TRUE),
+  "ВВП на душу долл" = quantile(all$NY.GDP.PCAP.PP.CD, probs=qu, na.rm = TRUE),
+  "Площа кв.км" = quantile(all$AG.LND.TOTL.K2, probs=qu, na.rm = TRUE),
+  "Площа сг кв.км" = quantile(all$AG.LND.AGRI.K2, probs=qu, na.rm = TRUE)
+)
+
+```
+
+### розмах варіації показників (range)
+
+```{r, echo=TRUE}
+
+# range
+data.frame(
+  "Населення" = range(all$SP.POP.TOTL),
+  "Сільске населення відс" = range(all$SP.RUR.TOTL.ZS, na.rm = TRUE),
+  "ВВП на душу долл" = range(all$NY.GDP.PCAP.PP.CD, na.rm = TRUE),
+  "Площа кв.км" = range(all$AG.LND.TOTL.K2, na.rm = TRUE),
+  "Площа сг кв.км" = range(all$AG.LND.AGRI.K2, na.rm = TRUE)
+)
+
+```
+
+## Функції psych
+
+### describe - описові статистики
+
+```{r, echo=TRUE}
+
+# describe
+
+all %>%
+  select("Населення" = SP.POP.TOTL, 
+         "Сільске населення відс" = SP.RUR.TOTL.ZS, 
+         "ВВП на душу долл" = NY.GDP.PCAP.PP.CD, 
+         "Площа кв.км" = AG.LND.TOTL.K2, 
+         "Площа сг кв.км" = AG.LND.AGRI.K2) %>%
+    describe(na.rm = TRUE)
+
+```
+
+### describeBy - описові статистики по регіонах
+
+```{r, echo=TRUE}
+
+# describeBy
+
+all %>%
+  select("Населення" = SP.POP.TOTL, 
+         "Сільске населення відс" = SP.RUR.TOTL.ZS, 
+         "ВВП на душу долл" = NY.GDP.PCAP.PP.CD, 
+         "Площа кв.км" = AG.LND.TOTL.K2, 
+         "Площа сг кв.км" = AG.LND.AGRI.K2) %>%
+    describeBy(all$region, na.rm = TRUE)
+
+```

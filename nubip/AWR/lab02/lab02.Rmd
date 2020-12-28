@@ -1,0 +1,345 @@
+---
+title: "Лабораторна робота 2"
+author: "Юрій Харченко"
+date: "11/7/2020"
+output:
+  pdf_document: 
+    latex_engine: xelatex
+    keep_tex: yes
+mainfont: Liberation Serif
+sansfont: Liberation Sans
+monofont: Liberation Mono
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Завдання 1
+
+### Файл код3df
+
+```{r, echo=FALSE}
+# Reading data
+
+?read.table # help read.table
+?read.csv   # help read.csv
+?getwd      # help getwd
+?setwd      # help setwd
+
+```
+
+```{r, echo=TRUE}
+# Читаємо data.frame з файлу
+mydata <- read.csv('evals.csv')
+
+```
+
+```{r, echo=TRUE}
+# Summaries
+
+# Друкуємо 3 перших рядки 
+head(mydata, 3)
+# Друкуємо 6 (по замовчуванню) останніх рядків
+tail(mydata)
+# Виводимо таблицю у DataViewer
+View(mydata)
+# Друкуємо компактно структуру фрейму
+str(mydata)
+# Змінна a буде зберігати вектор назв стовпчиків фрейму
+a <- names(mydata)
+# Друкуємо загальні статистики фрейму
+summary(mydata)
+
+```
+
+```{r, echo=TRUE}
+# Variables
+
+# Змінна b буде зберігати стовпчик score
+b <- mydata$score
+# Друкуємо середнє стовпчика score
+mean(mydata$score)
+# Друкуємо загальні статистики стовпчика score
+summary(mydata$score)
+# Друкуємо стовпчика score помножений на 2
+mydata$score * 2
+# Новий стовпчик score ten_point_scale це score помножений на 2
+mydata$ten_point_scale <- mydata$score * 2
+# Друкуємо загальні статистики стовпчика ten_point_scale
+summary(mydata$ten_point_scale)
+# Новий стовпчик new_varible заповнений нулями
+mydata$new_varible <- 0
+# Новий стовпчик number заповнений нумерацією рядків
+mydata$number <- 1:nrow(mydata)
+# Друкуємо загальні статистики стовпчика number
+summary(mydata$number)
+# Друкуємо кількість рядків фрейму
+nrow(mydata)
+# Друкуємо кількість стовпчиків фрейму
+ncol(mydata)
+
+```
+
+```{r, echo=TRUE}
+# Subsetting
+
+# Друкуємо стовпчик score з 1 по 10 
+mydata$score[1:10]
+# Друкуємо елемент 1-й елемент 1-го рядка 
+mydata[1,1]
+# Друкуємо елемент 1-й елемент 2-го, 193-го, 225-го рядків 
+mydata[c(2,193,225),1]
+# Друкуємо елемент 1-й елемент рядків з 101 по 200
+mydata[101:200,1]
+# Друкуємо 5-й рядок
+mydata[5,]
+# Друкуємо вектор порівняння стовпчика score з самим собою (весь TRUE)
+mydata[,1] == mydata$score
+# Друкуємо стовпчики з 2-го по 5-тий
+mydata[,2:5]
+# Друкуємо перші 6-ть рядків стовпчиків з 2-го по 5-тий
+head(mydata[,2:5])
+
+```
+
+```{r, echo=TRUE}
+# Subsetting with condition
+
+# Друкуємо стовпчик gender
+mydata$gender
+# Друкуємо вектор порівняння стовпчика gender зі значенням  female
+mydata$gender == 'female'
+# Друкуємо перші 6-ть рядків стовпчиків з 1-го по 3-тий, де gender == 'female'
+head(mydata[mydata$gender == 'female',1:3])
+# Друкуємо перші 6-ть рядків вибірки із фрейму, де gender == 'female'
+head(subset(mydata, gender == 'female'))
+# Друкуємо перші 6-ть рядків вибірки із фрейму, де score > 3.5
+head(subset(mydata, score > 3.5))
+
+```
+
+```{r, echo=TRUE}
+# rbind, cbind
+
+# Створюємо новий фрейм, де gender == 'female'
+mydata2 <- subset(mydata, gender == 'female')
+# Створюємо новий фрейм, де gender == 'male'
+mydata3 <- subset(mydata, gender == 'male')
+# Створюємо новий фрейм з рядків mydata2 та mydata3
+mydata4 <- rbind(mydata2, mydata3)
+# Створюємо новий фрейм із стовпчиків з 1-го по 10-й
+mydata5 <- mydata[,1:10]
+# Створюємо новий фрейм із стовпчиків з 11-го по 24-й
+mydata6 <- mydata[,11:24]
+# Створюємо новий фрейм із стовпчиків mydata6 та mydata5
+mydata7 <- cbind(mydata6, mydata5)
+
+```
+
+### Файл код4cond
+
+```{r, echo=TRUE}
+# Читаємо data.frame з файлу
+mydata <- read.csv('evals.csv')
+
+```
+
+```{r, echo=TRUE}
+# control statements
+
+mydata <- read.csv('evals.csv')
+
+# if
+
+a <- 0
+# Друкуємо 'not positive'
+if (a > 0){
+  print('positive')
+} else {
+  print('not positive')
+}
+
+# Друкуємо 'not positive'
+if (a > 0){
+  print('positive')
+} else print('not positive')
+
+# Друкуємо 'zero'
+if (a > 0){
+  print('positive')
+} else if (a < 0) {
+  print('negative')
+} else print('zero')
+
+# ifelse
+
+a <- 10
+# Друкуємо 'positive'
+ifelse(a > 0, 'positive', 'not positive')
+
+a <- c(1, -1)
+
+# for
+
+# Друкуємо числа від 1-го до 100
+for (i in 1:100){
+  print(i)
+}
+
+# Друкуємо елементи стовпчика score
+for (i in 1:nrow(mydata)){
+  print(mydata$score[i])
+}
+
+# for + if
+
+# Друкуємо елементи стовпчика score, які відповідають значенню 'male' в стовпчику gender
+for (i in 1:nrow(mydata)){
+  if (mydata$gender[i] == 'male'){
+    print(mydata$score[i]) 
+  }
+}
+
+# for + if  VS  ifelse
+
+# Новий стовпчик quality заповнений NA
+mydata$quality <- rep(NA, nrow(mydata))
+# Прописуємо стовпчик quality - якщо score > 4, то 'good', інакше - 'bad'
+mydata$quality <- rep(NA, nrow(mydata))
+for (i in 1:nrow(mydata)){
+  if (mydata$score[i] > 4){
+    mydata$quality[i] <- 'good'
+  } else mydata$quality[i] <- 'bad'
+}
+# Новий стовпчик quality2 заповнений - якщо score > 4, то 'good', інакше - 'bad
+mydata$quality2 <- ifelse(mydata$score > 4, 'good', 'bad')
+
+# while
+
+i <- 1
+
+# Друкуємо елементи стовпчика score від 1-го до 50-го
+while(i < 51){
+  print(mydata$score[i])
+  i <- i+1
+}
+
+```
+
+## Завдання 2
+
+```{r, echo=TRUE}
+# Файли для завантаження
+ukr <- "API_UKR_DS2_en_csv_v2_1625998.csv"
+pol <- "API_POL_DS2_en_csv_v2_1626986.csv"
+rus <- "API_RUS_DS2_en_csv_v2_1630272.csv"
+
+# Завантажуємо та друкуємо розмір
+data_ukr <- read.csv(ukr, skip = 4)
+paste0("Loaded: ", ukr, "(", nrow(data_ukr), ", ", ncol(data_ukr), ")")
+data_pol <- read.csv(pol, skip = 4)
+paste0("Loaded: ", pol, "(", nrow(data_pol), ", ", ncol(data_pol), ")")
+data_rus <- read.csv(rus, skip = 4)
+paste0("Loaded: ", rus, "(", nrow(data_rus), ", ", ncol(data_rus), ")")
+
+# Вектор років
+years <- 1960:2019
+# Вектор імен стовпчиків
+col_names <- c("year", "p_ukr", "p_pol", "p_rus", 
+               "gdp_ukr", "gdp_pol", "gdp_rus")
+
+# Створюємо робочий фрейм із завантажених файлів
+data_work <- data.frame(
+  years = years,
+  p_ukr = t(data_ukr[791, 1:length(years)+4]),
+  p_pol = t(data_pol[8, 1:length(years)+4]),
+  p_rus = t(data_rus[657, 1:length(years)+4]),
+  gdp_ukr = t(data_ukr[1158, 1:length(years)+4]),
+  gdp_pol = t(data_pol[263, 1:length(years)+4]),
+  gdp_rus = t(data_rus[349, 1:length(years)+4])
+)
+
+# Встановлюємо назви стовпчиків
+names(data_work) = col_names
+
+```
+
+```{r, echo=TRUE}
+# Підключаємо пакет dplyr
+library(dplyr)
+
+```
+
+```{r, echo=TRUE}
+# select та filter
+
+# select - вибираємо стовпчики, filter - фільтруємо рядки
+head(select(data_work, year:p_rus))
+head(select(filter(data_work, !is.na(gdp_ukr)), c(year, gdp_ukr:gdp_rus)))
+
+```
+
+```{r, echo=TRUE}
+# arrange
+
+# arrange - сортуємо рядки за значеннями стовпчика
+head(select(arrange(data_work, p_ukr), year:p_rus))
+tail(select(arrange(filter(data_work, !is.na(gdp_ukr)), gdp_ukr), c(year, gdp_ukr:gdp_rus)))
+
+```
+
+```{r, echo=TRUE}
+# rename
+
+# rename - перейменовуємо назви стовпчиків
+data_population <- select(data_work, year:p_rus)
+head(data_population)
+
+data_population <- rename(data_population, ukr=p_ukr, pol=p_pol, rus=p_rus)
+head(data_population)
+
+```
+
+```{r, echo=TRUE}
+# mutate
+
+# mutate - створюємо та обчислюємо нові стовпчики
+data_gdp_val <- select(
+  mutate(filter(data_work, !is.na(gdp_ukr)), 
+    gdp_v_ukr=p_ukr*gdp_ukr,
+    gdp_v_pol=p_pol*gdp_pol,
+    gdp_v_rus=p_rus*gdp_rus
+  ),
+  c(year, gdp_v_ukr:gdp_v_rus)
+)
+head(data_gdp_val)
+
+
+```
+
+```{r, echo=TRUE}
+# group_by
+
+# створюємо стовпчик зі знвченнями річних декад
+data_pop_d <- mutate(data_population, 
+  decade=as.integer(year/10)*10
+)
+# group_by - групуємо по декадах та  рахуємо середнє за декаду
+summarize(group_by(data_pop_d, decade), 
+  mean(ukr), mean(pol), mean(rus)
+)
+
+
+```
+
+```{r, echo=TRUE}
+# %>%
+
+# те саме, що попереднє, але через пайп
+data_population %>%
+  mutate(decade=as.integer(year/10)*10) %>%
+  group_by(decade) %>%
+  summarize(mean(ukr), mean(pol), mean(rus))
+
+```

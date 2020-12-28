@@ -1,0 +1,691 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[]{Liberation Serif}
+  \setsansfont[]{Liberation Sans}
+  \setmonofont[]{Liberation Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Самостійна робота 2},
+  pdfauthor={Юрій Харченко},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Самостійна робота 2}
+\author{Юрій Харченко}
+\date{11/7/2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{ux43fux440ux43eux434ux43eux432ux436ux435ux43dux43dux44f-ux440ux43eux431ux43eux442ux438-ux440ux43eux437ux43fux43eux447ux430ux442ux43eux457-ux432-ux441ux430ux43cux43eux441ux442ux456ux439ux43dux430-ux440ux43eux431ux43eux442ux430-1}{%
+\section{Продовження роботи, розпочатої в Самостійна робота
+1}\label{ux43fux440ux43eux434ux43eux432ux436ux435ux43dux43dux44f-ux440ux43eux431ux43eux442ux438-ux440ux43eux437ux43fux43eux447ux430ux442ux43eux457-ux432-ux441ux430ux43cux43eux441ux442ux456ux439ux43dux430-ux440ux43eux431ux43eux442ux430-1}}
+
+\hypertarget{ux43fux456ux434ux43aux43bux44eux447ux438ux43cux43e-ux43fux43eux442ux440ux456ux431ux43dux456-ux43fux430ux43aux435ux442ux438}{%
+\subsection{Підключимо потрібні
+пакети}\label{ux43fux456ux434ux43aux43bux44eux447ux438ux43cux43e-ux43fux43eux442ux440ux456ux431ux43dux456-ux43fux430ux43aux435ux442ux438}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(WDI)}
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\hypertarget{ux432ux441ux442ux430ux43dux43eux432ux438ux43cux43e-ux440ux43eux431ux43eux447ux456-ux43aux43eux43dux441ux442ux430ux43dux442ux438}{%
+\subsection{Встановимо робочі
+константи}\label{ux432ux441ux442ux430ux43dux43eux432ux438ux43cux43e-ux440ux43eux431ux43eux447ux456-ux43aux43eux43dux441ux442ux430ux43dux442ux438}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{start <-}\StringTok{ }\NormalTok{1990L}
+\NormalTok{end <-}\StringTok{ }\NormalTok{2019L}
+
+\NormalTok{ind_pop_totl <-}\StringTok{ "SP.POP.TOTL"}
+\NormalTok{ind_gdp_pcap <-}\StringTok{ "NY.GDP.PCAP.PP.CD"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux437ux430ux432ux430ux43dux442ux430ux436ux438ux43cux43e-ux441ux442ux432ux43eux440ux435ux43dux456-ux432-ux43fux43eux43fux435ux440ux435ux434ux43dux456ux439-ux440ux43eux431ux43eux442ux456-ux444ux440ux435ux439ux43cux438}{%
+\subsection{Завантажимо створені в попередній роботі
+фрейми}\label{ux437ux430ux432ux430ux43dux442ux430ux436ux438ux43cux43e-ux441ux442ux432ux43eux440ux435ux43dux456-ux432-ux43fux43eux43fux435ux440ux435ux434ux43dux456ux439-ux440ux43eux431ux43eux442ux456-ux444ux440ux435ux439ux43cux438}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Населення  за роками}
+
+\NormalTok{pop_totl <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\DataTypeTok{file =} \StringTok{"pop_totl.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(pop_totl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   X year      ukr      pol       rus decade
+## 1 1 1990 51891400 38110782 147969407   1990
+## 2 2 1991 52000500 38246193 148394216   1990
+## 3 3 1992 52150400 38363667 148538197   1990
+## 4 4 1993 52179200 38461408 148458777   1990
+## 5 5 1994 51921400 38542652 148407912   1990
+## 6 6 1995 51512800 38594998 148375787   1990
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# ВВП на душу населення  за роками}
+
+\NormalTok{gdp_pcap <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\DataTypeTok{file =} \StringTok{"gdp_pcap.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(gdp_pcap)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   X year      ukr      pol      rus decade
+## 1 1 1990 7305.143 6173.862 8027.846   1990
+## 2 2 1991 6902.486 5913.855 7857.906   1990
+## 3 3 1992 6356.734 6181.769 6862.463   1990
+## 4 4 1993 5578.521 6548.119 6419.516   1990
+## 5 5 1994 4412.745 7027.078 5734.414   1990
+## 6 6 1995 3987.006 7662.772 5613.281   1990
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Країни з великим населенням та їх ВВП на душу за 2019 рік}
+
+\NormalTok{all <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\DataTypeTok{file =} \StringTok{"all.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(all)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   X iso2c          country SP.POP.TOTL year iso3c                    region
+## 1 1    AR        Argentina    44938712 2019   ARG Latin America & Caribbean
+## 2 2    BD       Bangladesh   163046161 2019   BGD                South Asia
+## 3 3    BR           Brazil   211049527 2019   BRA Latin America & Caribbean
+## 4 4    CD Congo, Dem. Rep.    86790567 2019   COD        Sub-Saharan Africa
+## 5 5    CN            China  1397715000 2019   CHN       East Asia & Pacific
+## 6 6    CO         Colombia    50339443 2019   COL Latin America & Caribbean
+##        capital longitude  latitude              income lending
+## 1 Buenos Aires  -58.4173 -34.61180 Upper middle income    IBRD
+## 2        Dhaka   90.4113  23.70550 Lower middle income     IDA
+## 3     Brasilia  -47.9292 -15.78010 Upper middle income    IBRD
+## 4     Kinshasa   15.3222  -4.32500          Low income     IDA
+## 5      Beijing  116.2860  40.04950 Upper middle income    IBRD
+## 6       Bogota  -74.0820   4.60987 Upper middle income    IBRD
+##   NY.GDP.PCAP.PP.CD
+## 1         22947.140
+## 2          4950.744
+## 3         15258.851
+## 4          1143.453
+## 5         16784.659
+## 6         15643.731
+\end{verbatim}
+
+\hypertarget{ux43aux43eux43cux435ux43dux442ux430ux440-ux434ux43e-ux437ux430ux432ux430ux43dux442ux430ux436ux435ux43dux438ux445-ux434ux430ux43dux438ux445}{%
+\subsubsection{Коментар до завантажених
+даних}\label{ux43aux43eux43cux435ux43dux442ux430ux440-ux434ux43e-ux437ux430ux432ux430ux43dux442ux430ux436ux435ux43dux438ux445-ux434ux430ux43dux438ux445}}
+
+Дані отримані за допомогою пакету WDI, який дозваляє робити он-лайн
+запити до баз даних Світового банку
+
+pop\_totl - містить часові ряди 1990-2019рр загальної кількості
+населення для України, Польщі та Росії
+
+gdp\_pcap - містить часові ряди ВВП на душу населення 1990-2019рр для
+України, Польщі та Росії
+
+all - містить дані 35 країн з найбільшим населенням з такими кількісними
+показниками:
+
+\begin{itemize}
+\tightlist
+\item
+  SP.POP.TOTL - загальна кількість населення
+\item
+  NY.GDP.PCAP.PP.CD - ВВП на душу населення
+\end{itemize}
+
+та факторними змінними:
+
+\begin{itemize}
+\tightlist
+\item
+  region - регіон
+\item
+  income - рівень доходу
+\item
+  lending - група позик
+\end{itemize}
+
+\hypertarget{ux434ux43eux434ux430ux43cux43e-ux434ux43e-ux444ux440ux435ux439ux43cux443-all-ux449ux435-ux434ux432ux430-ux43aux456ux43bux44cux43aux456ux441ux43dux438ux445-ux43fux43eux43aux430ux437ux43dux438ux43aux430}{%
+\subsection{Додамо до фрейму all ще два кількісних
+показника}\label{ux434ux43eux434ux430ux43cux43e-ux434ux43e-ux444ux440ux435ux439ux43cux443-all-ux449ux435-ux434ux432ux430-ux43aux456ux43bux44cux43aux456ux441ux43dux438ux445-ux43fux43eux43aux430ux437ux43dux438ux43aux430}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Виберемо з фрейму список кодів країн, по яких будемо завантажувати дані}
+
+\NormalTok{countries <-}\StringTok{ }\KeywordTok{select}\NormalTok{(all, iso2c)}
+\KeywordTok{str}\NormalTok{(countries)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    35 obs. of  1 variable:
+##  $ iso2c: chr  "AR" "BD" "BR" "CD" ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y <-}\StringTok{ }\DecValTok{2016}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux437ux430ux433ux430ux43bux44cux43dux430-ux43fux43bux43eux449ux430-ux43aux440ux430ux457ux43dux438-ux43aux432.ux43aux43c}{%
+\subsubsection{Загальна площа країни
+(кв.км)}\label{ux437ux430ux433ux430ux43bux44cux43dux430-ux43fux43bux43eux449ux430-ux43aux440ux430ux457ux43dux438-ux43aux432.ux43aux43c}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ind_lnd_totl <-}\StringTok{ "AG.LND.TOTL.K2"}
+
+\NormalTok{land_all <-}\StringTok{ }\KeywordTok{WDI}\NormalTok{(}\DataTypeTok{country=}\KeywordTok{c}\NormalTok{(countries}\OperatorTok{$}\NormalTok{iso2c), }\DataTypeTok{indicator=}\NormalTok{ind_lnd_totl, }\DataTypeTok{start=}\NormalTok{y, }\DataTypeTok{end=}\NormalTok{y, }\DataTypeTok{extra=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{cache=}\OtherTok{NULL}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{arrange}\NormalTok{(iso2c)}
+
+\KeywordTok{head}\NormalTok{(land_all)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   iso2c          country AG.LND.TOTL.K2 year iso3c                    region
+## 1    AR        Argentina        2736690 2016   ARG Latin America & Caribbean
+## 2    BD       Bangladesh         130170 2016   BGD                South Asia
+## 3    BR           Brazil        8358140 2016   BRA Latin America & Caribbean
+## 4    CD Congo, Dem. Rep.        2267050 2016   COD        Sub-Saharan Africa
+## 5    CN            China        9388210 2016   CHN       East Asia & Pacific
+## 6    CO         Colombia        1109500 2016   COL Latin America & Caribbean
+##        capital longitude latitude              income lending
+## 1 Buenos Aires  -58.4173 -34.6118 Upper middle income    IBRD
+## 2        Dhaka   90.4113  23.7055 Lower middle income     IDA
+## 3     Brasilia  -47.9292 -15.7801 Upper middle income    IBRD
+## 4     Kinshasa   15.3222   -4.325          Low income     IDA
+## 5      Beijing   116.286  40.0495 Upper middle income    IBRD
+## 6       Bogota   -74.082  4.60987 Upper middle income    IBRD
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(land_all)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     iso2c             country          AG.LND.TOTL.K2          year     
+##  Length:35          Length:35          Min.   :   97489   Min.   :2016  
+##  Class :character   Class :character   1st Qu.:  398311   1st Qu.:2016  
+##  Mode  :character   Mode  :character   Median :  828340   Median :2016  
+##                                        Mean   : 2126901   Mean   :2016  
+##                                        3rd Qu.: 1910855   3rd Qu.:2016  
+##                                        Max.   :16376870   Max.   :2016  
+##                                        NA's   :1                        
+##     iso3c              region            capital           longitude        
+##  Length:35          Length:35          Length:35          Length:35         
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##                                                                             
+##    latitude            income            lending         
+##  Length:35          Length:35          Length:35         
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+##                                                          
+## 
+\end{verbatim}
+
+\hypertarget{ux43fux43bux43eux449ux430-ux441.ux433.-ux43aux432.ux43aux43c}{%
+\subsubsection{Площа с.г.
+(кв.км)}\label{ux43fux43bux43eux449ux430-ux441.ux433.-ux43aux432.ux43aux43c}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ind_lnd_agri <-}\StringTok{ "AG.LND.AGRI.K2"}
+
+\NormalTok{lnd_agri_all <-}\StringTok{ }\KeywordTok{WDI}\NormalTok{(}\DataTypeTok{country=}\KeywordTok{c}\NormalTok{(countries}\OperatorTok{$}\NormalTok{iso2c), }\DataTypeTok{indicator=}\NormalTok{ind_lnd_agri, }\DataTypeTok{start=}\NormalTok{y, }\DataTypeTok{end=}\NormalTok{y, }\DataTypeTok{extra=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{cache=}\OtherTok{NULL}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{arrange}\NormalTok{(iso2c)}
+
+\KeywordTok{head}\NormalTok{(lnd_agri_all)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   iso2c          country AG.LND.AGRI.K2 year iso3c                    region
+## 1    AR        Argentina      1487000.0 2016   ARG Latin America & Caribbean
+## 2    BD       Bangladesh        91942.1 2016   BGD                South Asia
+## 3    BR           Brazil      2835460.0 2016   BRA Latin America & Caribbean
+## 4    CD Congo, Dem. Rep.       262000.0 2016   COD        Sub-Saharan Africa
+## 5    CN            China      5277330.0 2016   CHN       East Asia & Pacific
+## 6    CO         Colombia       446656.0 2016   COL Latin America & Caribbean
+##        capital longitude latitude              income lending
+## 1 Buenos Aires  -58.4173 -34.6118 Upper middle income    IBRD
+## 2        Dhaka   90.4113  23.7055 Lower middle income     IDA
+## 3     Brasilia  -47.9292 -15.7801 Upper middle income    IBRD
+## 4     Kinshasa   15.3222   -4.325          Low income     IDA
+## 5      Beijing   116.286  40.0495 Upper middle income    IBRD
+## 6       Bogota   -74.082  4.60987 Upper middle income    IBRD
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(lnd_agri_all)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     iso2c             country          AG.LND.AGRI.K2         year     
+##  Length:35          Length:35          Min.   :  17008   Min.   :2016  
+##  Class :character   Class :character   1st Qu.: 155360   1st Qu.:2016  
+##  Mode  :character   Mode  :character   Median : 368440   Median :2016  
+##                                        Mean   : 781561   Mean   :2016  
+##                                        3rd Qu.: 694931   3rd Qu.:2016  
+##                                        Max.   :5277330   Max.   :2016  
+##     iso3c              region            capital           longitude        
+##  Length:35          Length:35          Length:35          Length:35         
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##    latitude            income            lending         
+##  Length:35          Length:35          Length:35         
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+## 
+\end{verbatim}
+
+\hypertarget{ux43dux430ux441ux435ux43bux435ux43dux43dux44f-ux441.ux433.-ux434ux43e-ux437ux430ux433ux430ux43bux44cux43dux43eux433ux43e}{%
+\subsubsection{Населення с.г. (\% до
+загального)}\label{ux43dux430ux441ux435ux43bux435ux43dux43dux44f-ux441.ux433.-ux434ux43e-ux437ux430ux433ux430ux43bux44cux43dux43eux433ux43e}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ind_rur_totl <-}\StringTok{ "SP.RUR.TOTL.ZS"}
+
+\NormalTok{rur_totl_all <-}\StringTok{ }\KeywordTok{WDI}\NormalTok{(}\DataTypeTok{country=}\KeywordTok{c}\NormalTok{(countries}\OperatorTok{$}\NormalTok{iso2c), }\DataTypeTok{indicator=}\NormalTok{ind_rur_totl, }\DataTypeTok{start=}\NormalTok{end, }\DataTypeTok{end=}\NormalTok{end, }\DataTypeTok{extra=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{cache=}\OtherTok{NULL}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{arrange}\NormalTok{(iso2c)}
+
+\KeywordTok{head}\NormalTok{(rur_totl_all)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   iso2c          country SP.RUR.TOTL.ZS year iso3c                    region
+## 1    AR        Argentina          8.009 2019   ARG Latin America & Caribbean
+## 2    BD       Bangladesh         62.595 2019   BGD                South Asia
+## 3    BR           Brazil         13.176 2019   BRA Latin America & Caribbean
+## 4    CD Congo, Dem. Rep.         54.954 2019   COD        Sub-Saharan Africa
+## 5    CN            China         39.692 2019   CHN       East Asia & Pacific
+## 6    CO         Colombia         18.896 2019   COL Latin America & Caribbean
+##        capital longitude latitude              income lending
+## 1 Buenos Aires  -58.4173 -34.6118 Upper middle income    IBRD
+## 2        Dhaka   90.4113  23.7055 Lower middle income     IDA
+## 3     Brasilia  -47.9292 -15.7801 Upper middle income    IBRD
+## 4     Kinshasa   15.3222   -4.325          Low income     IDA
+## 5      Beijing   116.286  40.0495 Upper middle income    IBRD
+## 6       Bogota   -74.082  4.60987 Upper middle income    IBRD
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(rur_totl_all)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     iso2c             country          SP.RUR.TOTL.ZS        year     
+##  Length:35          Length:35          Min.   : 8.009   Min.   :2019  
+##  Class :character   Class :character   1st Qu.:19.495   1st Qu.:2019  
+##  Mode  :character   Mode  :character   Median :33.144   Median :2019  
+##                                        Mean   :40.115   Mean   :2019  
+##                                        3rd Qu.:62.844   3rd Qu.:2019  
+##                                        Max.   :78.775   Max.   :2019  
+##     iso3c              region            capital           longitude        
+##  Length:35          Length:35          Length:35          Length:35         
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##    latitude            income            lending         
+##  Length:35          Length:35          Length:35         
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+## 
+\end{verbatim}
+
+\hypertarget{ux43fux440ux438ux454ux434ux43dux430ux454ux43cux43e-ux43eux442ux440ux438ux43cux430ux43dux456-ux43fux43eux43aux430ux437ux43dux438ux43aux438-ux434ux43e-ux43eux441ux43dux43eux432ux43eux43dux43eux433ux43e-ux444ux440ux435ux439ux43cux443-ux442ux430-ux437ux430ux43fux438ux449ux435ux43cux43e-ux432-ux444ux430ux439ux43b}{%
+\subsubsection{Приєднаємо отримані показники до основоного фрейму та
+запищемо в
+файл}\label{ux43fux440ux438ux454ux434ux43dux430ux454ux43cux43e-ux43eux442ux440ux438ux43cux430ux43dux456-ux43fux43eux43aux430ux437ux43dux438ux43aux438-ux434ux43e-ux43eux441ux43dux43eux432ux43eux43dux43eux433ux43e-ux444ux440ux435ux439ux43cux443-ux442ux430-ux437ux430ux43fux438ux449ux435ux43cux43e-ux432-ux444ux430ux439ux43b}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all1 <-}\StringTok{ }\KeywordTok{inner_join}\NormalTok{(all, }\KeywordTok{select}\NormalTok{(land_all, iso2c, AG.LND.TOTL.K2), }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"iso2c"}\NormalTok{ =}\StringTok{ "iso2c"}\NormalTok{))}
+\NormalTok{all2 <-}\StringTok{ }\KeywordTok{inner_join}\NormalTok{(all1, }\KeywordTok{select}\NormalTok{(lnd_agri_all, iso2c, AG.LND.AGRI.K2), }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"iso2c"}\NormalTok{ =}\StringTok{ "iso2c"}\NormalTok{))}
+\NormalTok{all3 <-}\StringTok{ }\KeywordTok{inner_join}\NormalTok{(all2, }\KeywordTok{select}\NormalTok{(rur_totl_all, iso2c, SP.RUR.TOTL.ZS), }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"iso2c"}\NormalTok{ =}\StringTok{ "iso2c"}\NormalTok{))}
+
+\KeywordTok{head}\NormalTok{(all3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   X iso2c          country SP.POP.TOTL year iso3c                    region
+## 1 1    AR        Argentina    44938712 2019   ARG Latin America & Caribbean
+## 2 2    BD       Bangladesh   163046161 2019   BGD                South Asia
+## 3 3    BR           Brazil   211049527 2019   BRA Latin America & Caribbean
+## 4 4    CD Congo, Dem. Rep.    86790567 2019   COD        Sub-Saharan Africa
+## 5 5    CN            China  1397715000 2019   CHN       East Asia & Pacific
+## 6 6    CO         Colombia    50339443 2019   COL Latin America & Caribbean
+##        capital longitude  latitude              income lending
+## 1 Buenos Aires  -58.4173 -34.61180 Upper middle income    IBRD
+## 2        Dhaka   90.4113  23.70550 Lower middle income     IDA
+## 3     Brasilia  -47.9292 -15.78010 Upper middle income    IBRD
+## 4     Kinshasa   15.3222  -4.32500          Low income     IDA
+## 5      Beijing  116.2860  40.04950 Upper middle income    IBRD
+## 6       Bogota  -74.0820   4.60987 Upper middle income    IBRD
+##   NY.GDP.PCAP.PP.CD AG.LND.TOTL.K2 AG.LND.AGRI.K2 SP.RUR.TOTL.ZS
+## 1         22947.140        2736690      1487000.0          8.009
+## 2          4950.744         130170        91942.1         62.595
+## 3         15258.851        8358140      2835460.0         13.176
+## 4          1143.453        2267050       262000.0         54.954
+## 5         16784.659        9388210      5277330.0         39.692
+## 6         15643.731        1109500       446656.0         18.896
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(all3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        X           iso2c             country           SP.POP.TOTL       
+##  Min.   : 1.0   Length:35          Length:35          Min.   :4.281e+07  
+##  1st Qu.: 9.5   Class :character   Class :character   1st Qu.:5.331e+07  
+##  Median :18.0   Mode  :character   Mode  :character   Median :8.313e+07  
+##  Mean   :18.0                                         Mean   :1.760e+08  
+##  3rd Qu.:26.5                                         3rd Qu.:1.360e+08  
+##  Max.   :35.0                                         Max.   :1.398e+09  
+##                                                                          
+##       year         iso3c              region            capital         
+##  Min.   :2019   Length:35          Length:35          Length:35         
+##  1st Qu.:2019   Class :character   Class :character   Class :character  
+##  Median :2019   Mode  :character   Mode  :character   Mode  :character  
+##  Mean   :2019                                                           
+##  3rd Qu.:2019                                                           
+##  Max.   :2019                                                           
+##                                                                         
+##    longitude         latitude          income            lending         
+##  Min.   :-99.13   Min.   :-34.612   Length:35          Length:35         
+##  1st Qu.:  5.27   1st Qu.:  6.816   Class :character   Class :character  
+##  Median : 32.54   Median : 23.706   Mode  :character   Mode  :character  
+##  Mean   : 35.29   Mean   : 21.536                                        
+##  3rd Qu.: 83.82   3rd Qu.: 39.302                                        
+##  Max.   :139.77   Max.   : 55.756                                        
+##                                                                          
+##  NY.GDP.PCAP.PP.CD AG.LND.TOTL.K2     AG.LND.AGRI.K2    SP.RUR.TOTL.ZS  
+##  Min.   : 1143     Min.   :   97489   Min.   :  17008   Min.   : 8.009  
+##  1st Qu.: 5350     1st Qu.:  398311   1st Qu.: 155360   1st Qu.:19.495  
+##  Median :13170     Median :  828340   Median : 368440   Median :33.144  
+##  Mean   :20129     Mean   : 2126901   Mean   : 781561   Mean   :40.115  
+##  3rd Qu.:28855     3rd Qu.: 1910855   3rd Qu.: 694931   3rd Qu.:62.844  
+##  Max.   :65118     Max.   :16376870   Max.   :5277330   Max.   :78.775  
+##  NA's   :1         NA's   :1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{write.csv}\NormalTok{(all3, }\DataTypeTok{file =} \StringTok{"all3.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux43fux43eux440ux430ux445ux443ux454ux43cux43e-ux44fux43a-35-ux43aux440ux430ux457ux43d-ux437-ux43dux430ux439ux431ux456ux43bux44cux448ux438ux43c-ux43dux430ux441ux435ux43bux435ux43dux43dux44fux43c-ux440ux43eux437ux43fux43eux434ux456ux43bux438ux43bux438ux441ux44f-ux437ux430-ux440ux435ux433ux456ux43eux43dux430ux43cux438}{%
+\subsection{Порахуємо як 35 країн з найбільшим населенням розподілилися
+за
+регіонами}\label{ux43fux43eux440ux430ux445ux443ux454ux43cux43e-ux44fux43a-35-ux43aux440ux430ux457ux43d-ux437-ux43dux430ux439ux431ux456ux43bux44cux448ux438ux43c-ux43dux430ux441ux435ux43bux435ux43dux43dux44fux43c-ux440ux43eux437ux43fux43eux434ux456ux43bux438ux43bux438ux441ux44f-ux437ux430-ux440ux435ux433ux456ux43eux43dux430ux43cux438}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(region) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{count}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 7 x 2
+## # Groups:   region [7]
+##   region                         n
+##   <chr>                      <int>
+## 1 East Asia & Pacific            8
+## 2 Europe & Central Asia          8
+## 3 Latin America & Caribbean      4
+## 4 Middle East & North Africa     3
+## 5 North America                  1
+## 6 South Asia                     3
+## 7 Sub-Saharan Africa             8
+\end{verbatim}
+
+\hypertarget{ux430-ux442ux430ux43aux43eux436-ux437ux430-ux440ux456ux432ux43dux435ux43c-ux434ux43eux445ux43eux434ux456ux432}{%
+\subsection{а також за рівнем
+доходів}\label{ux430-ux442ux430ux43aux43eux436-ux437ux430-ux440ux456ux432ux43dux435ux43c-ux434ux43eux445ux43eux434ux456ux432}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(income) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{count}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 2
+## # Groups:   income [4]
+##   income                  n
+##   <chr>               <int>
+## 1 High income             8
+## 2 Low income              4
+## 3 Lower middle income    12
+## 4 Upper middle income    11
+\end{verbatim}
+
+\hypertarget{ux441ux442ux432ux43eux440ux438ux43cux43e-ux444ux430ux43aux442ux43eux440ux43dux443-ux437ux43cux456ux43dux43dux443-ux440ux456ux432ux435ux43dux44c-ux441.ux433.-ux43dux430ux441ux435ux43bux435ux43dux43dux44f-ux442ux430-ux43fux43eux434ux438ux432ux438ux43cux43eux441ux44c-ux440ux43eux437ux43fux43eux434ux456ux43b-ux43fux43e-ux440ux456ux432ux43dux44fux445}{%
+\subsection{Створимо факторну змінну рівень с.г. населення та подивимось
+розподіл по
+рівнях}\label{ux441ux442ux432ux43eux440ux438ux43cux43e-ux444ux430ux43aux442ux43eux440ux43dux443-ux437ux43cux456ux43dux43dux443-ux440ux456ux432ux435ux43dux44c-ux441.ux433.-ux43dux430ux441ux435ux43bux435ux43dux43dux44f-ux442ux430-ux43fux43eux434ux438ux432ux438ux43cux43eux441ux44c-ux440ux43eux437ux43fux43eux434ux456ux43b-ux43fux43e-ux440ux456ux432ux43dux44fux445}}
+
+\begin{itemize}
+\tightlist
+\item
+  низький \textless{} 25\%
+\item
+  нижче середнього \textgreater=25\% - \textless50\%
+\item
+  вище середнього \textgreater=50\% - \textless75\%
+\item
+  високий \textgreater=75\%
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all3 }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{rur_level=}\KeywordTok{case_when}\NormalTok{(SP.RUR.TOTL.ZS}\OperatorTok{<}\DecValTok{25} \OperatorTok{~}\StringTok{ "низький"}\NormalTok{,}
+\NormalTok{                    SP.RUR.TOTL.ZS}\OperatorTok{<}\DecValTok{50} \OperatorTok{~}\StringTok{ "нижче середнього"}\NormalTok{,}
+\NormalTok{                    SP.RUR.TOTL.ZS}\OperatorTok{<}\DecValTok{75} \OperatorTok{~}\StringTok{ "вище середнього"}\NormalTok{,}
+                    \OtherTok{TRUE} \OperatorTok{~}\StringTok{ "високий"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(rur_level) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{count}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 2
+## # Groups:   rur_level [4]
+##   rur_level            n
+##   <chr>            <int>
+## 1 високий              2
+## 2 вище середнього     11
+## 3 нижче середнього     9
+## 4 низький             13
+\end{verbatim}
+
+\hypertarget{ux430-ux442ux430ux43aux43eux436-ux44fux43aux456-ux43aux440ux430ux457ux43dux438-ux43fux43eux442ux440ux430ux43fux438ux43bux438-ux432-ux433ux440ux443ux43fux443}{%
+\subsubsection{а також які країни потрапили в
+групу}\label{ux430-ux442ux430ux43aux43eux436-ux44fux43aux456-ux43aux440ux430ux457ux43dux438-ux43fux43eux442ux440ux430ux43fux438ux43bux438-ux432-ux433ux440ux443ux43fux443}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{options}\NormalTok{(}\DataTypeTok{dplyr.summarise.inform =} \OtherTok{FALSE}\NormalTok{)}
+
+\NormalTok{p <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(v) \{}
+  \KeywordTok{Reduce}\NormalTok{(}\DataTypeTok{f=}\NormalTok{paste, }\DataTypeTok{x =}\NormalTok{ v)}
+\NormalTok{\}}
+
+\NormalTok{all3 }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{rur_level=}\KeywordTok{case_when}\NormalTok{(SP.RUR.TOTL.ZS}\OperatorTok{<}\DecValTok{25} \OperatorTok{~}\StringTok{ "низький"}\NormalTok{,}
+\NormalTok{                    SP.RUR.TOTL.ZS}\OperatorTok{<}\DecValTok{50} \OperatorTok{~}\StringTok{ "нижче середнього"}\NormalTok{,}
+\NormalTok{                    SP.RUR.TOTL.ZS}\OperatorTok{<}\DecValTok{75} \OperatorTok{~}\StringTok{ "вище середнього"}\NormalTok{,}
+                    \OtherTok{TRUE} \OperatorTok{~}\StringTok{ "високий"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(rur_level) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{countries =} \KeywordTok{p}\NormalTok{(}\KeywordTok{as.character}\NormalTok{(country)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 2
+##   rur_level       countries                                                     
+##   <chr>           <chr>                                                         
+## 1 високий         Ethiopia Uganda                                               
+## 2 вище середнього Bangladesh Congo, Dem. Rep. Egypt, Arab Rep. India Kenya Myan~
+## 3 нижче середньо~ China Algeria Indonesia Italy Nigeria Russian Federation Thai~
+## 4 низький         Argentina Brazil Colombia Germany Spain France United Kingdom~
+\end{verbatim}
+
+\end{document}

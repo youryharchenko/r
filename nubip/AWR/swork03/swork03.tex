@@ -1,0 +1,1575 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[]{Liberation Serif}
+  \setsansfont[]{Liberation Sans}
+  \setmonofont[]{Liberation Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Самостійна робота 3},
+  pdfauthor={Юрій Харченко},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Самостійна робота 3}
+\author{Юрій Харченко}
+\date{11/25/2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{ux43fux440ux43eux434ux43eux432ux436ux435ux43dux43dux44f-ux440ux43eux431ux43eux442ux438-ux440ux43eux437ux43fux43eux447ux430ux442ux43eux457-ux432-ux441ux430ux43cux43eux441ux442ux456ux439ux43dux430-ux440ux43eux431ux43eux442ux430-2}{%
+\section{Продовження роботи, розпочатої в Самостійна робота
+2}\label{ux43fux440ux43eux434ux43eux432ux436ux435ux43dux43dux44f-ux440ux43eux431ux43eux442ux438-ux440ux43eux437ux43fux43eux447ux430ux442ux43eux457-ux432-ux441ux430ux43cux43eux441ux442ux456ux439ux43dux430-ux440ux43eux431ux43eux442ux430-2}}
+
+\hypertarget{ux43fux456ux434ux43aux43bux44eux447ux438ux43cux43e-ux43fux43eux442ux440ux456ux431ux43dux456-ux43fux430ux43aux435ux442ux438}{%
+\subsection{Підключимо потрібні
+пакети}\label{ux43fux456ux434ux43aux43bux44eux447ux438ux43cux43e-ux43fux43eux442ux440ux456ux431ux43dux456-ux43fux430ux43aux435ux442ux438}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(psych)}
+\KeywordTok{library}\NormalTok{(doBy)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'doBy'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     order_by
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(pander)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux437ux430ux432ux430ux43dux442ux430ux436ux438ux43cux43e-ux441ux442ux432ux43eux440ux435ux43dux438ux439-ux432-ux43fux43eux43fux435ux440ux435ux434ux43dux456ux439-ux440ux43eux431ux43eux442ux456-ux444ux440ux435ux439ux43c}{%
+\subsection{Завантажимо створений в попередній роботі
+фрейм}\label{ux437ux430ux432ux430ux43dux442ux430ux436ux438ux43cux43e-ux441ux442ux432ux43eux440ux435ux43dux438ux439-ux432-ux43fux43eux43fux435ux440ux435ux434ux43dux456ux439-ux440ux43eux431ux43eux442ux456-ux444ux440ux435ux439ux43c}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\DataTypeTok{file =} \StringTok{"all3.csv"}\NormalTok{)}
+
+\NormalTok{all }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}
+    \StringTok{"N"}\NormalTok{=X,}
+    \StringTok{"Країна"}\NormalTok{=country,}
+    \StringTok{"Населення"}\NormalTok{ =}\StringTok{ }\NormalTok{SP.POP.TOTL, }
+    \StringTok{"Сільске населення відс"}\NormalTok{ =}\StringTok{ }\NormalTok{SP.RUR.TOTL.ZS, }
+    \StringTok{"ВВП на душу долл"}\NormalTok{ =}\StringTok{ }\NormalTok{NY.GDP.PCAP.PP.CD, }
+    \StringTok{"Площа кв.км"}\NormalTok{ =}\StringTok{ }\NormalTok{AG.LND.TOTL.K2, }
+    \StringTok{"Площа сг кв.км"}\NormalTok{ =}\StringTok{ }\NormalTok{AG.LND.AGRI.K2}
+\NormalTok{  )  }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{pander}\NormalTok{(}\DataTypeTok{style =} \StringTok{"grid"}\NormalTok{, }\DataTypeTok{use.hyphening =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{split.cells =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule
+\begin{minipage}[b]{0.06\columnwidth}\raggedright
+N\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright
+Країна\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
+Населення\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
+Сільске населення відс\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright
+ВВП на душу долл\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
+Площа кв.км\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
+Площа сг кв.км\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Argentina\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+44938712\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+8.009\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+22947\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+2736690\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+1487000\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Bangladesh\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+1.63e+08\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+62.59\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+4951\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+130170\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+91942\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Brazil\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+2.11e+08\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+13.18\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+15259\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+8358140\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+2835460\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Congo, Dem. Rep.\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+86790567\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+54.95\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+1143\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+2267050\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+262000\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+China\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+1.398e+09\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+39.69\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+16785\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+9388210\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+5277330\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Colombia\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+50339443\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+18.9\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+15644\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+1109500\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+446656\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+7\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Germany\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+83132799\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+22.62\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+56052\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+349360\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+166570\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Algeria\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+43053054\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+26.81\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+11820\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+2381740\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+413602\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+9\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Egypt, Arab Rep.\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+100388073\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+57.27\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+12251\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+995450\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+37338\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+10\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Spain\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+47076781\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+19.43\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+42214\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+499564\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+262657\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+11\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Ethiopia\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+112078730\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+78.78\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+2312\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+1e+06\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+362590\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+12\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+France\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+67059887\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+19.29\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+49435\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+547557\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+287180\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+13\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+United Kingdom\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+66834405\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+16.35\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+48710\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+241930\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+173500\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+14\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Indonesia\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+270625568\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+44.02\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+12302\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+1811570\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+570000\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+15\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+India\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+1.366e+09\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+65.53\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+7034\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+2973190\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+1797210\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+16\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Iran, Islamic Rep.\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+82913906\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+24.61\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+1628760\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+459540\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+17\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Italy\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+60297396\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+29.26\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+44197\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+294140\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+127170\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+18\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Japan\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+126264931\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+8.302\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+43236\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+364560\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+44710\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+19\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Kenya\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+52573973\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+72.49\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+4509\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+569140\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+276300\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+20\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Korea, Rep.\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+51709098\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+18.57\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+43029\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+97489\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+17008\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+21\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Myanmar\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+54045420\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+69.15\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+5355\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+653080\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+127600\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+22\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Mexico\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+127575529\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+19.56\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+20411\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+1943950\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+1062360\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+23\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Nigeria\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+2.01e+08\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+48.84\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+5348\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+910770\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+708000\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+24\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Philippines\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+108116615\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+52.85\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+9277\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+298170\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+124400\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+25\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Pakistan\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+216565318\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+63.09\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+4885\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+770880\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+368440\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+26\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Russian Federation\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+144373535\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+25.41\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+29181\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+16376870\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+2177218\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+27\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Sudan\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+42813238\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+65.06\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+4123\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+681862\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+28\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Thailand\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+69625582\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+49.31\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+19228\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+510890\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+221100\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+29\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Turkey\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+83429615\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+24.37\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+27875\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+769630\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+383270\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+30\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Tanzania\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+58005463\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+65.5\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+2771\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+885800\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+396500\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+31\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Ukraine\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+44385155\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+30.53\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+13341\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+579290\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+415150\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+32\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Uganda\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+44269594\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+75.64\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+2272\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+200520\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+144150\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+33\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+United States\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+328239523\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+17.54\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+65118\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+9147420\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+4058625\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+34\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Vietnam\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+96462106\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+63.37\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+8374\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+310070\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+121780\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+35\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+South Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+58558270\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+33.14\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright
+12999\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+1213090\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+968410\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}
+    \StringTok{"N"}\NormalTok{=X,}
+    \StringTok{"Регіон"}\NormalTok{=region,}
+    \StringTok{"Рівень доходу"}\NormalTok{ =}\StringTok{ }\NormalTok{income, }
+    \StringTok{"Група позик"}\NormalTok{ =}\StringTok{ }\NormalTok{lending }
+\NormalTok{    )  }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{pander}\NormalTok{(}\DataTypeTok{style =} \StringTok{"grid"}\NormalTok{, }\DataTypeTok{use.hyphening =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{split.cells =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.06\columnwidth}\raggedright
+N\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+Регіон\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright
+Рівень доходу\strut
+\end{minipage} & \begin{minipage}[b]{0.16\columnwidth}\raggedright
+Група позик\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Latin America \& Caribbean\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Upper middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+South Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Lower middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IDA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Latin America \& Caribbean\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Upper middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Sub-Saharan Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Low income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IDA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+East Asia \& Pacific\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Upper middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Latin America \& Caribbean\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Upper middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+7\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Europe \& Central Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+High income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+Not classified\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Middle East \& North Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Upper middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+9\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Middle East \& North Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Lower middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+10\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Europe \& Central Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+High income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+Not classified\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+11\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Sub-Saharan Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Low income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IDA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+12\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Europe \& Central Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+High income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+Not classified\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+13\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Europe \& Central Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+High income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+Not classified\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+14\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+East Asia \& Pacific\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Lower middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+15\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+South Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Lower middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+16\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Middle East \& North Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Upper middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+17\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Europe \& Central Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+High income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+Not classified\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+18\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+East Asia \& Pacific\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+High income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+Not classified\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+19\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Sub-Saharan Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Lower middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+Blend\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+20\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+East Asia \& Pacific\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+High income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+Not classified\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+21\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+East Asia \& Pacific\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Lower middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IDA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+22\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Latin America \& Caribbean\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Upper middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+23\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Sub-Saharan Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Lower middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+Blend\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+24\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+East Asia \& Pacific\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Lower middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+25\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+South Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Lower middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+Blend\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+26\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Europe \& Central Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Upper middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+27\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Sub-Saharan Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Lower middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IDA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+28\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+East Asia \& Pacific\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Upper middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+29\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Europe \& Central Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Upper middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+30\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Sub-Saharan Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Low income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IDA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+31\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Europe \& Central Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Lower middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+32\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Sub-Saharan Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Low income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IDA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+33\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+North America\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+High income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+Not classified\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+34\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+East Asia \& Pacific\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Lower middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+35\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+Sub-Saharan Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright
+Upper middle income\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+IBRD\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux43aux43eux43cux435ux43dux442ux430ux440-ux434ux43e-ux437ux430ux432ux430ux43dux442ux430ux436ux435ux43dux438ux445-ux434ux430ux43dux438ux445}{%
+\subsubsection{Коментар до завантажених
+даних}\label{ux43aux43eux43cux435ux43dux442ux430ux440-ux434ux43e-ux437ux430ux432ux430ux43dux442ux430ux436ux435ux43dux438ux445-ux434ux430ux43dux438ux445}}
+
+Дані отримані за допомогою пакету WDI, який дозваляє робити он-лайн
+запити до баз даних Світового банку
+
+all3 - містить дані 35 країн з найбільшим населенням з такими
+кількісними показниками:
+
+\begin{itemize}
+\tightlist
+\item
+  SP.POP.TOTL - загальна кількість населення
+\item
+  SP.RUR.TOTL.ZS - сільске населення у \% до загального"
+\item
+  NY.GDP.PCAP.PP.CD - ВВП на душу населення, \$
+\item
+  AG.LND.TOTL.K2 - площа, кв.км
+\item
+  AG.LND.AGRI.K2 - площа сільсько-господарська, кв.км
+\end{itemize}
+
+та факторними змінними:
+
+\begin{itemize}
+\tightlist
+\item
+  region - регіон
+\item
+  income - рівень доходу
+\item
+  lending - група позик
+\end{itemize}
+
+Форматування таблиць виконано за допомогою пакету pander
+
+\hypertarget{ux43eux43fux438ux441ux43eux432ux456-ux441ux442ux430ux442ux438ux441ux442ux438ux43aux438-ux437ux430-ux434ux43eux43fux43eux43cux43eux433ux43eux44e-ux43fux430ux43aux435ux442ux443-psych}{%
+\subsection{Описові статистики за допомогою пакету
+psych}\label{ux43eux43fux438ux441ux43eux432ux456-ux441ux442ux430ux442ux438ux441ux442ux438ux43aux438-ux437ux430-ux434ux43eux43fux43eux43cux43eux433ux43eux44e-ux43fux430ux43aux435ux442ux443-psych}}
+
+\hypertarget{describe---ux43eux43fux438ux441ux43eux432ux456-ux441ux442ux430ux442ux438ux441ux442ux438ux43aux438}{%
+\subsubsection{describe - описові
+статистики}\label{describe---ux43eux43fux438ux441ux43eux432ux456-ux441ux442ux430ux442ux438ux441ux442ux438ux43aux438}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# describe}
+
+\NormalTok{all }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\StringTok{"Населення"}\NormalTok{ =}\StringTok{ }\NormalTok{SP.POP.TOTL, }
+         \StringTok{"Сільске населення відс"}\NormalTok{ =}\StringTok{ }\NormalTok{SP.RUR.TOTL.ZS, }
+         \StringTok{"ВВП"}\NormalTok{ =}\StringTok{ }\NormalTok{NY.GDP.PCAP.PP.CD, }
+         \StringTok{"Площа кв.км"}\NormalTok{ =}\StringTok{ }\NormalTok{AG.LND.TOTL.K2, }
+         \StringTok{"Площа сг кв.км"}\NormalTok{ =}\StringTok{ }\NormalTok{AG.LND.AGRI.K2) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{describe}\NormalTok{(}\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)  }\OperatorTok{%>%}
+\StringTok{      }\KeywordTok{as.data.frame}\NormalTok{()   }\OperatorTok{%>%}
+\StringTok{      }\KeywordTok{pander}\NormalTok{(}\DataTypeTok{style =} \StringTok{"grid"}\NormalTok{, }\DataTypeTok{use.hyphening =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{split.cells =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lllllll@{}}
+\caption{Table continues below}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedright
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedright
+vars\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\raggedright
+n\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
+mean\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
+sd\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
+median\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
+trimmed\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedright
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedright
+vars\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\raggedright
+n\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
+mean\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
+sd\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
+median\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
+trimmed\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+\textbf{Населення}\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
+35\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+1.76e+08\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+3.09e+08\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+83132799\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+101352626\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+\textbf{Сільске населення відс}\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
+35\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+40.12\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+22.01\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+33.14\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+39.57\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+\textbf{ВВП}\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
+34\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+20129\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+18037\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+13170\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+18145\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+\textbf{Площа кв.км}\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
+34\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+2126901\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+3494435\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+828340\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+1320499\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+\textbf{Площа сг кв.км}\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedright
+35\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+781561\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+1167531\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+368440\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+520143\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}llllll@{}}
+\caption{Table continues below}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.19\columnwidth}\raggedright
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
+mad\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
+min\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+max\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+range\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedright
+skew\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.19\columnwidth}\raggedright
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
+mad\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
+min\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+max\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+range\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedright
+skew\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\textbf{Населення}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+48619430\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+42813238\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+1.398e+09\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+1.355e+09\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright
+3.368\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\textbf{Сільске населення відс}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+23.96\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+8.009\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+78.78\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+70.77\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright
+0.2153\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\textbf{ВВП}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+12562\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+1143\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+65118\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+63975\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright
+0.9212\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\textbf{Площа кв.км}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+777209\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+97489\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+16376870\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+16279381\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright
+2.598\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\textbf{Площа сг кв.км}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+357069\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+17008\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+5277330\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+5260322\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright
+2.411\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.20\columnwidth}\raggedright
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+kurtosis\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright
+se\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.20\columnwidth}\raggedright
+\textbf{Населення}\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+10.28\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+52238037\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\raggedright
+\textbf{Сільске населення відс}\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+-1.499\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+3.721\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\raggedright
+\textbf{ВВП}\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+-0.4595\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+3093\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\raggedright
+\textbf{Площа кв.км}\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+6.491\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+599291\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.20\columnwidth}\raggedright
+\textbf{Площа сг кв.км}\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+5.452\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright
+197349\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux43eux43fux438ux441ux43eux432ux456-ux441ux442ux430ux442ux438ux441ux442ux438ux43aux438-ux437ux430-ux434ux43eux43fux43eux43cux43eux433ux43eux44e-ux43fux430ux43aux435ux442ux443-doby}{%
+\subsection{Описові статистики за допомогою пакету
+doBy}\label{ux43eux43fux438ux441ux43eux432ux456-ux441ux442ux430ux442ux438ux441ux442ux438ux43aux438-ux437ux430-ux434ux43eux43fux43eux43cux43eux433ux43eux44e-ux43fux430ux43aux435ux442ux443-doby}}
+
+\hypertarget{summary_by---ux432ux456ux431ux456ux440ux43aux43eux432ux435-ux441ux435ux440ux435ux434ux43dux454-ux43fux43e-ux440ux435ux433ux456ux43eux43dux430ux445}{%
+\subsubsection{summary\_by - вібіркове середнє по
+регіонах}\label{summary_by---ux432ux456ux431ux456ux440ux43aux43eux432ux435-ux441ux435ux440ux435ux434ux43dux454-ux43fux43e-ux440ux435ux433ux456ux43eux43dux430ux445}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# summaryBy}
+\NormalTok{fun1 <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x)\{}
+  \KeywordTok{c}\NormalTok{(}
+    \DataTypeTok{mean=}\KeywordTok{mean}\NormalTok{(x) }
+\NormalTok{    )\}}
+\NormalTok{all }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\StringTok{"Регіон"}\NormalTok{ =}\StringTok{ }\NormalTok{region,}
+         \StringTok{"Населення"}\NormalTok{ =}\StringTok{ }\NormalTok{SP.POP.TOTL}
+\NormalTok{         ) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{summary_by}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{list}\NormalTok{(}\StringTok{"Населення"}\NormalTok{, }\StringTok{"Регіон"}\NormalTok{),}
+               \DataTypeTok{FUN =}\NormalTok{ fun1}
+\NormalTok{              )  }\OperatorTok{%>%}
+\StringTok{      }\KeywordTok{pander}\NormalTok{(}\DataTypeTok{style =} \StringTok{"grid"}\NormalTok{, }\DataTypeTok{use.hyphening =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{split.cells =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedright
+Регіон\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright
+Населення.mean\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+East Asia \& Pacific\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+271820540\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+Europe \& Central Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+74573697\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+Latin America \& Caribbean\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+108475803\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+Middle East \& North Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+75451678\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+North America\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+328239523\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+South Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+5.82e+08\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+Sub-Saharan Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+82006679\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{summary_by---ux441ux43aux456ux43bux44cux43aux438-ux43aux440ux430ux457ux43d-ux437-ux432ux438ux431ux456ux440ux43aux438-ux43fux43e-ux440ux435ux433ux456ux43eux43dux430ux445}{%
+\subsubsection{summary\_by - скільки країн з вибірки по
+регіонах}\label{summary_by---ux441ux43aux456ux43bux44cux43aux438-ux43aux440ux430ux457ux43d-ux437-ux432ux438ux431ux456ux440ux43aux438-ux43fux43e-ux440ux435ux433ux456ux43eux43dux430ux445}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# summaryBy}
+\NormalTok{fun2 <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x)\{}
+  \KeywordTok{c}\NormalTok{(}
+    \DataTypeTok{n=}\KeywordTok{length}\NormalTok{(x) }
+\NormalTok{    )\}}
+\NormalTok{all }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\StringTok{"Регіон"}\NormalTok{ =}\StringTok{ }\NormalTok{region,}
+         \StringTok{"N"}\NormalTok{ =}\StringTok{ }\NormalTok{SP.POP.TOTL}
+\NormalTok{         ) }\OperatorTok{%>%}
+\StringTok{    }\KeywordTok{summary_by}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{list}\NormalTok{(}\StringTok{"N"}\NormalTok{, }\StringTok{"Регіон"}\NormalTok{),}
+               \DataTypeTok{FUN =}\NormalTok{ fun2,}
+               \DataTypeTok{keep.names =} \OtherTok{TRUE}
+\NormalTok{              )  }\OperatorTok{%>%}
+\StringTok{      }\KeywordTok{pander}\NormalTok{(}\DataTypeTok{style =} \StringTok{"grid"}\NormalTok{, }\DataTypeTok{use.hyphening =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{split.cells =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedright
+Регіон\strut
+\end{minipage} & \begin{minipage}[b]{0.05\columnwidth}\raggedright
+N\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+East Asia \& Pacific\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright
+8\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+Europe \& Central Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright
+8\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+Latin America \& Caribbean\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright
+4\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+Middle East \& North Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright
+3\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+North America\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+South Asia\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright
+3\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright
+Sub-Saharan Africa\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedright
+8\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Найбільша кількість (8) країн з великим числом населення в таких
+регіонах, як
+
+\begin{itemize}
+\tightlist
+\item
+  East Asia \& Pacific
+\item
+  Europe \& Central Asia
+\item
+  Sub-Saharan Africa
+\end{itemize}
+
+\end{document}

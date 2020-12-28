@@ -1,0 +1,52 @@
+---
+title: "Лабораторна робота 5"
+author: "Юрій Харченко"
+date: "11/30/2020"
+output:
+  pdf_document: 
+    latex_engine: xelatex
+    keep_tex: yes
+mainfont: Liberation Serif
+sansfont: Liberation Sans
+monofont: Liberation Mono
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Підключимо потрібні пакети
+
+```{r echo=TRUE}
+
+library(dplyr)
+library(graphics)
+
+```
+
+## Завантажимо створений в попередній роботі фрейм
+
+```{r, echo=TRUE}
+
+all <- read.csv(file = "all3.csv")
+head(all)
+
+pop_totl <- read.csv(file = "pop_totl.csv")
+head(pop_totl)
+
+```
+
+## Точкові графіки
+
+```{r, echo=TRUE}
+# Динаміка населення України, млн.чол
+
+graphics::plot(
+  x = pop_totl$year,
+  y = pop_totl$ukr/1000000,
+  main='Динаміка населення України, млн.чол'
+)
+
+```
+
+

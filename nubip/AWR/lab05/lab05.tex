@@ -1,0 +1,516 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[]{Liberation Serif}
+  \setsansfont[]{Liberation Sans}
+  \setmonofont[]{Liberation Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Лабораторна робота 5},
+  pdfauthor={Юрій Харченко},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Лабораторна робота 5}
+\author{Юрій Харченко}
+\date{11/30/2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{ux43fux456ux434ux43aux43bux44eux447ux438ux43cux43e-ux43fux43eux442ux440ux456ux431ux43dux456-ux43fux430ux43aux435ux442ux438}{%
+\subsection{Підключимо потрібні
+пакети}\label{ux43fux456ux434ux43aux43bux44eux447ux438ux43cux43e-ux43fux43eux442ux440ux456ux431ux43dux456-ux43fux430ux43aux435ux442ux438}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(graphics)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux437ux430ux432ux430ux43dux442ux430ux436ux438ux43cux43e-ux441ux442ux432ux43eux440ux435ux43dux438ux439-ux432-ux43fux43eux43fux435ux440ux435ux434ux43dux456ux439-ux440ux43eux431ux43eux442ux456-ux444ux440ux435ux439ux43c}{%
+\subsection{Завантажимо створений в попередній роботі
+фрейм}\label{ux437ux430ux432ux430ux43dux442ux430ux436ux438ux43cux43e-ux441ux442ux432ux43eux440ux435ux43dux438ux439-ux432-ux43fux43eux43fux435ux440ux435ux434ux43dux456ux439-ux440ux43eux431ux43eux442ux456-ux444ux440ux435ux439ux43c}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\DataTypeTok{file =} \StringTok{"all3.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(all)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   X.1 X iso2c          country SP.POP.TOTL year iso3c                    region
+## 1   1 1    AR        Argentina    44938712 2019   ARG Latin America & Caribbean
+## 2   2 2    BD       Bangladesh   163046161 2019   BGD                South Asia
+## 3   3 3    BR           Brazil   211049527 2019   BRA Latin America & Caribbean
+## 4   4 4    CD Congo, Dem. Rep.    86790567 2019   COD        Sub-Saharan Africa
+## 5   5 5    CN            China  1397715000 2019   CHN       East Asia & Pacific
+## 6   6 6    CO         Colombia    50339443 2019   COL Latin America & Caribbean
+##        capital longitude  latitude              income lending
+## 1 Buenos Aires  -58.4173 -34.61180 Upper middle income    IBRD
+## 2        Dhaka   90.4113  23.70550 Lower middle income     IDA
+## 3     Brasilia  -47.9292 -15.78010 Upper middle income    IBRD
+## 4     Kinshasa   15.3222  -4.32500          Low income     IDA
+## 5      Beijing  116.2860  40.04950 Upper middle income    IBRD
+## 6       Bogota  -74.0820   4.60987 Upper middle income    IBRD
+##   NY.GDP.PCAP.PP.CD AG.LND.TOTL.K2 AG.LND.AGRI.K2 SP.RUR.TOTL.ZS
+## 1         22947.140        2736690      1487000.0          8.009
+## 2          4950.744         130170        91942.1         62.595
+## 3         15258.851        8358140      2835460.0         13.176
+## 4          1143.453        2267050       262000.0         54.954
+## 5         16784.659        9388210      5277330.0         39.692
+## 6         15643.731        1109500       446656.0         18.896
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pop_totl <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\DataTypeTok{file =} \StringTok{"pop_totl.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(pop_totl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   X year      ukr      pol       rus decade
+## 1 1 1990 51891400 38110782 147969407   1990
+## 2 2 1991 52000500 38246193 148394216   1990
+## 3 3 1992 52150400 38363667 148538197   1990
+## 4 4 1993 52179200 38461408 148458777   1990
+## 5 5 1994 51921400 38542652 148407912   1990
+## 6 6 1995 51512800 38594998 148375787   1990
+\end{verbatim}
+
+\hypertarget{ux442ux43eux447ux43aux43eux432ux456-ux433ux440ux430ux444ux456ux43aux438}{%
+\subsection{Точкові
+графіки}\label{ux442ux43eux447ux43aux43eux432ux456-ux433ux440ux430ux444ux456ux43aux438}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Динаміка населення України, млн.чол}
+
+\NormalTok{graphics}\OperatorTok{::}\KeywordTok{plot}\NormalTok{(}
+  \DataTypeTok{x =}\NormalTok{ pop_totl}\OperatorTok{$}\NormalTok{year,}
+  \DataTypeTok{y =}\NormalTok{ pop_totl}\OperatorTok{$}\NormalTok{ukr}\OperatorTok{/}\DecValTok{1000000}\NormalTok{,}
+  \DataTypeTok{main=}\StringTok{'Динаміка населення України, млн.чол'}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <94>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <b8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <bd>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <bc>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d1>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <96>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <ba>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <bd>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d1>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <81>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <b5>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <bb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <b5>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <bd>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <bd>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d1>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <8f>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <a3>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <ba>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d1>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <80>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d1>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <97>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <bd>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <b8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <bc>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <bb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <bd>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d1>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <87>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <be>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <d0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Динаміка населення України,
+## млн.чол' in 'mbcsToSbcs': dot substituted for <bb>
+\end{verbatim}
+
+\includegraphics{lab05_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\end{document}

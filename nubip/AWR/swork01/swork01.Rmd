@@ -1,0 +1,115 @@
+---
+title: "Самостійна робота 1"
+author: "Юрій Харченко"
+date: "11/7/2020"
+output: 
+  pdf_document: 
+    keep_tex: yes
+    latex_engine: xelatex
+mainfont: Liberation Serif
+sansfont: Liberation Sans
+monofont: Liberation Mono
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo=FALSE}
+library(WDI)
+library(dplyr)
+
+start <- 1990L
+end <- 2019L
+
+```
+
+# Населення країн за роками
+
+```{r echo=TRUE}
+ # Населення  за роками
+
+ind_pop_totl <- "SP.POP.TOTL"
+
+pop_totl <- data.frame(
+  year = start:end,
+  ukr = WDI(country="UA", indicator=ind_pop_totl, start=start, end=end, extra=FALSE, cache=NULL) %>%
+    arrange(year) %>%
+      select(SP.POP.TOTL) %>% 
+        rename(ukr = SP.POP.TOTL),
+  pol = WDI(country="PL", indicator=ind_pop_totl, start=start, end=end, extra=FALSE, cache=NULL) %>%
+    arrange(year) %>%
+      select(SP.POP.TOTL) %>% 
+        rename(pol = SP.POP.TOTL),
+  rus = WDI(country="RU", indicator=ind_pop_totl, start=start, end=end, extra=FALSE, cache=NULL) %>%
+    arrange(year) %>%
+      select(SP.POP.TOTL) %>% 
+        rename(rus = SP.POP.TOTL)
+)
+
+pop_totl <- mutate(pop_totl, decade = as.character(as.integer(year / 10) * 10))
+
+head(pop_totl)
+summary(pop_totl)
+
+write.csv(pop_totl, file = "pop_totl.csv")
+```
+
+# ВВП на душу населення за роками
+
+```{r echo=TRUE}
+
+# ВВП на душу населення  за роками
+
+ind_gdp_pcap <- "NY.GDP.PCAP.PP.CD"
+
+gdp_pcap <- data.frame(
+  year = start:end,
+  ukr = WDI(country="UA", indicator=ind_gdp_pcap, start=start, end=end, extra=FALSE, cache=NULL) %>%
+    arrange(year) %>%
+      select(NY.GDP.PCAP.PP.CD) %>% 
+        rename(ukr = NY.GDP.PCAP.PP.CD),
+  pol = WDI(country="PL", indicator=ind_gdp_pcap, start=start, end=end, extra=FALSE, cache=NULL) %>%
+    arrange(year) %>%
+      select(NY.GDP.PCAP.PP.CD) %>% 
+        rename(pol = NY.GDP.PCAP.PP.CD),
+  rus = WDI(country="RU", indicator=ind_gdp_pcap, start=start, end=end, extra=FALSE, cache=NULL) %>%
+    arrange(year) %>%
+      select(NY.GDP.PCAP.PP.CD) %>% 
+        rename(rus = NY.GDP.PCAP.PP.CD)
+)
+
+
+gdp_pcap <- mutate(gdp_pcap, decade = as.character(as.integer(year / 10) * 10))
+
+head(gdp_pcap)
+summary(gdp_pcap)
+
+write.csv(gdp_pcap, file = "gdp_pcap.csv")
+
+
+```
+
+# Країни з великим населенням та їх ВВП на душу за 2019 рік
+
+```{r echo=TRUE}
+ # Країн з великим населенням та їх ВВП на душу за 2019 рік
+
+pop_all <- WDI(country="all", indicator=ind_pop_totl, start=end, end=end, extra=TRUE, cache=NULL) %>%
+  filter(region != "Aggregates")  %>% 
+    slice_max(SP.POP.TOTL, n = 35) %>% 
+      arrange(iso2c)
+
+countries <- select(pop_all, iso2c)
+
+gdp_all <- WDI(country=c(countries$iso2c), indicator=ind_gdp_pcap, start=end, end=end, extra=TRUE, cache=NULL) %>%
+    arrange(iso2c)
+
+all <- inner_join(pop_all, select(gdp_all, iso2c, NY.GDP.PCAP.PP.CD), by = c("iso2c" = "iso2c"))
+
+head(all)
+summary(all)
+
+write.csv(all, file = "all.csv")
+
+```   

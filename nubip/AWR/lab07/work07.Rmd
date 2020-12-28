@@ -1,0 +1,79 @@
+---
+title: "Лабораторна робота 7"
+author: "Юрій Харченко"
+date: "12/5/2020"
+output: 
+  pdf_document: 
+    keep_tex: yes
+    latex_engine: xelatex
+mainfont: Liberation Serif
+sansfont: Liberation Sans
+monofont: Liberation Mono
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Продовження роботи, розпочатої в Самостійна робота 1
+
+## Підключимо потрібні пакети
+
+```{r echo=TRUE}
+library(WDI)
+library(dplyr)
+library(psych)
+library(pander)
+```
+
+## Назви змінних із Світового банку - сільске господарство
+
+```{r echo=TRUE}
+
+year <- 2014L
+
+vars <- c(
+  "AG.LND.TOTL.K2",
+  "AG.LND.AGRI.ZS",
+  "AG.LND.IRIG.AG.ZS",
+  "AG.LND.ARBL.ZS",
+  "AG.LND.ARBL.HA.PC",
+  "AG.YLD.CREL.KG",
+  "SP.RUR.TOTL",
+  "SP.RUR.TOTL.ZS"
+)
+varNames <-c(
+  "Land area (sq km)",
+  "Agricultural land (% of land area)",
+  "Agricultural irrigated land (% of total agricultural land)",
+  "Arable land (% of land area)",
+  "Arable land (hectares per person)",
+  "Cereal yield (kg per hectare)",
+  "Rural population",
+  "Rural population (% of total population)"
+)
+```
+
+## Завантажемо дані вибраних змінних
+
+```{r echo=TRUE}
+
+df <- WDI(country="all", indicator=vars, start=year, end=year, extra = TRUE) %>%
+  filter(region != "Aggregates") %>%
+  select(iso2c, country, region, vars)
+
+names(df) <- c("iso2c", "country", "region", varNames)
+pander(summary(df))
+```
+
+## Описові статистики отриманих даних
+
+```{r echo=TRUE}
+
+df %>%
+  select(all_of(varNames)) %>%
+  describe(na.rm = TRUE) %>%
+  as.data.frame() %>%
+  pander(style = "grid", use.hyphening = TRUE, split.cells = 3)
+
+```

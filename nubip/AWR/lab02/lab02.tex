@@ -1,0 +1,2545 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[]{Liberation Serif}
+  \setsansfont[]{Liberation Sans}
+  \setmonofont[]{Liberation Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Лабораторна робота 2},
+  pdfauthor={Юрій Харченко},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Лабораторна робота 2}
+\author{Юрій Харченко}
+\date{11/7/2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{ux437ux430ux432ux434ux430ux43dux43dux44f-1}{%
+\subsection{Завдання
+1}\label{ux437ux430ux432ux434ux430ux43dux43dux44f-1}}
+
+\hypertarget{ux444ux430ux439ux43b-ux43aux43eux4343df}{%
+\subsubsection{Файл
+код3df}\label{ux444ux430ux439ux43b-ux43aux43eux4343df}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Читаємо data.frame з файлу}
+\NormalTok{mydata <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'evals.csv'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Summaries}
+
+\CommentTok{# Друкуємо 3 перших рядки }
+\KeywordTok{head}\NormalTok{(mydata, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   score         rank ethnicity gender language age cls_perc_eval cls_did_eval
+## 1   4.7 tenure track  minority female  english  36      55.81395           24
+## 2   4.1 tenure track  minority female  english  36      68.80000           86
+## 3   3.9 tenure track  minority female  english  36      60.80000           76
+##   cls_students cls_level cls_profs  cls_credits bty_f1lower bty_f1upper
+## 1           43     upper    single multi credit           5           7
+## 2          125     upper    single multi credit           5           7
+## 3          125     upper    single multi credit           5           7
+##   bty_f2upper bty_m1lower bty_m1upper bty_m2upper bty_avg pic_outfit pic_color
+## 1           6           2           4           6       5 not formal     color
+## 2           6           2           4           6       5 not formal     color
+## 3           6           2           4           6       5 not formal     color
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо 6 (по замовчуванню) останніх рядків}
+\KeywordTok{tail}\NormalTok{(mydata)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     score         rank    ethnicity gender    language age cls_perc_eval
+## 458   4.1 tenure track not minority   male     english  32      42.85714
+## 459   4.5 tenure track not minority   male     english  32      60.46511
+## 460   3.5 tenure track     minority female non-english  42      57.14286
+## 461   4.4 tenure track     minority female non-english  42      77.61194
+## 462   4.4 tenure track     minority female non-english  42      81.81818
+## 463   4.1 tenure track     minority female non-english  42      80.00000
+##     cls_did_eval cls_students cls_level cls_profs  cls_credits bty_f1lower
+## 458            9           21     lower  multiple multi credit           6
+## 459           52           86     upper  multiple multi credit           6
+## 460           48           84     upper  multiple multi credit           3
+## 461           52           67     upper  multiple multi credit           3
+## 462           54           66     upper  multiple multi credit           3
+## 463           28           35     lower  multiple   one credit           3
+##     bty_f1upper bty_f2upper bty_m1lower bty_m1upper bty_m2upper bty_avg
+## 458           6           9           7           8           5   6.833
+## 459           6           9           7           8           5   6.833
+## 460           8           7           4           6           4   5.333
+## 461           8           7           4           6           4   5.333
+## 462           8           7           4           6           4   5.333
+## 463           8           7           4           6           4   5.333
+##     pic_outfit pic_color
+## 458 not formal     color
+## 459 not formal     color
+## 460 not formal     color
+## 461 not formal     color
+## 462 not formal     color
+## 463 not formal     color
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Виводимо таблицю у DataViewer}
+\KeywordTok{View}\NormalTok{(mydata)}
+\CommentTok{# Друкуємо компактно структуру фрейму}
+\KeywordTok{str}\NormalTok{(mydata)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    463 obs. of  21 variables:
+##  $ score        : num  4.7 4.1 3.9 4.8 4.6 4.3 2.8 4.1 3.4 4.5 ...
+##  $ rank         : chr  "tenure track" "tenure track" "tenure track" "tenure track" ...
+##  $ ethnicity    : chr  "minority" "minority" "minority" "minority" ...
+##  $ gender       : chr  "female" "female" "female" "female" ...
+##  $ language     : chr  "english" "english" "english" "english" ...
+##  $ age          : int  36 36 36 36 59 59 59 51 51 40 ...
+##  $ cls_perc_eval: num  55.8 68.8 60.8 62.6 85 ...
+##  $ cls_did_eval : int  24 86 76 77 17 35 39 55 111 40 ...
+##  $ cls_students : int  43 125 125 123 20 40 44 55 195 46 ...
+##  $ cls_level    : chr  "upper" "upper" "upper" "upper" ...
+##  $ cls_profs    : chr  "single" "single" "single" "single" ...
+##  $ cls_credits  : chr  "multi credit" "multi credit" "multi credit" "multi credit" ...
+##  $ bty_f1lower  : int  5 5 5 5 4 4 4 5 5 2 ...
+##  $ bty_f1upper  : int  7 7 7 7 4 4 4 2 2 5 ...
+##  $ bty_f2upper  : int  6 6 6 6 2 2 2 5 5 4 ...
+##  $ bty_m1lower  : int  2 2 2 2 2 2 2 2 2 3 ...
+##  $ bty_m1upper  : int  4 4 4 4 3 3 3 3 3 3 ...
+##  $ bty_m2upper  : int  6 6 6 6 3 3 3 3 3 2 ...
+##  $ bty_avg      : num  5 5 5 5 3 ...
+##  $ pic_outfit   : chr  "not formal" "not formal" "not formal" "not formal" ...
+##  $ pic_color    : chr  "color" "color" "color" "color" ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Змінна a буде зберігати вектор назв стовпчиків фрейму}
+\NormalTok{a <-}\StringTok{ }\KeywordTok{names}\NormalTok{(mydata)}
+\CommentTok{# Друкуємо загальні статистики фрейму}
+\KeywordTok{summary}\NormalTok{(mydata)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      score           rank            ethnicity            gender         
+##  Min.   :2.300   Length:463         Length:463         Length:463        
+##  1st Qu.:3.800   Class :character   Class :character   Class :character  
+##  Median :4.300   Mode  :character   Mode  :character   Mode  :character  
+##  Mean   :4.175                                                           
+##  3rd Qu.:4.600                                                           
+##  Max.   :5.000                                                           
+##    language              age        cls_perc_eval     cls_did_eval   
+##  Length:463         Min.   :29.00   Min.   : 10.42   Min.   :  5.00  
+##  Class :character   1st Qu.:42.00   1st Qu.: 62.70   1st Qu.: 15.00  
+##  Mode  :character   Median :48.00   Median : 76.92   Median : 23.00  
+##                     Mean   :48.37   Mean   : 74.43   Mean   : 36.62  
+##                     3rd Qu.:57.00   3rd Qu.: 87.25   3rd Qu.: 40.00  
+##                     Max.   :73.00   Max.   :100.00   Max.   :380.00  
+##   cls_students     cls_level          cls_profs         cls_credits       
+##  Min.   :  8.00   Length:463         Length:463         Length:463        
+##  1st Qu.: 19.00   Class :character   Class :character   Class :character  
+##  Median : 29.00   Mode  :character   Mode  :character   Mode  :character  
+##  Mean   : 55.18                                                           
+##  3rd Qu.: 60.00                                                           
+##  Max.   :581.00                                                           
+##   bty_f1lower     bty_f1upper     bty_f2upper      bty_m1lower   
+##  Min.   :1.000   Min.   :1.000   Min.   : 1.000   Min.   :1.000  
+##  1st Qu.:2.000   1st Qu.:4.000   1st Qu.: 4.000   1st Qu.:2.000  
+##  Median :4.000   Median :5.000   Median : 5.000   Median :3.000  
+##  Mean   :3.963   Mean   :5.019   Mean   : 5.214   Mean   :3.413  
+##  3rd Qu.:5.000   3rd Qu.:7.000   3rd Qu.: 6.000   3rd Qu.:5.000  
+##  Max.   :8.000   Max.   :9.000   Max.   :10.000   Max.   :7.000  
+##   bty_m1upper     bty_m2upper       bty_avg       pic_outfit       
+##  Min.   :1.000   Min.   :1.000   Min.   :1.667   Length:463        
+##  1st Qu.:3.000   1st Qu.:4.000   1st Qu.:3.167   Class :character  
+##  Median :4.000   Median :5.000   Median :4.333   Mode  :character  
+##  Mean   :4.147   Mean   :4.752   Mean   :4.418                     
+##  3rd Qu.:5.000   3rd Qu.:6.000   3rd Qu.:5.500                     
+##  Max.   :9.000   Max.   :9.000   Max.   :8.167                     
+##   pic_color        
+##  Length:463        
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Variables}
+
+\CommentTok{# Змінна b буде зберігати стовпчик score}
+\NormalTok{b <-}\StringTok{ }\NormalTok{mydata}\OperatorTok{$}\NormalTok{score}
+\CommentTok{# Друкуємо середнє стовпчика score}
+\KeywordTok{mean}\NormalTok{(mydata}\OperatorTok{$}\NormalTok{score)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.17473
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо загальні статистики стовпчика score}
+\KeywordTok{summary}\NormalTok{(mydata}\OperatorTok{$}\NormalTok{score)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   2.300   3.800   4.300   4.175   4.600   5.000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо стовпчика score помножений на 2}
+\NormalTok{mydata}\OperatorTok{$}\NormalTok{score }\OperatorTok{*}\StringTok{ }\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]  9.4  8.2  7.8  9.6  9.2  8.6  5.6  8.2  6.8  9.0  7.6  9.0  9.2  7.8  7.8
+##  [16]  8.6  9.0  9.6  9.2  9.2  9.8  9.2  9.0  8.8  9.2  9.4  9.0  9.6  9.8  9.0
+##  [31]  8.8  8.6  8.2  8.4  7.0  6.8  9.0  8.8  8.8  5.0  8.6  9.0  9.6  9.6  8.8
+##  [46]  9.4  8.8  9.4  9.0  8.0  8.6  8.8  9.0 10.0  9.8  9.2 10.0  9.4 10.0  7.2
+##  [61]  7.4  8.6  8.2  8.4  9.4  9.4  7.0  8.2  8.4  8.0  8.0  7.8  8.8  7.6  7.0
+##  [76]  8.4  7.0  7.2  5.8  6.6  6.6  6.4  9.2  8.4  8.6  8.8  8.2  9.2  8.8  9.6
+##  [91]  8.6  7.2  8.6  8.0  8.4  8.2  8.2  8.8  8.6  8.8  8.8  9.8 10.0  8.8  9.6
+## [106]  9.8  8.6 10.0  9.4  9.0  7.0  7.8  8.0  8.0  7.4  6.8  6.6  7.6  7.8  6.8
+## [121]  7.4  8.2  7.4  7.0  7.0  8.8  6.8  8.6  7.4  9.4  7.8  7.2  9.0  9.0  9.6
+## [136]  9.6  9.4  9.0  8.6  9.6  8.2  8.8  8.6  7.2  9.0  8.6  8.8  9.4  9.6  7.0
+## [151]  7.6  7.2  8.4  7.2  8.8  7.4  8.6  9.2  9.2  8.2  7.2  4.6  8.6  8.8  7.2
+## [166]  8.8  7.8  7.6  6.8  9.8  8.2  6.4  8.4  7.8  9.8  9.4  8.8  8.4  8.0  8.8
+## [181]  7.8  8.8  6.0  7.0  5.6  9.2  8.6  6.8  6.0  8.4  8.6  8.2  9.2  7.8  7.0
+## [196]  8.0  8.0  7.8  6.6  8.0  7.6  8.4  8.0  7.6  6.6  8.2  9.4  8.8  9.6  9.6
+## [211]  9.2  9.2  9.6  8.8  9.4  9.4  6.6  8.8  8.6  9.8  8.8  9.4  8.6  9.6  9.0
+## [226]  9.4  6.6  9.4  9.2  7.2  8.0  8.2  8.0  9.0  9.2  9.6  9.2  9.8  6.2  7.4
+## [241]  7.4  7.8  7.8  6.4  8.8  8.4  9.4  7.8  7.2  6.8  8.8  8.8  8.2  7.2  7.0
+## [256]  8.2  7.6  8.0  9.6  8.4  9.2  8.6  9.6  7.6  9.0  9.8  9.8  9.6  9.4  9.2
+## [271]  8.6  8.8  9.0  8.4  9.6  9.2  9.8  9.6  9.6  9.2  9.4  8.2  7.6  8.0  8.2
+## [286]  8.0  8.2  7.0  8.2  7.2  8.0  7.8  7.6  8.8  9.4  7.6  8.2  8.2  9.4  8.6
+## [301]  8.8  9.0  6.2  7.4  9.0  6.0  9.2  7.4  7.2  6.4  6.6  5.8  8.4  9.0  7.6
+## [316]  7.4  7.4  8.0  7.4  9.0  7.6  7.8  9.2  9.0  8.4  8.0  7.6  7.0  5.4  8.0
+## [331]  9.2  7.8  9.0  7.4  4.8  6.2  5.0  6.0  9.0  9.6  9.8  9.0  9.2  9.0  9.8
+## [346]  8.8  9.2  9.2 10.0  9.8  9.2  9.6  9.8  9.8  9.8 10.0  9.0  7.0  7.6  7.8
+## [361]  7.8  8.4  8.2  9.6  9.6  9.6  9.6  9.8  8.4  9.0  7.8  8.8  8.0  7.2  7.4
+## [376]  5.4  9.0  8.8  7.8  7.2  8.8  8.8  9.4  9.0  8.2  7.4  8.6  7.0  7.4  8.0
+## [391]  8.0  6.2  9.0  9.6  8.4  9.8  9.6  7.0  7.2  8.8  6.8  7.8  7.6  9.6  9.2
+## [406] 10.0  7.6  8.4  6.6  9.4  9.2  9.2  8.0  8.4  9.8  9.0  9.6  7.6  9.6 10.0
+## [421] 10.0  9.8  9.2 10.0  9.6  9.8  9.8  7.8  7.8  9.0  9.0  6.6  6.2  5.6  6.2
+## [436]  8.4  6.8  6.0  6.6  7.2  7.4  7.2  8.6  8.2  9.8  9.6  7.4  7.8  9.0  7.2
+## [451]  8.8  6.8  8.8  9.0  9.0  9.0  9.2  8.2  9.0  7.0  8.8  8.8  8.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Новий стовпчик score ten_point_scale це score помножений на 2}
+\NormalTok{mydata}\OperatorTok{$}\NormalTok{ten_point_scale <-}\StringTok{ }\NormalTok{mydata}\OperatorTok{$}\NormalTok{score }\OperatorTok{*}\StringTok{ }\DecValTok{2}
+\CommentTok{# Друкуємо загальні статистики стовпчика ten_point_scale}
+\KeywordTok{summary}\NormalTok{(mydata}\OperatorTok{$}\NormalTok{ten_point_scale)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   4.600   7.600   8.600   8.349   9.200  10.000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Новий стовпчик new_varible заповнений нулями}
+\NormalTok{mydata}\OperatorTok{$}\NormalTok{new_varible <-}\StringTok{ }\DecValTok{0}
+\CommentTok{# Новий стовпчик number заповнений нумерацією рядків}
+\NormalTok{mydata}\OperatorTok{$}\NormalTok{number <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(mydata)}
+\CommentTok{# Друкуємо загальні статистики стовпчика number}
+\KeywordTok{summary}\NormalTok{(mydata}\OperatorTok{$}\NormalTok{number)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     1.0   116.5   232.0   232.0   347.5   463.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо кількість рядків фрейму}
+\KeywordTok{nrow}\NormalTok{(mydata)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 463
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо кількість стовпчиків фрейму}
+\KeywordTok{ncol}\NormalTok{(mydata)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 24
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Subsetting}
+
+\CommentTok{# Друкуємо стовпчик score з 1 по 10 }
+\NormalTok{mydata}\OperatorTok{$}\NormalTok{score[}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 4.7 4.1 3.9 4.8 4.6 4.3 2.8 4.1 3.4 4.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо елемент 1-й елемент 1-го рядка }
+\NormalTok{mydata[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо елемент 1-й елемент 2-го, 193-го, 225-го рядків }
+\NormalTok{mydata[}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{193}\NormalTok{,}\DecValTok{225}\NormalTok{),}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.1 4.6 4.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо елемент 1-й елемент рядків з 101 по 200}
+\NormalTok{mydata[}\DecValTok{101}\OperatorTok{:}\DecValTok{200}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] 4.4 4.9 5.0 4.4 4.8 4.9 4.3 5.0 4.7 4.5 3.5 3.9 4.0 4.0 3.7 3.4 3.3 3.8
+##  [19] 3.9 3.4 3.7 4.1 3.7 3.5 3.5 4.4 3.4 4.3 3.7 4.7 3.9 3.6 4.5 4.5 4.8 4.8
+##  [37] 4.7 4.5 4.3 4.8 4.1 4.4 4.3 3.6 4.5 4.3 4.4 4.7 4.8 3.5 3.8 3.6 4.2 3.6
+##  [55] 4.4 3.7 4.3 4.6 4.6 4.1 3.6 2.3 4.3 4.4 3.6 4.4 3.9 3.8 3.4 4.9 4.1 3.2
+##  [73] 4.2 3.9 4.9 4.7 4.4 4.2 4.0 4.4 3.9 4.4 3.0 3.5 2.8 4.6 4.3 3.4 3.0 4.2
+##  [91] 4.3 4.1 4.6 3.9 3.5 4.0 4.0 3.9 3.3 4.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо 5-й рядок}
+\NormalTok{mydata[}\DecValTok{5}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   score    rank    ethnicity gender language age cls_perc_eval cls_did_eval
+## 5   4.6 tenured not minority   male  english  59            85           17
+##   cls_students cls_level cls_profs  cls_credits bty_f1lower bty_f1upper
+## 5           20     upper  multiple multi credit           4           4
+##   bty_f2upper bty_m1lower bty_m1upper bty_m2upper bty_avg pic_outfit pic_color
+## 5           2           2           3           3       3 not formal     color
+##   ten_point_scale new_varible number
+## 5             9.2           0      5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо вектор порівняння стовпчика score з самим собою (весь TRUE)}
+\NormalTok{mydata[,}\DecValTok{1}\NormalTok{] }\OperatorTok{==}\StringTok{ }\NormalTok{mydata}\OperatorTok{$}\NormalTok{score}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+##  [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+##  [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+##  [46] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+##  [61] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+##  [76] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+##  [91] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [106] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [121] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [136] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [151] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [166] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [181] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [196] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [211] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [226] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [241] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [256] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [271] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [286] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [301] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [316] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [331] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [346] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [361] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [376] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [391] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [406] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [421] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [436] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [451] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо стовпчики з 2-го по 5-тий}
+\NormalTok{mydata[,}\DecValTok{2}\OperatorTok{:}\DecValTok{5}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             rank    ethnicity gender    language
+## 1   tenure track     minority female     english
+## 2   tenure track     minority female     english
+## 3   tenure track     minority female     english
+## 4   tenure track     minority female     english
+## 5        tenured not minority   male     english
+## 6        tenured not minority   male     english
+## 7        tenured not minority   male     english
+## 8        tenured not minority   male     english
+## 9        tenured not minority   male     english
+## 10       tenured not minority female     english
+## 11       tenured not minority female     english
+## 12       tenured not minority female     english
+## 13       tenured not minority female     english
+## 14       tenured not minority female     english
+## 15       tenured not minority female     english
+## 16       tenured not minority female     english
+## 17       tenured not minority female     english
+## 18  tenure track not minority female     english
+## 19  tenure track not minority female     english
+## 20  tenure track not minority female     english
+## 21  tenure track not minority female     english
+## 22  tenure track not minority female     english
+## 23  tenure track not minority female     english
+## 24       tenured not minority   male     english
+## 25       tenured not minority   male     english
+## 26       tenured not minority   male     english
+## 27       tenured not minority   male     english
+## 28       tenured not minority   male     english
+## 29       tenured not minority   male     english
+## 30       tenured not minority   male     english
+## 31  tenure track not minority female     english
+## 32  tenure track not minority female     english
+## 33  tenure track not minority female     english
+## 34  tenure track not minority female     english
+## 35  tenure track not minority female     english
+## 36       tenured not minority female     english
+## 37       tenured not minority female     english
+## 38       tenured not minority female     english
+## 39       tenured not minority female     english
+## 40       tenured not minority female     english
+## 41       tenured not minority female     english
+## 42       tenured not minority female     english
+## 43  tenure track not minority female     english
+## 44  tenure track not minority female     english
+## 45  tenure track not minority female     english
+## 46  tenure track not minority female     english
+## 47  tenure track not minority female     english
+## 48  tenure track not minority female     english
+## 49  tenure track not minority female     english
+## 50      teaching not minority   male     english
+## 51      teaching not minority   male     english
+## 52      teaching not minority   male     english
+## 53      teaching not minority   male     english
+## 54      teaching not minority   male     english
+## 55      teaching not minority   male     english
+## 56      teaching not minority   male     english
+## 57      teaching not minority   male     english
+## 58      teaching not minority   male     english
+## 59      teaching not minority   male     english
+## 60  tenure track     minority   male non-english
+## 61  tenure track     minority   male non-english
+## 62  tenure track     minority   male non-english
+## 63      teaching not minority   male     english
+## 64      teaching not minority   male     english
+## 65      teaching not minority   male     english
+## 66      teaching not minority   male     english
+## 67      teaching not minority   male     english
+## 68       tenured not minority   male     english
+## 69       tenured not minority   male     english
+## 70       tenured not minority   male     english
+## 71       tenured not minority   male     english
+## 72       tenured not minority   male     english
+## 73       tenured not minority   male     english
+## 74       tenured not minority   male     english
+## 75       tenured not minority   male non-english
+## 76       tenured not minority   male non-english
+## 77       tenured not minority   male non-english
+## 78       tenured not minority   male non-english
+## 79  tenure track not minority female     english
+## 80  tenure track not minority female     english
+## 81  tenure track not minority female     english
+## 82  tenure track not minority female     english
+## 83       tenured not minority   male     english
+## 84       tenured not minority   male     english
+## 85       tenured not minority   male     english
+## 86       tenured not minority   male     english
+## 87       tenured not minority   male     english
+## 88       tenured not minority   male     english
+## 89      teaching not minority female     english
+## 90      teaching not minority female     english
+## 91      teaching not minority female     english
+## 92      teaching not minority female     english
+## 93      teaching not minority female     english
+## 94      teaching not minority   male     english
+## 95      teaching not minority   male     english
+## 96      teaching not minority   male     english
+## 97      teaching not minority   male     english
+## 98      teaching not minority   male     english
+## 99      teaching not minority   male     english
+## 100     teaching not minority   male     english
+## 101     teaching not minority   male     english
+## 102      tenured not minority female     english
+## 103      tenured not minority female     english
+## 104      tenured not minority female     english
+## 105      tenured not minority female     english
+## 106      tenured not minority female     english
+## 107      tenured not minority female     english
+## 108      tenured not minority female     english
+## 109      tenured not minority female     english
+## 110      tenured not minority female     english
+## 111     teaching not minority female     english
+## 112     teaching not minority female     english
+## 113     teaching not minority female     english
+## 114     teaching not minority female     english
+## 115     teaching not minority female     english
+## 116     teaching not minority female     english
+## 117     teaching not minority female     english
+## 118     teaching not minority female     english
+## 119     teaching not minority female     english
+## 120     teaching not minority female     english
+## 121     teaching not minority female     english
+## 122     teaching not minority female     english
+## 123     teaching not minority female     english
+## 124     teaching not minority female     english
+## 125     teaching not minority female     english
+## 126     teaching not minority female     english
+## 127 tenure track     minority female non-english
+## 128      tenured not minority   male     english
+## 129      tenured not minority   male     english
+## 130      tenured not minority   male     english
+## 131      tenured not minority   male     english
+## 132      tenured not minority   male     english
+## 133      tenured not minority   male     english
+## 134      tenured not minority   male     english
+## 135      tenured not minority   male     english
+## 136      tenured not minority   male     english
+## 137      tenured not minority   male     english
+## 138      tenured not minority   male     english
+## 139      tenured not minority   male     english
+## 140 tenure track not minority female     english
+## 141 tenure track not minority female     english
+## 142      tenured not minority   male     english
+## 143      tenured not minority   male     english
+## 144      tenured not minority   male     english
+## 145      tenured not minority   male     english
+## 146      tenured not minority   male     english
+## 147      tenured     minority   male non-english
+## 148      tenured     minority   male non-english
+## 149      tenured     minority   male non-english
+## 150      tenured     minority   male non-english
+## 151      tenured     minority   male non-english
+## 152      tenured     minority   male non-english
+## 153      tenured     minority   male non-english
+## 154      tenured not minority   male     english
+## 155      tenured not minority   male     english
+## 156      tenured not minority   male     english
+## 157      tenured not minority   male     english
+## 158      tenured not minority   male     english
+## 159      tenured not minority   male     english
+## 160      tenured not minority   male     english
+## 161      tenured not minority   male     english
+## 162 tenure track not minority female     english
+## 163     teaching not minority   male     english
+## 164     teaching not minority   male     english
+## 165     teaching not minority   male     english
+## 166     teaching not minority   male     english
+## 167     teaching not minority   male     english
+## 168     teaching not minority   male     english
+## 169     teaching not minority   male     english
+## 170      tenured not minority   male     english
+## 171      tenured not minority   male     english
+## 172      tenured not minority   male     english
+## 173      tenured not minority   male     english
+## 174      tenured not minority   male     english
+## 175      tenured not minority   male     english
+## 176      tenured not minority   male     english
+## 177      tenured not minority   male     english
+## 178 tenure track     minority female     english
+## 179 tenure track     minority female     english
+## 180 tenure track     minority female     english
+## 181 tenure track     minority female     english
+## 182 tenure track     minority female     english
+## 183 tenure track     minority female     english
+## 184 tenure track     minority female     english
+## 185 tenure track     minority female     english
+## 186 tenure track     minority female     english
+## 187 tenure track     minority female     english
+## 188 tenure track     minority female     english
+## 189 tenure track     minority female     english
+## 190 tenure track     minority female     english
+## 191      tenured not minority   male     english
+## 192      tenured not minority   male     english
+## 193      tenured not minority   male     english
+## 194      tenured     minority female     english
+## 195      tenured     minority female     english
+## 196      tenured     minority female     english
+## 197      tenured     minority female     english
+## 198      tenured     minority   male     english
+## 199      tenured     minority   male     english
+## 200      tenured     minority   male     english
+## 201      tenured     minority   male     english
+## 202      tenured     minority   male     english
+## 203      tenured     minority   male     english
+## 204      tenured     minority   male     english
+## 205      tenured     minority   male     english
+## 206      tenured not minority   male     english
+## 207      tenured not minority   male     english
+## 208      tenured not minority   male     english
+## 209      tenured not minority   male     english
+## 210      tenured not minority   male     english
+## 211      tenured not minority   male     english
+## 212      tenured not minority   male     english
+## 213      tenured not minority   male     english
+## 214      tenured not minority   male     english
+## 215      tenured not minority   male     english
+## 216      tenured not minority   male     english
+## 217 tenure track not minority   male     english
+## 218 tenure track not minority   male     english
+## 219 tenure track not minority   male     english
+## 220 tenure track not minority   male     english
+## 221 tenure track not minority   male     english
+## 222 tenure track not minority   male     english
+## 223      tenured not minority   male     english
+## 224      tenured not minority   male     english
+## 225      tenured not minority   male     english
+## 226      tenured not minority   male     english
+## 227     teaching not minority female     english
+## 228     teaching not minority female     english
+## 229     teaching not minority female     english
+## 230     teaching not minority female     english
+## 231      tenured not minority   male     english
+## 232      tenured not minority   male     english
+## 233      tenured not minority   male     english
+## 234      tenured not minority   male     english
+## 235      tenured not minority   male     english
+## 236      tenured not minority   male     english
+## 237      tenured not minority   male     english
+## 238 tenure track not minority   male     english
+## 239 tenure track not minority   male     english
+## 240 tenure track not minority   male     english
+## 241      tenured not minority female     english
+## 242      tenured not minority female     english
+## 243      tenured not minority female     english
+## 244      tenured not minority female     english
+## 245     teaching not minority female     english
+## 246     teaching not minority female     english
+## 247     teaching not minority female     english
+## 248     teaching not minority female     english
+## 249     teaching not minority female     english
+## 250     teaching not minority female     english
+## 251     teaching not minority female     english
+## 252      tenured not minority   male     english
+## 253      tenured not minority   male     english
+## 254      tenured not minority   male     english
+## 255      tenured not minority   male     english
+## 256      tenured not minority   male     english
+## 257      tenured not minority   male     english
+## 258      tenured not minority   male     english
+## 259      tenured not minority   male     english
+## 260      tenured not minority   male     english
+## 261      tenured not minority   male     english
+## 262      tenured not minority   male     english
+## 263      tenured not minority   male     english
+## 264      tenured not minority   male     english
+## 265 tenure track not minority female     english
+## 266 tenure track not minority female     english
+## 267 tenure track not minority female     english
+## 268 tenure track not minority female     english
+## 269 tenure track not minority female     english
+## 270 tenure track not minority female     english
+## 271      tenured not minority   male     english
+## 272      tenured not minority   male     english
+## 273      tenured not minority   male     english
+## 274      tenured not minority   male     english
+## 275      tenured not minority female     english
+## 276      tenured not minority female     english
+## 277      tenured not minority female     english
+## 278      tenured not minority female     english
+## 279      tenured not minority female     english
+## 280      tenured not minority female     english
+## 281      tenured not minority female     english
+## 282 tenure track not minority female     english
+## 283 tenure track not minority female     english
+## 284 tenure track not minority female     english
+## 285 tenure track not minority female     english
+## 286 tenure track not minority female     english
+## 287 tenure track not minority female     english
+## 288 tenure track not minority   male     english
+## 289 tenure track not minority   male     english
+## 290 tenure track not minority   male     english
+## 291 tenure track not minority   male     english
+## 292 tenure track not minority   male     english
+## 293 tenure track not minority   male     english
+## 294 tenure track not minority   male     english
+## 295 tenure track not minority   male     english
+## 296      tenured not minority female     english
+## 297      tenured not minority female     english
+## 298      tenured not minority female     english
+## 299      tenured not minority female     english
+## 300      tenured not minority female     english
+## 301      tenured not minority female     english
+## 302      tenured not minority female     english
+## 303      tenured not minority female     english
+## 304      tenured not minority female     english
+## 305      tenured not minority female     english
+## 306      tenured not minority female     english
+## 307      tenured not minority female     english
+## 308 tenure track not minority   male non-english
+## 309 tenure track not minority   male non-english
+## 310      tenured not minority female     english
+## 311      tenured not minority female     english
+## 312      tenured not minority female     english
+## 313      tenured not minority   male     english
+## 314      tenured not minority   male     english
+## 315      tenured not minority female     english
+## 316      tenured not minority female     english
+## 317      tenured not minority female     english
+## 318      tenured not minority female     english
+## 319      tenured not minority female     english
+## 320     teaching not minority female     english
+## 321     teaching not minority female     english
+## 322     teaching not minority female     english
+## 323     teaching not minority female     english
+## 324     teaching not minority female     english
+## 325     teaching not minority female     english
+## 326     teaching not minority female     english
+## 327      tenured not minority   male     english
+## 328      tenured not minority   male     english
+## 329      tenured not minority   male     english
+## 330      tenured not minority   male     english
+## 331      tenured not minority   male     english
+## 332      tenured not minority   male     english
+## 333      tenured not minority   male     english
+## 334      tenured not minority   male     english
+## 335      tenured not minority   male     english
+## 336      tenured not minority   male     english
+## 337      tenured not minority   male     english
+## 338      tenured not minority female     english
+## 339 tenure track not minority   male     english
+## 340 tenure track not minority   male     english
+## 341 tenure track not minority   male     english
+## 342 tenure track not minority   male     english
+## 343 tenure track not minority   male     english
+## 344 tenure track not minority   male     english
+## 345 tenure track not minority   male     english
+## 346 tenure track not minority   male     english
+## 347 tenure track not minority   male     english
+## 348     teaching     minority   male     english
+## 349     teaching     minority   male     english
+## 350     teaching     minority   male     english
+## 351     teaching     minority   male     english
+## 352     teaching     minority   male     english
+## 353     teaching     minority   male     english
+## 354     teaching     minority   male     english
+## 355     teaching     minority   male     english
+## 356     teaching     minority   male     english
+## 357     teaching     minority   male     english
+## 358      tenured not minority   male     english
+## 359      tenured not minority   male     english
+## 360      tenured not minority   male     english
+## 361      tenured not minority   male     english
+## 362      tenured not minority   male     english
+## 363      tenured not minority   male     english
+## 364      tenured not minority   male     english
+## 365      tenured not minority   male     english
+## 366      tenured not minority   male     english
+## 367      tenured not minority   male     english
+## 368      tenured not minority   male     english
+## 369      tenured not minority   male     english
+## 370      tenured not minority   male     english
+## 371      tenured not minority   male     english
+## 372      tenured not minority   male     english
+## 373      tenured not minority female     english
+## 374      tenured not minority female     english
+## 375      tenured     minority female     english
+## 376      tenured     minority female     english
+## 377     teaching not minority female     english
+## 378     teaching not minority female     english
+## 379     teaching not minority female     english
+## 380     teaching not minority female     english
+## 381     teaching not minority female     english
+## 382     teaching not minority female     english
+## 383      tenured not minority   male     english
+## 384      tenured not minority   male     english
+## 385      tenured not minority   male     english
+## 386      tenured not minority   male     english
+## 387      tenured not minority   male     english
+## 388      tenured not minority   male     english
+## 389      tenured not minority   male     english
+## 390      tenured not minority female     english
+## 391      tenured not minority female     english
+## 392      tenured not minority female     english
+## 393      tenured not minority female     english
+## 394     teaching not minority   male     english
+## 395     teaching not minority   male     english
+## 396     teaching not minority   male     english
+## 397     teaching not minority   male     english
+## 398      tenured not minority   male     english
+## 399      tenured not minority   male     english
+## 400      tenured not minority   male     english
+## 401      tenured not minority   male     english
+## 402      tenured not minority   male     english
+## 403      tenured not minority   male     english
+## 404      tenured not minority   male     english
+## 405      tenured not minority   male     english
+## 406      tenured not minority   male     english
+## 407      tenured not minority   male     english
+## 408      tenured not minority   male     english
+## 409     teaching not minority female     english
+## 410     teaching not minority female     english
+## 411     teaching not minority female     english
+## 412     teaching not minority female     english
+## 413     teaching not minority female     english
+## 414      tenured     minority female     english
+## 415      tenured     minority female     english
+## 416      tenured     minority female     english
+## 417      tenured     minority female     english
+## 418      tenured     minority female     english
+## 419     teaching not minority   male     english
+## 420     teaching not minority   male     english
+## 421     teaching not minority   male     english
+## 422     teaching not minority   male     english
+## 423     teaching not minority   male     english
+## 424     teaching not minority   male     english
+## 425     teaching not minority   male     english
+## 426     teaching not minority   male     english
+## 427      tenured not minority   male     english
+## 428      tenured not minority   male     english
+## 429      tenured not minority   male     english
+## 430 tenure track not minority   male     english
+## 431 tenure track not minority   male     english
+## 432      tenured not minority   male     english
+## 433      tenured not minority   male     english
+## 434      tenured not minority   male     english
+## 435      tenured not minority   male     english
+## 436      tenured not minority   male     english
+## 437      tenured not minority   male     english
+## 438      tenured not minority   male     english
+## 439 tenure track     minority female     english
+## 440 tenure track     minority female     english
+## 441 tenure track     minority female     english
+## 442      tenured not minority   male     english
+## 443      tenured not minority   male     english
+## 444      tenured not minority female     english
+## 445      tenured not minority female     english
+## 446      tenured not minority female     english
+## 447 tenure track not minority female non-english
+## 448 tenure track not minority female non-english
+## 449 tenure track not minority female non-english
+## 450 tenure track not minority female non-english
+## 451 tenure track not minority female non-english
+## 452 tenure track not minority female non-english
+## 453 tenure track not minority female non-english
+## 454 tenure track not minority   male     english
+## 455 tenure track not minority   male     english
+## 456 tenure track not minority   male     english
+## 457 tenure track not minority   male     english
+## 458 tenure track not minority   male     english
+## 459 tenure track not minority   male     english
+## 460 tenure track     minority female non-english
+## 461 tenure track     minority female non-english
+## 462 tenure track     minority female non-english
+## 463 tenure track     minority female non-english
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо перші 6-ть рядків стовпчиків з 2-го по 5-тий}
+\KeywordTok{head}\NormalTok{(mydata[,}\DecValTok{2}\OperatorTok{:}\DecValTok{5}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           rank    ethnicity gender language
+## 1 tenure track     minority female  english
+## 2 tenure track     minority female  english
+## 3 tenure track     minority female  english
+## 4 tenure track     minority female  english
+## 5      tenured not minority   male  english
+## 6      tenured not minority   male  english
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Subsetting with condition}
+
+\CommentTok{# Друкуємо стовпчик gender}
+\NormalTok{mydata}\OperatorTok{$}\NormalTok{gender}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] "female" "female" "female" "female" "male"   "male"   "male"   "male"  
+##   [9] "male"   "female" "female" "female" "female" "female" "female" "female"
+##  [17] "female" "female" "female" "female" "female" "female" "female" "male"  
+##  [25] "male"   "male"   "male"   "male"   "male"   "male"   "female" "female"
+##  [33] "female" "female" "female" "female" "female" "female" "female" "female"
+##  [41] "female" "female" "female" "female" "female" "female" "female" "female"
+##  [49] "female" "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+##  [57] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+##  [65] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+##  [73] "male"   "male"   "male"   "male"   "male"   "male"   "female" "female"
+##  [81] "female" "female" "male"   "male"   "male"   "male"   "male"   "male"  
+##  [89] "female" "female" "female" "female" "female" "male"   "male"   "male"  
+##  [97] "male"   "male"   "male"   "male"   "male"   "female" "female" "female"
+## [105] "female" "female" "female" "female" "female" "female" "female" "female"
+## [113] "female" "female" "female" "female" "female" "female" "female" "female"
+## [121] "female" "female" "female" "female" "female" "female" "female" "male"  
+## [129] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [137] "male"   "male"   "male"   "female" "female" "male"   "male"   "male"  
+## [145] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [153] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [161] "male"   "female" "male"   "male"   "male"   "male"   "male"   "male"  
+## [169] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [177] "male"   "female" "female" "female" "female" "female" "female" "female"
+## [185] "female" "female" "female" "female" "female" "female" "male"   "male"  
+## [193] "male"   "female" "female" "female" "female" "male"   "male"   "male"  
+## [201] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [209] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [217] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [225] "male"   "male"   "female" "female" "female" "female" "male"   "male"  
+## [233] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [241] "female" "female" "female" "female" "female" "female" "female" "female"
+## [249] "female" "female" "female" "male"   "male"   "male"   "male"   "male"  
+## [257] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [265] "female" "female" "female" "female" "female" "female" "male"   "male"  
+## [273] "male"   "male"   "female" "female" "female" "female" "female" "female"
+## [281] "female" "female" "female" "female" "female" "female" "female" "male"  
+## [289] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "female"
+## [297] "female" "female" "female" "female" "female" "female" "female" "female"
+## [305] "female" "female" "female" "male"   "male"   "female" "female" "female"
+## [313] "male"   "male"   "female" "female" "female" "female" "female" "female"
+## [321] "female" "female" "female" "female" "female" "female" "male"   "male"  
+## [329] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [337] "male"   "female" "male"   "male"   "male"   "male"   "male"   "male"  
+## [345] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [353] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [361] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [369] "male"   "male"   "male"   "male"   "female" "female" "female" "female"
+## [377] "female" "female" "female" "female" "female" "female" "male"   "male"  
+## [385] "male"   "male"   "male"   "male"   "male"   "female" "female" "female"
+## [393] "female" "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [401] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [409] "female" "female" "female" "female" "female" "female" "female" "female"
+## [417] "female" "female" "male"   "male"   "male"   "male"   "male"   "male"  
+## [425] "male"   "male"   "male"   "male"   "male"   "male"   "male"   "male"  
+## [433] "male"   "male"   "male"   "male"   "male"   "male"   "female" "female"
+## [441] "female" "male"   "male"   "female" "female" "female" "female" "female"
+## [449] "female" "female" "female" "female" "female" "male"   "male"   "male"  
+## [457] "male"   "male"   "male"   "female" "female" "female" "female"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо вектор порівняння стовпчика gender зі значенням  female}
+\NormalTok{mydata}\OperatorTok{$}\NormalTok{gender }\OperatorTok{==}\StringTok{ 'female'}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
+##  [13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+##  [25] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [37]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [49]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [73] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE
+##  [85] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
+##  [97] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [109]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [121]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE
+## [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE
+## [145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [157] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+## [169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
+## [181]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE
+## [193] FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [205] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [217] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
+## [229]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [241]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+## [253] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [265]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE
+## [277]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+## [289] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [301]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE
+## [313] FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [325]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [337] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [349] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [361] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [373]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE
+## [385] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
+## [397] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [409]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE
+## [421] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [433] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
+## [445]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
+## [457] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо перші 6-ть рядків стовпчиків з 1-го по 3-тий, де gender == 'female'}
+\KeywordTok{head}\NormalTok{(mydata[mydata}\OperatorTok{$}\NormalTok{gender }\OperatorTok{==}\StringTok{ 'female'}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    score         rank    ethnicity
+## 1    4.7 tenure track     minority
+## 2    4.1 tenure track     minority
+## 3    3.9 tenure track     minority
+## 4    4.8 tenure track     minority
+## 10   4.5      tenured not minority
+## 11   3.8      tenured not minority
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо перші 6-ть рядків вибірки із фрейму, де gender == 'female'}
+\KeywordTok{head}\NormalTok{(}\KeywordTok{subset}\NormalTok{(mydata, gender }\OperatorTok{==}\StringTok{ 'female'}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    score         rank    ethnicity gender language age cls_perc_eval
+## 1    4.7 tenure track     minority female  english  36      55.81395
+## 2    4.1 tenure track     minority female  english  36      68.80000
+## 3    3.9 tenure track     minority female  english  36      60.80000
+## 4    4.8 tenure track     minority female  english  36      62.60163
+## 10   4.5      tenured not minority female  english  40      86.95652
+## 11   3.8      tenured not minority female  english  40      88.88889
+##    cls_did_eval cls_students cls_level cls_profs  cls_credits bty_f1lower
+## 1            24           43     upper    single multi credit           5
+## 2            86          125     upper    single multi credit           5
+## 3            76          125     upper    single multi credit           5
+## 4            77          123     upper    single multi credit           5
+## 10           40           46     upper    single multi credit           2
+## 11           24           27     upper    single multi credit           2
+##    bty_f1upper bty_f2upper bty_m1lower bty_m1upper bty_m2upper bty_avg
+## 1            7           6           2           4           6   5.000
+## 2            7           6           2           4           6   5.000
+## 3            7           6           2           4           6   5.000
+## 4            7           6           2           4           6   5.000
+## 10           5           4           3           3           2   3.167
+## 11           5           4           3           3           2   3.167
+##    pic_outfit pic_color ten_point_scale new_varible number
+## 1  not formal     color             9.4           0      1
+## 2  not formal     color             8.2           0      2
+## 3  not formal     color             7.8           0      3
+## 4  not formal     color             9.6           0      4
+## 10 not formal     color             9.0           0     10
+## 11 not formal     color             7.6           0     11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо перші 6-ть рядків вибірки із фрейму, де score > 3.5}
+\KeywordTok{head}\NormalTok{(}\KeywordTok{subset}\NormalTok{(mydata, score }\OperatorTok{>}\StringTok{ }\FloatTok{3.5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   score         rank    ethnicity gender language age cls_perc_eval
+## 1   4.7 tenure track     minority female  english  36      55.81395
+## 2   4.1 tenure track     minority female  english  36      68.80000
+## 3   3.9 tenure track     minority female  english  36      60.80000
+## 4   4.8 tenure track     minority female  english  36      62.60163
+## 5   4.6      tenured not minority   male  english  59      85.00000
+## 6   4.3      tenured not minority   male  english  59      87.50000
+##   cls_did_eval cls_students cls_level cls_profs  cls_credits bty_f1lower
+## 1           24           43     upper    single multi credit           5
+## 2           86          125     upper    single multi credit           5
+## 3           76          125     upper    single multi credit           5
+## 4           77          123     upper    single multi credit           5
+## 5           17           20     upper  multiple multi credit           4
+## 6           35           40     upper  multiple multi credit           4
+##   bty_f1upper bty_f2upper bty_m1lower bty_m1upper bty_m2upper bty_avg
+## 1           7           6           2           4           6       5
+## 2           7           6           2           4           6       5
+## 3           7           6           2           4           6       5
+## 4           7           6           2           4           6       5
+## 5           4           2           2           3           3       3
+## 6           4           2           2           3           3       3
+##   pic_outfit pic_color ten_point_scale new_varible number
+## 1 not formal     color             9.4           0      1
+## 2 not formal     color             8.2           0      2
+## 3 not formal     color             7.8           0      3
+## 4 not formal     color             9.6           0      4
+## 5 not formal     color             9.2           0      5
+## 6 not formal     color             8.6           0      6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# rbind, cbind}
+
+\CommentTok{# Створюємо новий фрейм, де gender == 'female'}
+\NormalTok{mydata2 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(mydata, gender }\OperatorTok{==}\StringTok{ 'female'}\NormalTok{)}
+\CommentTok{# Створюємо новий фрейм, де gender == 'male'}
+\NormalTok{mydata3 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(mydata, gender }\OperatorTok{==}\StringTok{ 'male'}\NormalTok{)}
+\CommentTok{# Створюємо новий фрейм з рядків mydata2 та mydata3}
+\NormalTok{mydata4 <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(mydata2, mydata3)}
+\CommentTok{# Створюємо новий фрейм із стовпчиків з 1-го по 10-й}
+\NormalTok{mydata5 <-}\StringTok{ }\NormalTok{mydata[,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{]}
+\CommentTok{# Створюємо новий фрейм із стовпчиків з 11-го по 24-й}
+\NormalTok{mydata6 <-}\StringTok{ }\NormalTok{mydata[,}\DecValTok{11}\OperatorTok{:}\DecValTok{24}\NormalTok{]}
+\CommentTok{# Створюємо новий фрейм із стовпчиків mydata6 та mydata5}
+\NormalTok{mydata7 <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(mydata6, mydata5)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux444ux430ux439ux43b-ux43aux43eux4344cond}{%
+\subsubsection{Файл
+код4cond}\label{ux444ux430ux439ux43b-ux43aux43eux4344cond}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Читаємо data.frame з файлу}
+\NormalTok{mydata <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'evals.csv'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# control statements}
+
+\NormalTok{mydata <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'evals.csv'}\NormalTok{)}
+
+\CommentTok{# if}
+
+\NormalTok{a <-}\StringTok{ }\DecValTok{0}
+\CommentTok{# Друкуємо 'not positive'}
+\ControlFlowTok{if}\NormalTok{ (a }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{'positive'}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{'not positive'}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "not positive"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо 'not positive'}
+\ControlFlowTok{if}\NormalTok{ (a }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{'positive'}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \KeywordTok{print}\NormalTok{(}\StringTok{'not positive'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "not positive"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо 'zero'}
+\ControlFlowTok{if}\NormalTok{ (a }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{'positive'}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (a }\OperatorTok{<}\StringTok{ }\DecValTok{0}\NormalTok{) \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{'negative'}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \KeywordTok{print}\NormalTok{(}\StringTok{'zero'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "zero"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# ifelse}
+
+\NormalTok{a <-}\StringTok{ }\DecValTok{10}
+\CommentTok{# Друкуємо 'positive'}
+\KeywordTok{ifelse}\NormalTok{(a }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{, }\StringTok{'positive'}\NormalTok{, }\StringTok{'not positive'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "positive"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{-1}\NormalTok{)}
+
+\CommentTok{# for}
+
+\CommentTok{# Друкуємо числа від 1-го до 100}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(i)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10
+## [1] 11
+## [1] 12
+## [1] 13
+## [1] 14
+## [1] 15
+## [1] 16
+## [1] 17
+## [1] 18
+## [1] 19
+## [1] 20
+## [1] 21
+## [1] 22
+## [1] 23
+## [1] 24
+## [1] 25
+## [1] 26
+## [1] 27
+## [1] 28
+## [1] 29
+## [1] 30
+## [1] 31
+## [1] 32
+## [1] 33
+## [1] 34
+## [1] 35
+## [1] 36
+## [1] 37
+## [1] 38
+## [1] 39
+## [1] 40
+## [1] 41
+## [1] 42
+## [1] 43
+## [1] 44
+## [1] 45
+## [1] 46
+## [1] 47
+## [1] 48
+## [1] 49
+## [1] 50
+## [1] 51
+## [1] 52
+## [1] 53
+## [1] 54
+## [1] 55
+## [1] 56
+## [1] 57
+## [1] 58
+## [1] 59
+## [1] 60
+## [1] 61
+## [1] 62
+## [1] 63
+## [1] 64
+## [1] 65
+## [1] 66
+## [1] 67
+## [1] 68
+## [1] 69
+## [1] 70
+## [1] 71
+## [1] 72
+## [1] 73
+## [1] 74
+## [1] 75
+## [1] 76
+## [1] 77
+## [1] 78
+## [1] 79
+## [1] 80
+## [1] 81
+## [1] 82
+## [1] 83
+## [1] 84
+## [1] 85
+## [1] 86
+## [1] 87
+## [1] 88
+## [1] 89
+## [1] 90
+## [1] 91
+## [1] 92
+## [1] 93
+## [1] 94
+## [1] 95
+## [1] 96
+## [1] 97
+## [1] 98
+## [1] 99
+## [1] 100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Друкуємо елементи стовпчика score}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(mydata))\{}
+  \KeywordTok{print}\NormalTok{(mydata}\OperatorTok{$}\NormalTok{score[i])}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.7
+## [1] 4.1
+## [1] 3.9
+## [1] 4.8
+## [1] 4.6
+## [1] 4.3
+## [1] 2.8
+## [1] 4.1
+## [1] 3.4
+## [1] 4.5
+## [1] 3.8
+## [1] 4.5
+## [1] 4.6
+## [1] 3.9
+## [1] 3.9
+## [1] 4.3
+## [1] 4.5
+## [1] 4.8
+## [1] 4.6
+## [1] 4.6
+## [1] 4.9
+## [1] 4.6
+## [1] 4.5
+## [1] 4.4
+## [1] 4.6
+## [1] 4.7
+## [1] 4.5
+## [1] 4.8
+## [1] 4.9
+## [1] 4.5
+## [1] 4.4
+## [1] 4.3
+## [1] 4.1
+## [1] 4.2
+## [1] 3.5
+## [1] 3.4
+## [1] 4.5
+## [1] 4.4
+## [1] 4.4
+## [1] 2.5
+## [1] 4.3
+## [1] 4.5
+## [1] 4.8
+## [1] 4.8
+## [1] 4.4
+## [1] 4.7
+## [1] 4.4
+## [1] 4.7
+## [1] 4.5
+## [1] 4
+## [1] 4.3
+## [1] 4.4
+## [1] 4.5
+## [1] 5
+## [1] 4.9
+## [1] 4.6
+## [1] 5
+## [1] 4.7
+## [1] 5
+## [1] 3.6
+## [1] 3.7
+## [1] 4.3
+## [1] 4.1
+## [1] 4.2
+## [1] 4.7
+## [1] 4.7
+## [1] 3.5
+## [1] 4.1
+## [1] 4.2
+## [1] 4
+## [1] 4
+## [1] 3.9
+## [1] 4.4
+## [1] 3.8
+## [1] 3.5
+## [1] 4.2
+## [1] 3.5
+## [1] 3.6
+## [1] 2.9
+## [1] 3.3
+## [1] 3.3
+## [1] 3.2
+## [1] 4.6
+## [1] 4.2
+## [1] 4.3
+## [1] 4.4
+## [1] 4.1
+## [1] 4.6
+## [1] 4.4
+## [1] 4.8
+## [1] 4.3
+## [1] 3.6
+## [1] 4.3
+## [1] 4
+## [1] 4.2
+## [1] 4.1
+## [1] 4.1
+## [1] 4.4
+## [1] 4.3
+## [1] 4.4
+## [1] 4.4
+## [1] 4.9
+## [1] 5
+## [1] 4.4
+## [1] 4.8
+## [1] 4.9
+## [1] 4.3
+## [1] 5
+## [1] 4.7
+## [1] 4.5
+## [1] 3.5
+## [1] 3.9
+## [1] 4
+## [1] 4
+## [1] 3.7
+## [1] 3.4
+## [1] 3.3
+## [1] 3.8
+## [1] 3.9
+## [1] 3.4
+## [1] 3.7
+## [1] 4.1
+## [1] 3.7
+## [1] 3.5
+## [1] 3.5
+## [1] 4.4
+## [1] 3.4
+## [1] 4.3
+## [1] 3.7
+## [1] 4.7
+## [1] 3.9
+## [1] 3.6
+## [1] 4.5
+## [1] 4.5
+## [1] 4.8
+## [1] 4.8
+## [1] 4.7
+## [1] 4.5
+## [1] 4.3
+## [1] 4.8
+## [1] 4.1
+## [1] 4.4
+## [1] 4.3
+## [1] 3.6
+## [1] 4.5
+## [1] 4.3
+## [1] 4.4
+## [1] 4.7
+## [1] 4.8
+## [1] 3.5
+## [1] 3.8
+## [1] 3.6
+## [1] 4.2
+## [1] 3.6
+## [1] 4.4
+## [1] 3.7
+## [1] 4.3
+## [1] 4.6
+## [1] 4.6
+## [1] 4.1
+## [1] 3.6
+## [1] 2.3
+## [1] 4.3
+## [1] 4.4
+## [1] 3.6
+## [1] 4.4
+## [1] 3.9
+## [1] 3.8
+## [1] 3.4
+## [1] 4.9
+## [1] 4.1
+## [1] 3.2
+## [1] 4.2
+## [1] 3.9
+## [1] 4.9
+## [1] 4.7
+## [1] 4.4
+## [1] 4.2
+## [1] 4
+## [1] 4.4
+## [1] 3.9
+## [1] 4.4
+## [1] 3
+## [1] 3.5
+## [1] 2.8
+## [1] 4.6
+## [1] 4.3
+## [1] 3.4
+## [1] 3
+## [1] 4.2
+## [1] 4.3
+## [1] 4.1
+## [1] 4.6
+## [1] 3.9
+## [1] 3.5
+## [1] 4
+## [1] 4
+## [1] 3.9
+## [1] 3.3
+## [1] 4
+## [1] 3.8
+## [1] 4.2
+## [1] 4
+## [1] 3.8
+## [1] 3.3
+## [1] 4.1
+## [1] 4.7
+## [1] 4.4
+## [1] 4.8
+## [1] 4.8
+## [1] 4.6
+## [1] 4.6
+## [1] 4.8
+## [1] 4.4
+## [1] 4.7
+## [1] 4.7
+## [1] 3.3
+## [1] 4.4
+## [1] 4.3
+## [1] 4.9
+## [1] 4.4
+## [1] 4.7
+## [1] 4.3
+## [1] 4.8
+## [1] 4.5
+## [1] 4.7
+## [1] 3.3
+## [1] 4.7
+## [1] 4.6
+## [1] 3.6
+## [1] 4
+## [1] 4.1
+## [1] 4
+## [1] 4.5
+## [1] 4.6
+## [1] 4.8
+## [1] 4.6
+## [1] 4.9
+## [1] 3.1
+## [1] 3.7
+## [1] 3.7
+## [1] 3.9
+## [1] 3.9
+## [1] 3.2
+## [1] 4.4
+## [1] 4.2
+## [1] 4.7
+## [1] 3.9
+## [1] 3.6
+## [1] 3.4
+## [1] 4.4
+## [1] 4.4
+## [1] 4.1
+## [1] 3.6
+## [1] 3.5
+## [1] 4.1
+## [1] 3.8
+## [1] 4
+## [1] 4.8
+## [1] 4.2
+## [1] 4.6
+## [1] 4.3
+## [1] 4.8
+## [1] 3.8
+## [1] 4.5
+## [1] 4.9
+## [1] 4.9
+## [1] 4.8
+## [1] 4.7
+## [1] 4.6
+## [1] 4.3
+## [1] 4.4
+## [1] 4.5
+## [1] 4.2
+## [1] 4.8
+## [1] 4.6
+## [1] 4.9
+## [1] 4.8
+## [1] 4.8
+## [1] 4.6
+## [1] 4.7
+## [1] 4.1
+## [1] 3.8
+## [1] 4
+## [1] 4.1
+## [1] 4
+## [1] 4.1
+## [1] 3.5
+## [1] 4.1
+## [1] 3.6
+## [1] 4
+## [1] 3.9
+## [1] 3.8
+## [1] 4.4
+## [1] 4.7
+## [1] 3.8
+## [1] 4.1
+## [1] 4.1
+## [1] 4.7
+## [1] 4.3
+## [1] 4.4
+## [1] 4.5
+## [1] 3.1
+## [1] 3.7
+## [1] 4.5
+## [1] 3
+## [1] 4.6
+## [1] 3.7
+## [1] 3.6
+## [1] 3.2
+## [1] 3.3
+## [1] 2.9
+## [1] 4.2
+## [1] 4.5
+## [1] 3.8
+## [1] 3.7
+## [1] 3.7
+## [1] 4
+## [1] 3.7
+## [1] 4.5
+## [1] 3.8
+## [1] 3.9
+## [1] 4.6
+## [1] 4.5
+## [1] 4.2
+## [1] 4
+## [1] 3.8
+## [1] 3.5
+## [1] 2.7
+## [1] 4
+## [1] 4.6
+## [1] 3.9
+## [1] 4.5
+## [1] 3.7
+## [1] 2.4
+## [1] 3.1
+## [1] 2.5
+## [1] 3
+## [1] 4.5
+## [1] 4.8
+## [1] 4.9
+## [1] 4.5
+## [1] 4.6
+## [1] 4.5
+## [1] 4.9
+## [1] 4.4
+## [1] 4.6
+## [1] 4.6
+## [1] 5
+## [1] 4.9
+## [1] 4.6
+## [1] 4.8
+## [1] 4.9
+## [1] 4.9
+## [1] 4.9
+## [1] 5
+## [1] 4.5
+## [1] 3.5
+## [1] 3.8
+## [1] 3.9
+## [1] 3.9
+## [1] 4.2
+## [1] 4.1
+## [1] 4.8
+## [1] 4.8
+## [1] 4.8
+## [1] 4.8
+## [1] 4.9
+## [1] 4.2
+## [1] 4.5
+## [1] 3.9
+## [1] 4.4
+## [1] 4
+## [1] 3.6
+## [1] 3.7
+## [1] 2.7
+## [1] 4.5
+## [1] 4.4
+## [1] 3.9
+## [1] 3.6
+## [1] 4.4
+## [1] 4.4
+## [1] 4.7
+## [1] 4.5
+## [1] 4.1
+## [1] 3.7
+## [1] 4.3
+## [1] 3.5
+## [1] 3.7
+## [1] 4
+## [1] 4
+## [1] 3.1
+## [1] 4.5
+## [1] 4.8
+## [1] 4.2
+## [1] 4.9
+## [1] 4.8
+## [1] 3.5
+## [1] 3.6
+## [1] 4.4
+## [1] 3.4
+## [1] 3.9
+## [1] 3.8
+## [1] 4.8
+## [1] 4.6
+## [1] 5
+## [1] 3.8
+## [1] 4.2
+## [1] 3.3
+## [1] 4.7
+## [1] 4.6
+## [1] 4.6
+## [1] 4
+## [1] 4.2
+## [1] 4.9
+## [1] 4.5
+## [1] 4.8
+## [1] 3.8
+## [1] 4.8
+## [1] 5
+## [1] 5
+## [1] 4.9
+## [1] 4.6
+## [1] 5
+## [1] 4.8
+## [1] 4.9
+## [1] 4.9
+## [1] 3.9
+## [1] 3.9
+## [1] 4.5
+## [1] 4.5
+## [1] 3.3
+## [1] 3.1
+## [1] 2.8
+## [1] 3.1
+## [1] 4.2
+## [1] 3.4
+## [1] 3
+## [1] 3.3
+## [1] 3.6
+## [1] 3.7
+## [1] 3.6
+## [1] 4.3
+## [1] 4.1
+## [1] 4.9
+## [1] 4.8
+## [1] 3.7
+## [1] 3.9
+## [1] 4.5
+## [1] 3.6
+## [1] 4.4
+## [1] 3.4
+## [1] 4.4
+## [1] 4.5
+## [1] 4.5
+## [1] 4.5
+## [1] 4.6
+## [1] 4.1
+## [1] 4.5
+## [1] 3.5
+## [1] 4.4
+## [1] 4.4
+## [1] 4.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# for + if}
+
+\CommentTok{# Друкуємо елементи стовпчика score, які відповідають значенню 'male' в стовпчику gender}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(mydata))\{}
+  \ControlFlowTok{if}\NormalTok{ (mydata}\OperatorTok{$}\NormalTok{gender[i] }\OperatorTok{==}\StringTok{ 'male'}\NormalTok{)\{}
+    \KeywordTok{print}\NormalTok{(mydata}\OperatorTok{$}\NormalTok{score[i]) }
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.6
+## [1] 4.3
+## [1] 2.8
+## [1] 4.1
+## [1] 3.4
+## [1] 4.4
+## [1] 4.6
+## [1] 4.7
+## [1] 4.5
+## [1] 4.8
+## [1] 4.9
+## [1] 4.5
+## [1] 4
+## [1] 4.3
+## [1] 4.4
+## [1] 4.5
+## [1] 5
+## [1] 4.9
+## [1] 4.6
+## [1] 5
+## [1] 4.7
+## [1] 5
+## [1] 3.6
+## [1] 3.7
+## [1] 4.3
+## [1] 4.1
+## [1] 4.2
+## [1] 4.7
+## [1] 4.7
+## [1] 3.5
+## [1] 4.1
+## [1] 4.2
+## [1] 4
+## [1] 4
+## [1] 3.9
+## [1] 4.4
+## [1] 3.8
+## [1] 3.5
+## [1] 4.2
+## [1] 3.5
+## [1] 3.6
+## [1] 4.6
+## [1] 4.2
+## [1] 4.3
+## [1] 4.4
+## [1] 4.1
+## [1] 4.6
+## [1] 4
+## [1] 4.2
+## [1] 4.1
+## [1] 4.1
+## [1] 4.4
+## [1] 4.3
+## [1] 4.4
+## [1] 4.4
+## [1] 4.3
+## [1] 3.7
+## [1] 4.7
+## [1] 3.9
+## [1] 3.6
+## [1] 4.5
+## [1] 4.5
+## [1] 4.8
+## [1] 4.8
+## [1] 4.7
+## [1] 4.5
+## [1] 4.3
+## [1] 4.4
+## [1] 4.3
+## [1] 3.6
+## [1] 4.5
+## [1] 4.3
+## [1] 4.4
+## [1] 4.7
+## [1] 4.8
+## [1] 3.5
+## [1] 3.8
+## [1] 3.6
+## [1] 4.2
+## [1] 3.6
+## [1] 4.4
+## [1] 3.7
+## [1] 4.3
+## [1] 4.6
+## [1] 4.6
+## [1] 4.1
+## [1] 3.6
+## [1] 4.3
+## [1] 4.4
+## [1] 3.6
+## [1] 4.4
+## [1] 3.9
+## [1] 3.8
+## [1] 3.4
+## [1] 4.9
+## [1] 4.1
+## [1] 3.2
+## [1] 4.2
+## [1] 3.9
+## [1] 4.9
+## [1] 4.7
+## [1] 4.4
+## [1] 4.3
+## [1] 4.1
+## [1] 4.6
+## [1] 3.9
+## [1] 3.3
+## [1] 4
+## [1] 3.8
+## [1] 4.2
+## [1] 4
+## [1] 3.8
+## [1] 3.3
+## [1] 4.1
+## [1] 4.7
+## [1] 4.4
+## [1] 4.8
+## [1] 4.8
+## [1] 4.6
+## [1] 4.6
+## [1] 4.8
+## [1] 4.4
+## [1] 4.7
+## [1] 4.7
+## [1] 3.3
+## [1] 4.4
+## [1] 4.3
+## [1] 4.9
+## [1] 4.4
+## [1] 4.7
+## [1] 4.3
+## [1] 4.8
+## [1] 4.5
+## [1] 4.7
+## [1] 4
+## [1] 4.1
+## [1] 4
+## [1] 4.5
+## [1] 4.6
+## [1] 4.8
+## [1] 4.6
+## [1] 4.9
+## [1] 3.1
+## [1] 3.7
+## [1] 4.4
+## [1] 4.1
+## [1] 3.6
+## [1] 3.5
+## [1] 4.1
+## [1] 3.8
+## [1] 4
+## [1] 4.8
+## [1] 4.2
+## [1] 4.6
+## [1] 4.3
+## [1] 4.8
+## [1] 3.8
+## [1] 4.3
+## [1] 4.4
+## [1] 4.5
+## [1] 4.2
+## [1] 3.5
+## [1] 4.1
+## [1] 3.6
+## [1] 4
+## [1] 3.9
+## [1] 3.8
+## [1] 4.4
+## [1] 4.7
+## [1] 3.7
+## [1] 3.6
+## [1] 4.2
+## [1] 4.5
+## [1] 3.8
+## [1] 3.5
+## [1] 2.7
+## [1] 4
+## [1] 4.6
+## [1] 3.9
+## [1] 4.5
+## [1] 3.7
+## [1] 2.4
+## [1] 3.1
+## [1] 2.5
+## [1] 4.5
+## [1] 4.8
+## [1] 4.9
+## [1] 4.5
+## [1] 4.6
+## [1] 4.5
+## [1] 4.9
+## [1] 4.4
+## [1] 4.6
+## [1] 4.6
+## [1] 5
+## [1] 4.9
+## [1] 4.6
+## [1] 4.8
+## [1] 4.9
+## [1] 4.9
+## [1] 4.9
+## [1] 5
+## [1] 4.5
+## [1] 3.5
+## [1] 3.8
+## [1] 3.9
+## [1] 3.9
+## [1] 4.2
+## [1] 4.1
+## [1] 4.8
+## [1] 4.8
+## [1] 4.8
+## [1] 4.8
+## [1] 4.9
+## [1] 4.2
+## [1] 4.5
+## [1] 3.9
+## [1] 4.4
+## [1] 4.7
+## [1] 4.5
+## [1] 4.1
+## [1] 3.7
+## [1] 4.3
+## [1] 3.5
+## [1] 3.7
+## [1] 4.8
+## [1] 4.2
+## [1] 4.9
+## [1] 4.8
+## [1] 3.5
+## [1] 3.6
+## [1] 4.4
+## [1] 3.4
+## [1] 3.9
+## [1] 3.8
+## [1] 4.8
+## [1] 4.6
+## [1] 5
+## [1] 3.8
+## [1] 4.2
+## [1] 4.8
+## [1] 5
+## [1] 5
+## [1] 4.9
+## [1] 4.6
+## [1] 5
+## [1] 4.8
+## [1] 4.9
+## [1] 4.9
+## [1] 3.9
+## [1] 3.9
+## [1] 4.5
+## [1] 4.5
+## [1] 3.3
+## [1] 3.1
+## [1] 2.8
+## [1] 3.1
+## [1] 4.2
+## [1] 3.4
+## [1] 3
+## [1] 3.6
+## [1] 4.3
+## [1] 4.5
+## [1] 4.5
+## [1] 4.5
+## [1] 4.6
+## [1] 4.1
+## [1] 4.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# for + if  VS  ifelse}
+
+\CommentTok{# Новий стовпчик quality заповнений NA}
+\NormalTok{mydata}\OperatorTok{$}\NormalTok{quality <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\KeywordTok{nrow}\NormalTok{(mydata))}
+\CommentTok{# Прописуємо стовпчик quality - якщо score > 4, то 'good', інакше - 'bad'}
+\NormalTok{mydata}\OperatorTok{$}\NormalTok{quality <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\KeywordTok{nrow}\NormalTok{(mydata))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(mydata))\{}
+  \ControlFlowTok{if}\NormalTok{ (mydata}\OperatorTok{$}\NormalTok{score[i] }\OperatorTok{>}\StringTok{ }\DecValTok{4}\NormalTok{)\{}
+\NormalTok{    mydata}\OperatorTok{$}\NormalTok{quality[i] <-}\StringTok{ 'good'}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ mydata}\OperatorTok{$}\NormalTok{quality[i] <-}\StringTok{ 'bad'}
+\NormalTok{\}}
+\CommentTok{# Новий стовпчик quality2 заповнений - якщо score > 4, то 'good', інакше - 'bad}
+\NormalTok{mydata}\OperatorTok{$}\NormalTok{quality2 <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(mydata}\OperatorTok{$}\NormalTok{score }\OperatorTok{>}\StringTok{ }\DecValTok{4}\NormalTok{, }\StringTok{'good'}\NormalTok{, }\StringTok{'bad'}\NormalTok{)}
+
+\CommentTok{# while}
+
+\NormalTok{i <-}\StringTok{ }\DecValTok{1}
+
+\CommentTok{# Друкуємо елементи стовпчика score від 1-го до 50-го}
+\ControlFlowTok{while}\NormalTok{(i }\OperatorTok{<}\StringTok{ }\DecValTok{51}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(mydata}\OperatorTok{$}\NormalTok{score[i])}
+\NormalTok{  i <-}\StringTok{ }\NormalTok{i}\OperatorTok{+}\DecValTok{1}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.7
+## [1] 4.1
+## [1] 3.9
+## [1] 4.8
+## [1] 4.6
+## [1] 4.3
+## [1] 2.8
+## [1] 4.1
+## [1] 3.4
+## [1] 4.5
+## [1] 3.8
+## [1] 4.5
+## [1] 4.6
+## [1] 3.9
+## [1] 3.9
+## [1] 4.3
+## [1] 4.5
+## [1] 4.8
+## [1] 4.6
+## [1] 4.6
+## [1] 4.9
+## [1] 4.6
+## [1] 4.5
+## [1] 4.4
+## [1] 4.6
+## [1] 4.7
+## [1] 4.5
+## [1] 4.8
+## [1] 4.9
+## [1] 4.5
+## [1] 4.4
+## [1] 4.3
+## [1] 4.1
+## [1] 4.2
+## [1] 3.5
+## [1] 3.4
+## [1] 4.5
+## [1] 4.4
+## [1] 4.4
+## [1] 2.5
+## [1] 4.3
+## [1] 4.5
+## [1] 4.8
+## [1] 4.8
+## [1] 4.4
+## [1] 4.7
+## [1] 4.4
+## [1] 4.7
+## [1] 4.5
+## [1] 4
+\end{verbatim}
+
+\hypertarget{ux437ux430ux432ux434ux430ux43dux43dux44f-2}{%
+\subsection{Завдання
+2}\label{ux437ux430ux432ux434ux430ux43dux43dux44f-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Файли для завантаження}
+\NormalTok{ukr <-}\StringTok{ "API_UKR_DS2_en_csv_v2_1625998.csv"}
+\NormalTok{pol <-}\StringTok{ "API_POL_DS2_en_csv_v2_1626986.csv"}
+\NormalTok{rus <-}\StringTok{ "API_RUS_DS2_en_csv_v2_1630272.csv"}
+
+\CommentTok{# Завантажуємо та друкуємо розмір}
+\NormalTok{data_ukr <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(ukr, }\DataTypeTok{skip =} \DecValTok{4}\NormalTok{)}
+\KeywordTok{paste0}\NormalTok{(}\StringTok{"Loaded: "}\NormalTok{, ukr, }\StringTok{"("}\NormalTok{, }\KeywordTok{nrow}\NormalTok{(data_ukr), }\StringTok{", "}\NormalTok{, }\KeywordTok{ncol}\NormalTok{(data_ukr), }\StringTok{")"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Loaded: API_UKR_DS2_en_csv_v2_1625998.csv(1440, 66)"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_pol <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(pol, }\DataTypeTok{skip =} \DecValTok{4}\NormalTok{)}
+\KeywordTok{paste0}\NormalTok{(}\StringTok{"Loaded: "}\NormalTok{, pol, }\StringTok{"("}\NormalTok{, }\KeywordTok{nrow}\NormalTok{(data_pol), }\StringTok{", "}\NormalTok{, }\KeywordTok{ncol}\NormalTok{(data_pol), }\StringTok{")"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Loaded: API_POL_DS2_en_csv_v2_1626986.csv(1440, 66)"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_rus <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(rus, }\DataTypeTok{skip =} \DecValTok{4}\NormalTok{)}
+\KeywordTok{paste0}\NormalTok{(}\StringTok{"Loaded: "}\NormalTok{, rus, }\StringTok{"("}\NormalTok{, }\KeywordTok{nrow}\NormalTok{(data_rus), }\StringTok{", "}\NormalTok{, }\KeywordTok{ncol}\NormalTok{(data_rus), }\StringTok{")"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Loaded: API_RUS_DS2_en_csv_v2_1630272.csv(1440, 66)"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Вектор років}
+\NormalTok{years <-}\StringTok{ }\DecValTok{1960}\OperatorTok{:}\DecValTok{2019}
+\CommentTok{# Вектор імен стовпчиків}
+\NormalTok{col_names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"year"}\NormalTok{, }\StringTok{"p_ukr"}\NormalTok{, }\StringTok{"p_pol"}\NormalTok{, }\StringTok{"p_rus"}\NormalTok{, }
+               \StringTok{"gdp_ukr"}\NormalTok{, }\StringTok{"gdp_pol"}\NormalTok{, }\StringTok{"gdp_rus"}\NormalTok{)}
+
+\CommentTok{# Створюємо робочий фрейм із завантажених файлів}
+\NormalTok{data_work <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}
+  \DataTypeTok{years =}\NormalTok{ years,}
+  \DataTypeTok{p_ukr =} \KeywordTok{t}\NormalTok{(data_ukr[}\DecValTok{791}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(years)}\OperatorTok{+}\DecValTok{4}\NormalTok{]),}
+  \DataTypeTok{p_pol =} \KeywordTok{t}\NormalTok{(data_pol[}\DecValTok{8}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(years)}\OperatorTok{+}\DecValTok{4}\NormalTok{]),}
+  \DataTypeTok{p_rus =} \KeywordTok{t}\NormalTok{(data_rus[}\DecValTok{657}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(years)}\OperatorTok{+}\DecValTok{4}\NormalTok{]),}
+  \DataTypeTok{gdp_ukr =} \KeywordTok{t}\NormalTok{(data_ukr[}\DecValTok{1158}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(years)}\OperatorTok{+}\DecValTok{4}\NormalTok{]),}
+  \DataTypeTok{gdp_pol =} \KeywordTok{t}\NormalTok{(data_pol[}\DecValTok{263}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(years)}\OperatorTok{+}\DecValTok{4}\NormalTok{]),}
+  \DataTypeTok{gdp_rus =} \KeywordTok{t}\NormalTok{(data_rus[}\DecValTok{349}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(years)}\OperatorTok{+}\DecValTok{4}\NormalTok{])}
+\NormalTok{)}
+
+\CommentTok{# Встановлюємо назви стовпчиків}
+\KeywordTok{names}\NormalTok{(data_work) =}\StringTok{ }\NormalTok{col_names}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Підключаємо пакет dplyr}
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# select та filter}
+
+\CommentTok{# select - вибираємо стовпчики, filter - фільтруємо рядки}
+\KeywordTok{head}\NormalTok{(}\KeywordTok{select}\NormalTok{(data_work, year}\OperatorTok{:}\NormalTok{p_rus))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       year    p_ukr    p_pol     p_rus
+## X1960 1960 42664652 29637450 119897000
+## X1961 1961 43206345 29964000 121236000
+## X1962 1962 43752230 30308500 122591000
+## X1963 1963 44288608 30712000 123960000
+## X1964 1964 44796964 31139450 125345000
+## X1965 1965 45264548 31444950 126745000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(}\KeywordTok{select}\NormalTok{(}\KeywordTok{filter}\NormalTok{(data_work, }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(gdp_ukr)), }\KeywordTok{c}\NormalTok{(year, gdp_ukr}\OperatorTok{:}\NormalTok{gdp_rus)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       year  gdp_ukr  gdp_pol  gdp_rus
+## X1990 1990 7305.143 6173.862 8027.846
+## X1991 1991 6902.486 5913.855 7857.906
+## X1992 1992 6356.734 6181.769 6862.463
+## X1993 1993 5578.521 6548.119 6419.516
+## X1994 1994 4412.745 7027.078 5734.414
+## X1995 1995 3987.006 7662.772 5613.281
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# arrange}
+
+\CommentTok{# arrange - сортуємо рядки за значеннями стовпчика}
+\KeywordTok{head}\NormalTok{(}\KeywordTok{select}\NormalTok{(}\KeywordTok{arrange}\NormalTok{(data_work, p_ukr), year}\OperatorTok{:}\NormalTok{p_rus))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       year    p_ukr    p_pol     p_rus
+## X1960 1960 42664652 29637450 119897000
+## X1961 1961 43206345 29964000 121236000
+## X1962 1962 43752230 30308500 122591000
+## X1963 1963 44288608 30712000 123960000
+## X2019 2019 44385155 37970874 144373535
+## X2018 2018 44622518 37974750 144477860
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tail}\NormalTok{(}\KeywordTok{select}\NormalTok{(}\KeywordTok{arrange}\NormalTok{(}\KeywordTok{filter}\NormalTok{(data_work, }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(gdp_ukr)), gdp_ukr), }\KeywordTok{c}\NormalTok{(year, gdp_ukr}\OperatorTok{:}\NormalTok{gdp_rus)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       year  gdp_ukr  gdp_pol  gdp_rus
+## X2013 2013 10691.76 24719.25 26073.87
+## X2014 2014 10743.59 25612.26 25761.65
+## X2016 2016 11148.20 28283.70 24125.40
+## X2017 2017 11871.12 30152.74 26005.98
+## X2018 2018 12629.14 31834.41 28763.52
+## X2019 2019 13341.21 34217.72 29181.36
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# rename}
+
+\CommentTok{# rename - перейменовуємо назви стовпчиків}
+\NormalTok{data_population <-}\StringTok{ }\KeywordTok{select}\NormalTok{(data_work, year}\OperatorTok{:}\NormalTok{p_rus)}
+\KeywordTok{head}\NormalTok{(data_population)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       year    p_ukr    p_pol     p_rus
+## X1960 1960 42664652 29637450 119897000
+## X1961 1961 43206345 29964000 121236000
+## X1962 1962 43752230 30308500 122591000
+## X1963 1963 44288608 30712000 123960000
+## X1964 1964 44796964 31139450 125345000
+## X1965 1965 45264548 31444950 126745000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_population <-}\StringTok{ }\KeywordTok{rename}\NormalTok{(data_population, }\DataTypeTok{ukr=}\NormalTok{p_ukr, }\DataTypeTok{pol=}\NormalTok{p_pol, }\DataTypeTok{rus=}\NormalTok{p_rus)}
+\KeywordTok{head}\NormalTok{(data_population)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       year      ukr      pol       rus
+## X1960 1960 42664652 29637450 119897000
+## X1961 1961 43206345 29964000 121236000
+## X1962 1962 43752230 30308500 122591000
+## X1963 1963 44288608 30712000 123960000
+## X1964 1964 44796964 31139450 125345000
+## X1965 1965 45264548 31444950 126745000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# mutate}
+
+\CommentTok{# mutate - створюємо та обчислюємо нові стовпчики}
+\NormalTok{data_gdp_val <-}\StringTok{ }\KeywordTok{select}\NormalTok{(}
+  \KeywordTok{mutate}\NormalTok{(}\KeywordTok{filter}\NormalTok{(data_work, }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(gdp_ukr)), }
+    \DataTypeTok{gdp_v_ukr=}\NormalTok{p_ukr}\OperatorTok{*}\NormalTok{gdp_ukr,}
+    \DataTypeTok{gdp_v_pol=}\NormalTok{p_pol}\OperatorTok{*}\NormalTok{gdp_pol,}
+    \DataTypeTok{gdp_v_rus=}\NormalTok{p_rus}\OperatorTok{*}\NormalTok{gdp_rus}
+\NormalTok{  ),}
+  \KeywordTok{c}\NormalTok{(year, gdp_v_ukr}\OperatorTok{:}\NormalTok{gdp_v_rus)}
+\NormalTok{)}
+\KeywordTok{head}\NormalTok{(data_gdp_val)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   year    gdp_v_ukr    gdp_v_pol    gdp_v_rus
+## 1 1990 379074118450 235290724467 1.187876e+12
+## 2 1991 358932714023 226182435709 1.166068e+12
+## 3 1992 331506229263 237155323465 1.019338e+12
+## 4 1993 291082747688 251849872467 9.530336e+11
+## 5 1994 229115901051 270842221199 8.510324e+11
+## 6 1995 205381825714 295744653467 8.328749e+11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# group_by}
+
+\CommentTok{# створюємо стовпчик зі знвченнями річних декад}
+\NormalTok{data_pop_d <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(data_population, }
+  \DataTypeTok{decade=}\KeywordTok{as.integer}\NormalTok{(year}\OperatorTok{/}\DecValTok{10}\NormalTok{)}\OperatorTok{*}\DecValTok{10}
+\NormalTok{)}
+\CommentTok{# group_by - групуємо по декадах та  рахуємо середнє за декаду}
+\KeywordTok{summarize}\NormalTok{(}\KeywordTok{group_by}\NormalTok{(data_pop_d, decade), }
+  \KeywordTok{mean}\NormalTok{(ukr), }\KeywordTok{mean}\NormalTok{(pol), }\KeywordTok{mean}\NormalTok{(rus)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 6 x 4
+##   decade `mean(ukr)` `mean(pol)` `mean(rus)`
+##    <dbl>       <dbl>       <dbl>       <dbl>
+## 1   1960   44888265.   31171746   125403000 
+## 2   1970   48523216.   33881292.  134010300 
+## 3   1980   50848987.   36929122.  143342500 
+## 4   1990   51312660    38491748.  148110535.
+## 5   2000   47401978.   38182850.  144149706.
+## 6   2010   45192949.   38009809.  143812616.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# %>%}
+
+\CommentTok{# те саме, що попереднє, але через пайп}
+\NormalTok{data_population }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{decade=}\KeywordTok{as.integer}\NormalTok{(year}\OperatorTok{/}\DecValTok{10}\NormalTok{)}\OperatorTok{*}\DecValTok{10}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(decade) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\KeywordTok{mean}\NormalTok{(ukr), }\KeywordTok{mean}\NormalTok{(pol), }\KeywordTok{mean}\NormalTok{(rus))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 6 x 4
+##   decade `mean(ukr)` `mean(pol)` `mean(rus)`
+##    <dbl>       <dbl>       <dbl>       <dbl>
+## 1   1960   44888265.   31171746   125403000 
+## 2   1970   48523216.   33881292.  134010300 
+## 3   1980   50848987.   36929122.  143342500 
+## 4   1990   51312660    38491748.  148110535.
+## 5   2000   47401978.   38182850.  144149706.
+## 6   2010   45192949.   38009809.  143812616.
+\end{verbatim}
+
+\end{document}

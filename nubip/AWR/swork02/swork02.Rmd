@@ -1,0 +1,199 @@
+---
+title: "Самостійна робота 2"
+author: "Юрій Харченко"
+date: "11/7/2020"
+output: 
+  pdf_document: 
+    keep_tex: yes
+    latex_engine: xelatex
+mainfont: Liberation Serif
+sansfont: Liberation Sans
+monofont: Liberation Mono
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# Продовження роботи, розпочатої в Самостійна робота 1
+
+## Підключимо потрібні пакети
+
+```{r echo=TRUE}
+library(WDI)
+library(dplyr)
+```
+
+## Встановимо робочі константи
+
+```{r echo=TRUE}
+
+start <- 1990L
+end <- 2019L
+
+ind_pop_totl <- "SP.POP.TOTL"
+ind_gdp_pcap <- "NY.GDP.PCAP.PP.CD"
+
+```
+
+## Завантажимо створені в попередній роботі фрейми
+
+```{r echo=TRUE}
+
+# Населення  за роками
+
+pop_totl <- read.csv(file = "pop_totl.csv")
+head(pop_totl)
+
+
+# ВВП на душу населення  за роками
+
+gdp_pcap <- read.csv(file = "gdp_pcap.csv")
+head(gdp_pcap)
+
+
+# Країни з великим населенням та їх ВВП на душу за 2019 рік
+
+all <- read.csv(file = "all.csv")
+head(all)
+  
+```
+
+### Коментар до завантажених даних
+
+Дані отримані за допомогою пакету WDI, який дозваляє робити он-лайн запити до баз даних Світового банку
+
+pop_totl - містить часові ряди 1990-2019рр загальної кількості населення для України, Польщі та Росії
+
+gdp_pcap - містить часові ряди ВВП на душу населення 1990-2019рр для України, Польщі та Росії
+
+all - містить дані 35 країн з найбільшим населенням з такими кількісними показниками:
+
+* SP.POP.TOTL -  загальна кількість населення
+* NY.GDP.PCAP.PP.CD -  ВВП на душу населення
+
+та факторними змінними:
+
+* region - регіон
+* income - рівень доходу
+* lending - група позик
+
+## Додамо до фрейму all ще два кількісних показника
+
+```{r echo=TRUE}
+
+# Виберемо з фрейму список кодів країн, по яких будемо завантажувати дані
+
+countries <- select(all, iso2c)
+str(countries)
+
+y <- 2016
+
+```
+
+### Загальна площа країни (кв.км)
+
+```{r echo=TRUE}
+ind_lnd_totl <- "AG.LND.TOTL.K2"
+
+land_all <- WDI(country=c(countries$iso2c), indicator=ind_lnd_totl, start=y, end=y, extra=TRUE, cache=NULL) %>%
+    arrange(iso2c)
+
+head(land_all)
+summary(land_all)
+
+```
+
+### Площа с.г. (кв.км)
+
+```{r echo=TRUE}
+ind_lnd_agri <- "AG.LND.AGRI.K2"
+
+lnd_agri_all <- WDI(country=c(countries$iso2c), indicator=ind_lnd_agri, start=y, end=y, extra=TRUE, cache=NULL) %>%
+    arrange(iso2c)
+
+head(lnd_agri_all)
+summary(lnd_agri_all)
+
+```
+
+### Населення с.г. (% до загального)
+
+```{r echo=TRUE}
+ind_rur_totl <- "SP.RUR.TOTL.ZS"
+
+rur_totl_all <- WDI(country=c(countries$iso2c), indicator=ind_rur_totl, start=end, end=end, extra=TRUE, cache=NULL) %>%
+    arrange(iso2c)
+
+head(rur_totl_all)
+summary(rur_totl_all)
+```
+
+### Приєднаємо отримані показники до основоного фрейму та запищемо в файл
+
+```{r echo=TRUE}
+
+all1 <- inner_join(all, select(land_all, iso2c, AG.LND.TOTL.K2), by = c("iso2c" = "iso2c"))
+all2 <- inner_join(all1, select(lnd_agri_all, iso2c, AG.LND.AGRI.K2), by = c("iso2c" = "iso2c"))
+all3 <- inner_join(all2, select(rur_totl_all, iso2c, SP.RUR.TOTL.ZS), by = c("iso2c" = "iso2c"))
+
+head(all3)
+summary(all3)
+
+write.csv(all3, file = "all3.csv")
+
+```
+
+## Порахуємо як 35 країн з найбільшим населенням розподілилися за регіонами
+
+```{r echo=TRUE}
+all %>%
+  group_by(region) %>%
+  count()
+```
+
+## а також за рівнем доходів
+
+```{r echo=TRUE}
+all %>%
+  group_by(income) %>%
+  count()
+```
+
+## Створимо факторну змінну рівень с.г. населення та подивимось розподіл по рівнях
+
+ * низький  < 25%
+ * нижче середнього >=25% - <50%
+ * вище середнього  >=50% - <75%
+ * високий  >=75%
+ 
+```{r echo=TRUE}
+
+all3 %>%
+  mutate(rur_level=case_when(SP.RUR.TOTL.ZS<25 ~ "низький",
+                    SP.RUR.TOTL.ZS<50 ~ "нижче середнього",
+                    SP.RUR.TOTL.ZS<75 ~ "вище середнього",
+                    TRUE ~ "високий")) %>%
+  group_by(rur_level) %>%
+  count()
+```
+
+### а також які країни потрапили в групу
+
+```{r echo=TRUE}
+options(dplyr.summarise.inform = FALSE)
+
+p <- function(v) {
+  Reduce(f=paste, x = v)
+}
+
+all3 %>%
+  mutate(rur_level=case_when(SP.RUR.TOTL.ZS<25 ~ "низький",
+                    SP.RUR.TOTL.ZS<50 ~ "нижче середнього",
+                    SP.RUR.TOTL.ZS<75 ~ "вище середнього",
+                    TRUE ~ "високий")) %>%
+  group_by(rur_level) %>%
+  summarize(countries = p(as.character(country)))
+```

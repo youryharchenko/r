@@ -1,0 +1,243 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[]{Liberation Serif}
+  \setsansfont[]{Liberation Sans}
+  \setmonofont[]{Liberation Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Самостійна робота 4},
+  pdfauthor={Юрій Харченко},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Самостійна робота 4}
+\author{Юрій Харченко}
+\date{11/28/2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{ux456ux43cux456ux442ux430ux446ux456ux439ux43dux435-ux43cux43eux434ux435ux43bux44eux432ux430ux43dux43dux44f-ux440ux43eux431ux43eux442ux438-ux430ux442ux441}{%
+\section{Імітаційне моделювання роботи
+АТС}\label{ux456ux43cux456ux442ux430ux446ux456ux439ux43dux435-ux43cux43eux434ux435ux43bux44eux432ux430ux43dux43dux44f-ux440ux43eux431ux43eux442ux438-ux430ux442ux441}}
+
+\hypertarget{ux43fux456ux434ux43aux43bux44eux447ux438ux43cux43e-ux43fux43eux442ux440ux456ux431ux43dux456-ux43fux430ux43aux435ux442ux438}{%
+\subsection{Підключимо потрібні
+пакети}\label{ux43fux456ux434ux43aux43bux44eux447ux438ux43cux43e-ux43fux43eux442ux440ux456ux431ux43dux456-ux43fux430ux43aux435ux442ux438}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(queueing)}
+\KeywordTok{library}\NormalTok{(pander)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{section}{%
+\subsection{}\label{section}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Вхідний потік M/M/с/K}
+\NormalTok{lambda <-}\StringTok{ }\DecValTok{3}
+\NormalTok{input_mmck <-}\StringTok{ }\KeywordTok{NewInput.MMCK}\NormalTok{(}\DataTypeTok{lambda =} \DecValTok{3}\NormalTok{, }\DataTypeTok{mu =} \DecValTok{4}\NormalTok{, }\DataTypeTok{c =} \DecValTok{5}\NormalTok{, }\DataTypeTok{k =} \DecValTok{5}\NormalTok{)}
+
+\KeywordTok{CheckInput}\NormalTok{(input_mmck)}
+
+\CommentTok{# Create queue class object}
+\NormalTok{output_mmck <-}\StringTok{ }\KeywordTok{QueueingModel}\NormalTok{(input_mmck)}
+
+\CommentTok{# Get queue model report}
+\KeywordTok{pander}\NormalTok{(}\KeywordTok{Report}\NormalTok{(output_mmck))}
+\end{Highlighting}
+\end{Shaded}
+
+The inputs of the model M/M/c/K are: lambda: 3, mu: 4, c: 5, k: 5
+
+The outputs of the model M/M/c/K are:
+
+The probability (p0, p1, \ldots, pk) of the clients in the system are:
+0.4724282 0.3543212 0.1328704 0.03321761 0.006228302 0.0009342453 The
+traffic intensity is: 0.749299316040184 The server use is:
+0.149859863208037 The mean number of clients in the system is:
+0.749299316040184 The mean number of clients in the queue is: 0 The mean
+number of clients in the server is: 0.749299316040184 The mean time
+spend in the system is: 0.25 The mean time spend in the queue is: 0 The
+mean time spend in the server is: 0.25 The mean time spend in the queue
+when there is queue is: NA The throughput is: 2.99719726416074
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Get queue model summary}
+\KeywordTok{summary}\NormalTok{(output_mmck)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   lambda mu c k  m        RO        P0 Lq Wq        X         L    W Wqq Lqq
+## 1      3  4 5 5 NA 0.1498599 0.4724282  0  0 2.997197 0.7492993 0.25  NA  NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{output_mmck}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $Inputs
+## $lambda
+## [1] 3
+## 
+## $mu
+## [1] 4
+## 
+## $c
+## [1] 5
+## 
+## $k
+## [1] 5
+## 
+## attr(,"class")
+## [1] "i_MMCK"
+## 
+## $RO
+## [1] 0.1498599
+## 
+## $Lq
+## [1] 0
+## 
+## $VNq
+## [1] 0
+## 
+## $Wq
+## [1] 0
+## 
+## $VTq
+## [1] 0
+## 
+## $Throughput
+## [1] 2.997197
+## 
+## $L
+## [1] 0.7492993
+## 
+## $VN
+## [1] 0.7463209
+## 
+## $W
+## [1] 0.25
+## 
+## $Lqq
+## [1] NA
+## 
+## $Wqq
+## [1] NA
+## 
+## $Pn
+## [1] 0.4724282304 0.3543211728 0.1328704398 0.0332176099 0.0062283019
+## [6] 0.0009342453
+## 
+## $Qn
+## [1] 0.472870007 0.354652505 0.132994689 0.033248672 0.006234126
+## 
+## $FWq
+## [1] 0
+## 
+## attr(,"class")
+## [1] "o_MMCK"
+\end{verbatim}
+
+\end{document}
